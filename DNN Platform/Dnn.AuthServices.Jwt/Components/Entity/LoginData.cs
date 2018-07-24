@@ -40,5 +40,7 @@ namespace Dnn.AuthServices.Jwt.Components.Entity
         public string Username;
         [JsonProperty("p")]
         public string Password;
+        [JsonProperty("a")]
+        public string Audience;
     }
 }
