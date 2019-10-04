@@ -4,6 +4,7 @@ daysUntilStale: 90
 daysUntilClose: 14
 # Issues with these labels will never be considered stale
 exemptLabels:
+<<<<<<< HEAD
   - "Alert: Noteworthy"
   - "Alert: Pinned"
   - "Type: Bug"
@@ -11,10 +12,17 @@ exemptLabels:
   - "Status: Development"
   - "Status: Review"
   - "Status: Testing"
+=======
+  - pinned
+  - security
+  - bug
+  - noteworthy
+>>>>>>> Addition of configuration for StaleBot (#3072)
 # Label to use when marking an issue as stale
 staleLabel: stale
 # Comment to post when marking an issue as stale. Set to `false` to disable
 markComment: >
+<<<<<<< HEAD
   We have detected this issue has not had any activity during the last 90 
   days. That could mean this issue is no longer relevant and/or nobody has 
   found the necessary time to address the issue. We are trying to keep the 
@@ -34,3 +42,11 @@ closeComment: >
   This issue has been closed automatically due to inactivity (as mentioned 
   14 days ago). Feel free to re-open the issue if you believe it is still 
   relevant.
+=======
+  This issue has been automatically marked as stale because it has not had
+  recent activity. It will be closed if no further activity occurs. Thank you
+  for your contributions.
+# Comment to post when closing a stale issue. Set to `false` to disable
+closeComment: >
+  This issue has been closed automatically due to inactivity.
+>>>>>>> Addition of configuration for StaleBot (#3072)
