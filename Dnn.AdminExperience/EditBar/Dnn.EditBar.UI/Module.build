@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<Project ToolsVersion="4.0" DefaultTargets="Build" 
   xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
@@ -9,12 +10,30 @@
   <Import Project="..\..\..\Build\BuildScripts\AEModule.build" />
   <Import Project="..\..\..\Build\BuildScripts\AEPackage.targets"/>
 
+=======
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <BuildScriptsPath>$(MSBuildProjectDirectory)\..\..\..\Dnn.AdminExperience\Build\BuildScripts</BuildScriptsPath>
+    <WebsitePath>$(MSBuildProjectDirectory)\..\..\..\Website</WebsitePath>
+    <WebsiteBinPath>$(WebsitePath)\bin</WebsiteBinPath>
+    <WebsiteBinProvidersPath>$(WebsitePath)\bin\Providers</WebsiteBinProvidersPath>
+    <WebsiteInstallPath>$(WebsitePath)\Install\Module</WebsiteInstallPath>
+  </PropertyGroup>
+  
+  <Import Project="$(BuildScriptsPath)\Package.Targets" />
+  <Import Project="$(BuildScriptsPath)\Module.Build"/>
+  
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
   <PropertyGroup>
     <Extension>zip</Extension>
     <DNNFileName>Dnn.EditBar.UI</DNNFileName>
     <PackageName>Dnn.EditBar.UI</PackageName>
     <ModuleFolderName>$(WebsitePath)\DesktopModules\admin\Dnn.EditBar</ModuleFolderName>
+<<<<<<< HEAD
     <InstallPath>$(WebsiteInstallPath)\Module</InstallPath>
+=======
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
     <ResourceZipWorkingDirectory>$(MSBuildProjectDirectory)\Package\Resources\editBar</ResourceZipWorkingDirectory>
   </PropertyGroup>
 

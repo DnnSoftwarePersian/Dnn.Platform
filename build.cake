@@ -100,12 +100,16 @@ Task("CleanArtifacts")
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
+<<<<<<< HEAD
     .IsDependentOn("CleanArtifacts")
     .IsDependentOn("UpdateDnnManifests")
 	.IsDependentOn("CreateInstall")
 	.IsDependentOn("CreateUpgrade")
     .IsDependentOn("CreateDeploy")
     .IsDependentOn("CreateSymbols");
+=======
+    .IsDependentOn("BuildAll");
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION

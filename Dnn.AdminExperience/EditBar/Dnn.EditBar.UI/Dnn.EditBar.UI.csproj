@@ -114,7 +114,7 @@
     </Content>
     <None Include="Module.build">
       <SubType>Designer</SubType>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="01.05.00.txt" />
