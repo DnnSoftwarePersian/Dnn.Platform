@@ -30,17 +30,17 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Reflection;
 using System.Web;
-using DotNetNuke.Abstractions;
-using DotNetNuke.Common;
+
 using DotNetNuke.Common.Internal;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.ComponentModel;
 using DotNetNuke.Data;
 using DotNetNuke.Entities.Controllers;
-using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Tabs;
 using DotNetNuke.Security.Roles;
 using DotNetNuke.Services.Cache;
 using DotNetNuke.Services.ClientCapability;
+using DotNetNuke.Services.Localization;
 using DotNetNuke.Services.Mobile;
 using DotNetNuke.Tests.Core.Services.ClientCapability;
 using DotNetNuke.Tests.Instance.Utilities;
@@ -56,11 +56,11 @@ namespace DotNetNuke.Tests.Core.Services.Mobile
 	///   Summary description for RedirectionControllerTests
 	/// </summary>
 	[TestFixture]
-    public class RedirectionControllerTests
+	public class RedirectionControllerTests
 	{
-        #region Private Properties
+		#region Private Properties
 
-        private Mock<DataProvider> _dataProvider;
+		private Mock<DataProvider> _dataProvider;
 		private RedirectionController _redirectionController;
         private Mock<ClientCapabilityProvider> _clientCapabilityProvider;
 	    private Mock<IHostController> _mockHostController;
@@ -116,11 +116,11 @@ namespace DotNetNuke.Tests.Core.Services.Mobile
 		#endregion
 
 		#region Set Up
+
 		[SetUp]
 		public void SetUp()
 		{
-            SetupContianer();
-            ComponentFactory.Container = new SimpleContainer();
+			ComponentFactory.Container = new SimpleContainer();
             UnitTestHelper.ClearHttpContext();
 			_dataProvider = MockComponentProvider.CreateDataProvider();
 			MockComponentProvider.CreateDataCacheProvider();
@@ -146,8 +146,6 @@ namespace DotNetNuke.Tests.Core.Services.Mobile
         [TearDown]
         public void TearDown()
         {
-            TestableGlobals.ClearInstance();
-            PortalController.ClearInstance();
             CachingProvider.Instance().PurgeCache();
             MockComponentProvider.ResetContainer();
             UnitTestHelper.ClearHttpContext();
@@ -164,22 +162,13 @@ namespace DotNetNuke.Tests.Core.Services.Mobile
             ComponentFactory.Container = null;
         }
 
-        private void SetupContianer()
-        {
-            var navigationManagerMock = new Mock<INavigationManager>();
-            navigationManagerMock.Setup(x => x.NavigateURL(It.IsAny<int>())).Returns<int>(x => NavigateUrl(x));
-            var containerMock = new Mock<IServiceProvider>();
-            containerMock.Setup(x => x.GetService(typeof(INavigationManager))).Returns(navigationManagerMock.Object);
-            Globals.DependencyProvider = containerMock.Object;
-        }
-        #endregion
+		#endregion
 
-        #region Tests
+		#region Tests
 
-        #region CURD API Tests
+		#region CURD API Tests
 
-
-        [Test]
+		[Test]
 		public void RedirectionController_Save_Valid_Redirection()
 		{
 			var redirection = new Redirection { Name = "Test R", PortalId = Portal0, SortOrder = 1, SourceTabId = -1, Type = RedirectionType.MobilePhone, TargetType = TargetType.Portal, TargetValue = Portal1 };

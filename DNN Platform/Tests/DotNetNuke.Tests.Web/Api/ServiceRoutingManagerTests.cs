@@ -28,12 +28,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Routing;
+<<<<<<< HEAD
 using DotNetNuke.Abstractions;
 using DotNetNuke.Common;
 <<<<<<< HEAD
 using DotNetNuke.DependencyInjection;
 =======
 >>>>>>> Merges latest changes from 9.4.x into development (#3189)
+=======
+>>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)"
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Framework.Internal.Reflection;
 using DotNetNuke.Framework.Reflections;
@@ -62,6 +65,7 @@ namespace DotNetNuke.Tests.Web.Api
             _mockPortalController = new Mock<IPortalController>();
             _portalController = _mockPortalController.Object;
             PortalController.SetTestableInstance(_portalController);
+<<<<<<< HEAD
 
             var navigationManagerMock = new Mock<INavigationManager>();
 <<<<<<< HEAD
@@ -73,6 +77,8 @@ namespace DotNetNuke.Tests.Web.Api
             containerMock.Setup(x => x.GetService(typeof(INavigationManager))).Returns(navigationManagerMock.Object);
             Globals.DependencyProvider = containerMock.Object;
 >>>>>>> Merges latest changes from 9.4.x into development (#3189)
+=======
+>>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)"
         }
 
         [TearDown]

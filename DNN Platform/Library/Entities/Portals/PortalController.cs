@@ -68,7 +68,6 @@ using DotNetNuke.Services.Search.Entities;
 using DotNetNuke.Web.Client;
 using ICSharpCode.SharpZipLib.Zip;
 using FileInfo = DotNetNuke.Services.FileSystem.FileInfo;
-using IAbPortalSettings = DotNetNuke.Abstractions.Portals.IPortalSettings;
 
 #endregion
 
@@ -2360,11 +2359,6 @@ namespace DotNetNuke.Entities.Portals
         /// </summary>
         /// <returns>portal settings.</returns>
         PortalSettings IPortalController.GetCurrentPortalSettings()
-        {
-            return GetCurrentPortalSettingsInternal();
-        }
-
-        IAbPortalSettings IPortalController.GetCurrentSettings()
         {
             return GetCurrentPortalSettingsInternal();
         }

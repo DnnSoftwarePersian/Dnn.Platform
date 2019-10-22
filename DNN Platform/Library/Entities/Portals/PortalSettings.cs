@@ -32,7 +32,6 @@ using DotNetNuke.Security;
 using DotNetNuke.Services.Personalization;
 using DotNetNuke.Services.Tokens;
 using DotNetNuke.Common;
-using DotNetNuke.Abstractions.Portals;
 
 #endregion
 
@@ -46,7 +45,7 @@ namespace DotNetNuke.Entities.Portals
     /// </summary>
     /// -----------------------------------------------------------------------------
     [Serializable]
-    public partial class PortalSettings : BaseEntityInfo, IPropertyAccess, IPortalSettings
+    public partial class PortalSettings : BaseEntityInfo, IPropertyAccess
     {
         #region ControlPanelPermission enum
 

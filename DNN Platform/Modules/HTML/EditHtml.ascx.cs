@@ -7,24 +7,28 @@
 =======
 =======
 #region Copyright
+<<<<<<< HEAD
 //
 >>>>>>> Merges latest changes from 9.4.x into development (#3189)
+=======
+// 
+>>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)"
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
-// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
 // to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// 
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions 
 // of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 // DEALINGS IN THE SOFTWARE.
 #endregion
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
@@ -36,7 +40,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Microsoft.Extensions.DependencyInjection;
 using DotNetNuke.Common;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Users;
@@ -49,7 +52,6 @@ using DotNetNuke.Entities.Portals;
 using DotNetNuke.Common.Utilities;
 using Telerik.Web.UI;
 using DotNetNuke.Modules.Html.Components;
-using DotNetNuke.Abstractions;
 
 #endregion
 
@@ -63,11 +65,6 @@ namespace DotNetNuke.Modules.Html
     /// </remarks>
     public partial class EditHtml : HtmlModuleBase
     {
-        private readonly INavigationManager _navigationManager;
-        public EditHtml()
-        {
-            _navigationManager = DependencyProvider.GetRequiredService<INavigationManager>();
-        }
 
         #region Private Members
 
@@ -253,11 +250,11 @@ namespace DotNetNuke.Modules.Html
             {
                 cmdMasterContent.Visible = true;
                 cmdMasterContent.Text = Localization.GetString("cmdShowMasterContent", LocalResourceFile);
-
+            
                 cmdMasterContent.Text = phMasterContent.Visible ?
                     Localization.GetString("cmdHideMasterContent", LocalResourceFile) :
                     Localization.GetString("cmdShowMasterContent", LocalResourceFile);
-
+            
             }
         }
 
@@ -316,7 +313,7 @@ namespace DotNetNuke.Modules.Html
             cmdHistory.Enabled = true;
             DisplayMasterContentButton();
             ddlRender.Visible = true;
-
+                
         }
 
         /// <summary>
@@ -451,8 +448,8 @@ namespace DotNetNuke.Modules.Html
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-
-            hlCancel.NavigateUrl = _navigationManager.NavigateURL();
+            
+            hlCancel.NavigateUrl = Globals.NavigateURL();
 
             cmdEdit.Click += OnEditClick;
             cmdPreview.Click += OnPreviewClick;
@@ -475,7 +472,7 @@ namespace DotNetNuke.Modules.Html
             base.OnLoad(e);
 
             try
-            {
+            {                
                 var htmlContentItemID = -1;
                 var htmlContent = _htmlTextController.GetTopHtmlText(ModuleId, false, WorkflowID);
 
@@ -522,7 +519,7 @@ namespace DotNetNuke.Modules.Html
                     BindRenderItems();
                     ddlRender.SelectedValue = txtContent.Mode;
                 }
-
+                
             }
             catch (Exception exc)
             {
@@ -539,7 +536,7 @@ namespace DotNetNuke.Modules.Html
                 // get content
                 var htmlContent = GetLatestHTMLContent();
 
-                var aliases = from PortalAliasInfo pa in PortalAliasController.Instance.GetPortalAliasesByPortalId(PortalSettings.PortalId)
+                var aliases = from PortalAliasInfo pa in PortalAliasController.Instance.GetPortalAliasesByPortalId(PortalSettings.PortalId) 
                               select pa.HTTPAlias;
                 string content;
                 if (phEdit.Visible)
@@ -600,7 +597,7 @@ namespace DotNetNuke.Modules.Html
             // redirect back to portal
             if (redirect)
             {
-                Response.Redirect(_navigationManager.NavigateURL(), true);
+                Response.Redirect(Globals.NavigateURL(), true);
             }
         }
         protected void OnEditClick(object sender, EventArgs e)
@@ -644,7 +641,7 @@ namespace DotNetNuke.Modules.Html
             }
         }
 
-
+        
         private void OnMasterContentClick(object sender, EventArgs e)
         {
             try
@@ -653,7 +650,7 @@ namespace DotNetNuke.Modules.Html
                 cmdMasterContent.Text = phMasterContent.Visible ?
                     Localization.GetString("cmdHideMasterContent", LocalResourceFile) :
                     Localization.GetString("cmdShowMasterContent", LocalResourceFile);
-
+                
                 if (phMasterContent.Visible)
                     DisplayMasterLanguageContent();
             }
@@ -743,7 +740,7 @@ namespace DotNetNuke.Modules.Html
                     if (createdByByUser != null)
                     {
                         createdBy = createdByByUser.DisplayName;
-                    }
+                    }                    
                 }
 
                 foreach (TableCell cell in e.Row.Cells)

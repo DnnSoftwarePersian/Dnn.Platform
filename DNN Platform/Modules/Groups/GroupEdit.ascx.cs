@@ -9,19 +9,11 @@ using DotNetNuke.Services.FileSystem;
 using DotNetNuke.Common.Utilities;
 using System.IO;
 using DotNetNuke.Common;
-using DotNetNuke.Abstractions;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetNuke.Modules.Groups
 {
     public partial class GroupEdit : GroupsModuleBase
     {
-        private readonly INavigationManager _navigationManager;
-        public GroupEdit()
-        {
-            _navigationManager = DependencyProvider.GetRequiredService<INavigationManager>();
-        }
-
         protected override void OnInit(EventArgs e)
         {
             InitializeComponent();
@@ -62,11 +54,11 @@ namespace DotNetNuke.Modules.Groups
                         txtGroupName.Text = roleInfo.RoleName;
                     else
                         litGroupName.Text = roleInfo.RoleName;
-
+                    
                     txtDescription.Text = roleInfo.Description;
                     rdAccessTypePrivate.Checked = !roleInfo.IsPublic;
                     rdAccessTypePublic.Checked = roleInfo.IsPublic;
-
+                    
 
                     if (roleInfo.Settings.ContainsKey("ReviewMembers"))
                     {
@@ -116,7 +108,7 @@ namespace DotNetNuke.Modules.Groups
                     {
                         roleInfo.RoleName = txtGroupName.Text;
                     }
-
+                    
                     roleInfo.Description = txtDescription.Text;
                     roleInfo.IsPublic = rdAccessTypePublic.Checked;
 
@@ -153,7 +145,7 @@ namespace DotNetNuke.Modules.Groups
 
                 }
 
-                Response.Redirect(_navigationManager.NavigateURL(TabId, "", new String[] { "groupid=" + GroupId.ToString() }));
+                Response.Redirect(Globals.NavigateURL(TabId, "", new String[] { "groupid=" + GroupId.ToString() }));
             }
         }
     }
