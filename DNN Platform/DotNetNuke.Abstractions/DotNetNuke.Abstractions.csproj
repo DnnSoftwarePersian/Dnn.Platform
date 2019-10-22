@@ -18,6 +18,7 @@
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="XCOPY &quot;$(ProjectDir)bin\$(ConfigurationName)\netstandard2.0\DotNetNuke.Abstractions*&quot; &quot;$(WebsitePath)\bin&quot; /S /Y" />
+    <Exec Command="XCOPY &quot;$(ProjectDir)bin\$(ConfigurationName)\netstandard2.0\DotNetNuke.Abstractions*&quot; &quot;..\..\Website\bin&quot; /S /Y" />
   </Target>
 
 </Project>

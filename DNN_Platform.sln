@@ -523,6 +523,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Symbols", "Symbols", "{8D99
 		Dnn.AdminExperience\Build\Symbols\Symbols.dnn = Dnn.AdminExperience\Build\Symbols\Symbols.dnn
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetNuke.Abstractions", "DNN Platform\DotNetNuke.Abstractions\DotNetNuke.Abstractions.csproj", "{6928A9B1-F88A-4581-A132-D3EB38669BB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Cloud_Debug|Any CPU = Cloud_Debug|Any CPU
@@ -2045,6 +2047,7 @@ Global
 		{10D11155-ED05-40CB-9644-AD861A6D7096} = {392B91E8-C85D-4475-A169-1D4E33B06A4A}
 		{622791DE-3AE7-4D54-9E66-2FED9686AA9E} = {10D11155-ED05-40CB-9644-AD861A6D7096}
 		{8D99B9CD-004B-4237-8CFE-77CD327B4370} = {10D11155-ED05-40CB-9644-AD861A6D7096}
+		{6928A9B1-F88A-4581-A132-D3EB38669BB0} = {29273BE6-1AA8-4970-98A0-41BFFEEDA67B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46B6A641-57EB-4B19-B199-23E6FC2AB40B}

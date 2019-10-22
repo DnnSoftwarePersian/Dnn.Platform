@@ -1,8 +1,12 @@
+<<<<<<< HEAD:Dnn.AdminExperience/Dnn.PersonaBar.Extensions/Components/Extensions/Editors/CoreLanguagePackageEditor.cs
 ﻿// 
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // 
 using System;
+=======
+﻿using System;
+>>>>>>> Merges latest changes from 9.4.x into development (#3189):Dnn.AdminExperience/Extensions/Content/Dnn.PersonaBar.Extensions/Components/Extensions/Editors/CoreLanguagePackageEditor.cs
 using Microsoft.Extensions.DependencyInjection;
 using Dnn.PersonaBar.Extensions.Components.Dto;
 using Dnn.PersonaBar.Extensions.Components.Dto.Editors;

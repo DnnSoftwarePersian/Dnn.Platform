@@ -30,7 +30,10 @@ using System.Linq;
 using System.Web.Routing;
 using DotNetNuke.Abstractions;
 using DotNetNuke.Common;
+<<<<<<< HEAD
 using DotNetNuke.DependencyInjection;
+=======
+>>>>>>> Merges latest changes from 9.4.x into development (#3189)
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Framework.Internal.Reflection;
 using DotNetNuke.Framework.Reflections;
@@ -61,9 +64,15 @@ namespace DotNetNuke.Tests.Web.Api
             PortalController.SetTestableInstance(_portalController);
 
             var navigationManagerMock = new Mock<INavigationManager>();
+<<<<<<< HEAD
             var services = new ServiceCollection();
             services.AddScoped(typeof(INavigationManager), (x) => navigationManagerMock.Object);
             Globals.DependencyProvider = services.BuildServiceProvider();
+=======
+            var containerMock = new Mock<IServiceProvider>();
+            containerMock.Setup(x => x.GetService(typeof(INavigationManager))).Returns(navigationManagerMock.Object);
+            Globals.DependencyProvider = containerMock.Object;
+>>>>>>> Merges latest changes from 9.4.x into development (#3189)
         }
 
         [TearDown]

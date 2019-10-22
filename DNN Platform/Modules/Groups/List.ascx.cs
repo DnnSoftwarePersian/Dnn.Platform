@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 ﻿// 
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // 
 using System;
+=======
+﻿using System;
+>>>>>>> Merges latest changes from 9.4.x into development (#3189)
 using Microsoft.Extensions.DependencyInjection;
 using DotNetNuke.Common;
 using DotNetNuke.Abstractions;

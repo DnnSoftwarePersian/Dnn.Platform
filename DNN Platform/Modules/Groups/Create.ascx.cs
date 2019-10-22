@@ -169,7 +169,11 @@ namespace DotNetNuke.Modules.Groups
                 GroupUtilities.CreateJournalEntry(roleInfo, UserInfo);
             }
 
+<<<<<<< HEAD
             Response.Redirect(ModuleContext.NavigateUrl(TabId, string.Empty, false, null));
+=======
+            Response.Redirect(_navigationManager.NavigateURL(GroupViewTabId, "", new String[] { "groupid=" + roleInfo.RoleID.ToString() }));
+>>>>>>> Merges latest changes from 9.4.x into development (#3189)
         }
     }
 }
