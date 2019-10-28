@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿// 
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
@@ -9,6 +10,15 @@
 // this work for additional information regarding copyright ownership. 
 // The ASF licenses this file to you under the Apache License, Version 2.0
 // (the "License"); you may not use this file except in compliance with 
+=======
+#region Apache License
+//
+// Licensed to the Apache Software Foundation (ASF) under one or more
+// contributor license agreements. See the NOTICE file distributed with
+// this work for additional information regarding copyright ownership.
+// The ASF licenses this file to you under the Apache License, Version 2.0
+// (the "License"); you may not use this file except in compliance with
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 // the License. You may obtain a copy of the License at
 //
 // http://www.apache.org/licenses/LICENSE-2.0
@@ -44,7 +54,11 @@ namespace log4net.Filter
 	/// </remarks>
 	/// <author>Nicko Cadell</author>
 	/// <author>Gert Driesen</author>
+<<<<<<< HEAD
 	[Obsolete("MdcFilter has been replaced by PropertyFilter. Scheduled removal in v10.0.0.")]
+=======
+	/*[Obsolete("MdcFilter has been replaced by PropertyFilter")]*/
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 	public class MdcFilter : PropertyFilter
 	{
 	}
