@@ -1,4 +1,5 @@
 #region Copyright
+<<<<<<< HEAD
 // 
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
@@ -16,11 +17,34 @@
 // TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
 // THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+=======
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>>> update form orginal repo
 // DEALINGS IN THE SOFTWARE.
 #endregion
 #region Usings
 
 using System;
+<<<<<<< HEAD
+=======
+using Microsoft.Extensions.DependencyInjection;
+>>>>>>> update form orginal repo
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
@@ -32,6 +56,10 @@ using DotNetNuke.Services.FileSystem;
 using DotNetNuke.Services.Mail;
 using DotNetNuke.UI.Skins.Controls;
 using DotNetNuke.Services.Localization;
+<<<<<<< HEAD
+=======
+using DotNetNuke.Abstractions;
+>>>>>>> update form orginal repo
 
 #endregion
 
@@ -49,6 +77,15 @@ namespace DotNetNuke.Modules.Admin.Users
     /// -----------------------------------------------------------------------------
     public partial class Membership : UserModuleBase
     {
+<<<<<<< HEAD
+=======
+        private readonly INavigationManager _navigationManager;
+        public Membership()
+        {
+            _navigationManager = DependencyProvider.GetRequiredService<INavigationManager>();
+        }
+
+>>>>>>> update form orginal repo
 		#region "Public Properties"
 
         /// -----------------------------------------------------------------------------
@@ -68,7 +105,11 @@ namespace DotNetNuke.Modules.Admin.Users
                 return membership;
             }
         }
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> update form orginal repo
 		#endregion
 
 		#region "Events"
@@ -86,7 +127,11 @@ namespace DotNetNuke.Modules.Admin.Users
         public event EventHandler MembershipUnLocked;
         public event EventHandler MembershipPromoteToSuperuser;
         public event EventHandler MembershipDemoteFromSuperuser;
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> update form orginal repo
         #endregion
 
 		#region "Event Methods"
@@ -104,7 +149,11 @@ namespace DotNetNuke.Modules.Admin.Users
             if (MembershipPromoteToSuperuser != null)
             {
                 MembershipPromoteToSuperuser(this, e);
+<<<<<<< HEAD
                 Response.Redirect(Globals.NavigateURL(), true);
+=======
+                Response.Redirect(_navigationManager.NavigateURL(), true);
+>>>>>>> update form orginal repo
             }
         }
 
@@ -122,11 +171,19 @@ namespace DotNetNuke.Modules.Admin.Users
             if (MembershipDemoteFromSuperuser != null)
             {
                 MembershipDemoteFromSuperuser(this, e);
+<<<<<<< HEAD
                 Response.Redirect(Globals.NavigateURL(), true);
             }
         }
 
         
+=======
+                Response.Redirect(_navigationManager.NavigateURL(), true);
+            }
+        }
+
+
+>>>>>>> update form orginal repo
         /// -----------------------------------------------------------------------------
         /// <summary>
         /// Raises the MembershipAuthorized Event
@@ -224,7 +281,11 @@ namespace DotNetNuke.Modules.Admin.Users
             if (UserController.Instance.GetCurrentUserInfo().IsSuperUser && UserController.Instance.GetCurrentUserInfo().UserID!=User.UserID)
             {
                 cmdToggleSuperuser.Visible = true;
+<<<<<<< HEAD
                
+=======
+
+>>>>>>> update form orginal repo
                 if (User.IsSuperUser)
                 {
                     cmdToggleSuperuser.Text = Localization.GetString("DemoteFromSuperUser", LocalResourceFile);
@@ -238,8 +299,13 @@ namespace DotNetNuke.Modules.Admin.Users
                     cmdToggleSuperuser.Visible = false;
                 }
             }
+<<<<<<< HEAD
             lastLockoutDate.Value = UserMembership.LastLockoutDate.Year > 2000 
                                         ? (object) UserMembership.LastLockoutDate 
+=======
+            lastLockoutDate.Value = UserMembership.LastLockoutDate.Year > 2000
+                                        ? (object) UserMembership.LastLockoutDate
+>>>>>>> update form orginal repo
                                         : LocalizeString("Never");
             // ReSharper disable SpecifyACultureInStringConversionExplicitly
             isOnLine.Value = LocalizeString(UserMembership.IsOnLine.ToString());
@@ -247,7 +313,11 @@ namespace DotNetNuke.Modules.Admin.Users
             approved.Value = LocalizeString(UserMembership.Approved.ToString());
             updatePassword.Value = LocalizeString(UserMembership.UpdatePassword.ToString());
             isDeleted.Value = LocalizeString(UserMembership.IsDeleted.ToString());
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> update form orginal repo
             //show the user folder path without default parent folder, and only visible to admin.
             userFolder.Visible = UserInfo.IsInRole(PortalSettings.AdministratorRoleName);
             if (userFolder.Visible)
@@ -341,14 +411,22 @@ namespace DotNetNuke.Modules.Admin.Users
                 //Update User
                 UserController.UpdateUser(PortalId, User);
 
+<<<<<<< HEAD
                 OnMembershipPasswordUpdateChanged(EventArgs.Empty); 
+=======
+                OnMembershipPasswordUpdateChanged(EventArgs.Empty);
+>>>>>>> update form orginal repo
             }
             else
             {
                 message = Localization.GetString("OptionUnavailable", LocalResourceFile);
                 UI.Skins.Skin.AddModuleMessage(this, message, ModuleMessage.ModuleMessageType.YellowWarning);
             }
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> update form orginal repo
         }
 
         /// -----------------------------------------------------------------------------
@@ -388,13 +466,21 @@ namespace DotNetNuke.Modules.Admin.Users
             if (Request.IsAuthenticated != true) return;
             ////ensure only superusers can change user superuser state
             if (UserController.Instance.GetCurrentUserInfo().IsSuperUser != true) return;
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> update form orginal repo
             var currentSuperUserState = User.IsSuperUser;
             User.IsSuperUser = !currentSuperUserState;
             //Update User
             UserController.UpdateUser(PortalId, User);
             DataCache.ClearCache();
+<<<<<<< HEAD
    
+=======
+
+>>>>>>> update form orginal repo
             if (currentSuperUserState)
             {
                 OnMembershipDemoteFromSuperuser(EventArgs.Empty);
@@ -428,7 +514,14 @@ namespace DotNetNuke.Modules.Admin.Users
                 OnMembershipUnLocked(EventArgs.Empty);
             }
         }
+<<<<<<< HEAD
 		
 		#endregion
     }
 }
+=======
+
+		#endregion
+    }
+}
+>>>>>>> update form orginal repo

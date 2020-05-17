@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -22,7 +23,10 @@
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 // DEALINGS IN THE SOFTWARE.
 #endregion
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 #region Usings
 
 using System;
@@ -95,16 +99,15 @@ namespace DotNetNuke.Services.Installer
         public static string EVENTMESSAGE_CommandMissing = GetLocalizedString("EVENTMESSAGE_CommandMissing");
         public static string EVENTMESSAGE_TypeMissing = GetLocalizedString("EVENTMESSAGE_TypeMissing");
         public static string EXCEPTION = GetLocalizedString("EXCEPTION");
+        public static string EXCEPTION_NameMissing = GetLocalizedString("EXCEPTION_NameMissing");
+        public static string EXCEPTION_TypeMissing = GetLocalizedString("EXCEPTION_TypeMissing");
+        public static string EXCEPTION_VersionMissing = GetLocalizedString("EXCEPTION_VersionMissing");
         public static string EXCEPTION_FileLoad = GetLocalizedString("EXCEPTION_FileLoad");
         public static string EXCEPTION_FileRead = GetLocalizedString("EXCEPTION_FileRead");
-        public static string EXCEPTION_GlobDotDotNotSupportedInCleanup = GetLocalizedString("EXCEPTION_GlobDotDotNotSupportedInCleanup");
         public static string EXCEPTION_InstallerCreate = GetLocalizedString("EXCEPTION_InstallerCreate");
         public static string EXCEPTION_MissingDnn = GetLocalizedString("EXCEPTION_MissingDnn");
         public static string EXCEPTION_MultipleDnn = GetLocalizedString("EXCEPTION_MultipleDnn");
-        public static string EXCEPTION_NameMissing = GetLocalizedString("EXCEPTION_NameMissing");
         public static string EXCEPTION_Type = GetLocalizedString("EXCEPTION_Type");
-        public static string EXCEPTION_TypeMissing = GetLocalizedString("EXCEPTION_TypeMissing");
-        public static string EXCEPTION_VersionMissing = GetLocalizedString("EXCEPTION_VersionMissing");
         public static string FILE_CreateBackup = GetLocalizedString("FILE_CreateBackup");
         public static string FILE_Created = GetLocalizedString("FILE_Created");
         public static string FILE_Deleted = GetLocalizedString("FILE_Deleted");

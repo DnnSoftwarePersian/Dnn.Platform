@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -22,7 +23,10 @@
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 // DEALINGS IN THE SOFTWARE.
 #endregion
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -140,7 +144,7 @@ namespace DotNetNuke.Web.Api.Internal
 
                 //controller selector that respects namespaces
                 GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerSelector), new DnnHttpControllerSelector(GlobalConfiguration.Configuration));
-                GlobalConfiguration.Configuration.DependencyResolver = new DnnDependencyResolver(Globals.DependencyProvider);
+                GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerActivator), new DnnHttpControllerActivator());
 
                 //tracwriter for dotnetnuke.instrumentation
                 GlobalConfiguration.Configuration.Services.Replace(typeof(ITraceWriter), new TraceWriter(IsTracingEnabled()));

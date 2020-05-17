@@ -1,11 +1,6 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
-using DotNetNuke.DependencyInjection;
+﻿using DotNetNuke.DependencyInjection;
 using DotNetNuke.DependencyInjection.Extensions;
 using DotNetNuke.Instrumentation;
-using DotNetNuke.Services.DependencyInjection;
 using DotNetNuke.Web.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -26,7 +21,6 @@ namespace DotNetNuke.Web
         private void Configure()
         {
             var services = new ServiceCollection();
-            services.AddSingleton<IScopeAccessor, ScopeAccessor>();
             ConfigureServices(services);
             DependencyProvider = services.BuildServiceProvider();
         }

@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+﻿#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -23,7 +24,10 @@
 // DEALINGS IN THE SOFTWARE.
 #endregion
 
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -124,7 +128,7 @@ namespace DotNetNuke.Tests.Web.Api
             table.Columns.Add("LastModifiedByUserID", typeof(int));
             table.Columns.Add("LastModifiedOnDate", typeof(DateTime));
 
-            table.Rows.Add(1, null, "host", "host", "host", "host", 1, "host@changeme.invalid", null, null, 0, null,
+            table.Rows.Add(1, null, "host", "host", "host", "host", 1, "host@change.me", null, null, 0, null,
                            "127.0.0.1", 0, "8D3C800F-7A40-45D6-BA4D-E59A393F9800", DateTime.Now, null, -1, DateTime.Now,
                            -1, DateTime.Now);
             return table.CreateDataReader();
@@ -180,7 +184,7 @@ namespace DotNetNuke.Tests.Web.Api
             table.Rows.Add(portalId, null, "My Website", "Logo.png", "Copyright (c) 2018 DNN Corp.", null,
                 "2", "0", "2", "USD", "0", "0", "0", "0", "0", "1", "My Website",
                 "DotNetNuke, DNN, Content, Management, CMS", null, "1057AC7A-3C08-4849-A3A6-3D2AB4662020",
-                null, null, null, "0", "admin@changeme.invalid", "en-US", "-8", "58", "Portals/0", null,
+                null, null, null, "0", "admin@change.me", "en-US", "-8", "58", "Portals/0", null,
                 homePage.ToString(), null, null, "57", "56", "-1", "-1", null, null, "7", "-1", "2011-08-25 07:34:11",
                 "-1", "2011-08-25 07:34:29", culture);
 

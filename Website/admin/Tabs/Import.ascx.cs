@@ -1,4 +1,5 @@
 #region Copyright
+<<<<<<< HEAD
 // 
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
@@ -16,6 +17,25 @@
 // TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
 // THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+=======
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>>> update form orginal repo
 // DEALINGS IN THE SOFTWARE.
 #endregion
 #region Usings
@@ -23,11 +43,20 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+<<<<<<< HEAD
 using System.IO;
 using System.Linq;
 using System.Web.UI.WebControls;
 using System.Xml;
 using DotNetNuke.Common;
+=======
+using System.Linq;
+using System.Web.UI.WebControls;
+using System.Xml;
+using Microsoft.Extensions.DependencyInjection;
+using DotNetNuke.Common;
+using DotNetNuke.Abstractions;
+>>>>>>> update form orginal repo
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Portals;
@@ -46,6 +75,15 @@ namespace DotNetNuke.Modules.Admin.Tabs
 
     public partial class Import : PortalModuleBase
     {
+<<<<<<< HEAD
+=======
+        private readonly INavigationManager _navigationManager;
+
+        public Import()
+        {
+            _navigationManager = DependencyProvider.GetRequiredService<INavigationManager>();
+        }
+>>>>>>> update form orginal repo
 
         private TabInfo _tab;
 
@@ -143,7 +181,11 @@ namespace DotNetNuke.Modules.Admin.Tabs
             {
                 if (!Page.IsPostBack)
                 {
+<<<<<<< HEAD
                     cmdCancel.NavigateUrl = Globals.NavigateURL();
+=======
+                    cmdCancel.NavigateUrl = _navigationManager.NavigateURL();
+>>>>>>> update form orginal repo
                     cboFolders.UndefinedItem = new ListItem("<" + Localization.GetString("None_Specified") + ">", string.Empty);
                     var folders = FolderManager.Instance.GetFolders(UserInfo, "BROWSE, ADD");
                     var templateFolder = folders.SingleOrDefault(f => f.FolderPath == "Templates/");
@@ -285,10 +327,17 @@ namespace DotNetNuke.Modules.Admin.Tabs
                 switch (optRedirect.SelectedValue)
                 {
                     case "VIEW":
+<<<<<<< HEAD
                         Response.Redirect(Globals.NavigateURL(objTab.TabID), true);
                         break;
                     default:
                         Response.Redirect(Globals.NavigateURL(objTab.TabID, "Tab", "action=edit"), true);
+=======
+                        Response.Redirect(_navigationManager.NavigateURL(objTab.TabID), true);
+                        break;
+                    default:
+                        Response.Redirect(_navigationManager.NavigateURL(objTab.TabID, "Tab", "action=edit"), true);
+>>>>>>> update form orginal repo
                         break;
                 }
             }
@@ -344,4 +393,8 @@ namespace DotNetNuke.Modules.Admin.Tabs
         }
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> update form orginal repo

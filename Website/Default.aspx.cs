@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #region Copyright
 // 
 // DotNetNuke® - https://www.dnnsoftware.com
@@ -1649,6 +1650,26 @@ namespace DotNetNuke.Framework
 // TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
 // THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+=======
+#region Copyright
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>>> update form orginal repo
 // DEALINGS IN THE SOFTWARE.
 #endregion
 #region Usings
@@ -1663,7 +1684,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+<<<<<<< HEAD
 
+=======
+using Microsoft.Extensions.DependencyInjection;
+
+using DotNetNuke.Abstractions;
+>>>>>>> update form orginal repo
 using DotNetNuke.Application;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Host;
@@ -1692,6 +1719,7 @@ using Globals = DotNetNuke.Common.Globals;
 namespace DotNetNuke.Framework
 {
     using Web.Client;
+<<<<<<< HEAD
 
     /// -----------------------------------------------------------------------------
     /// Project	 : DotNetNuke
@@ -1700,6 +1728,15 @@ namespace DotNetNuke.Framework
     /// -----------------------------------------------------------------------------
     /// <summary>
     /// 
+=======
+    /// -----------------------------------------------------------------------------
+    /// Project	 : DotNetNuke
+    /// Class	 : CDefault
+    ///
+    /// -----------------------------------------------------------------------------
+    /// <summary>
+    ///
+>>>>>>> update form orginal repo
     /// </summary>
     /// <remarks>
     /// </remarks>
@@ -1711,6 +1748,16 @@ namespace DotNetNuke.Framework
         private static readonly Regex HeaderTextRegex = new Regex("<meta([^>])+name=('|\")robots('|\")",
             RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Compiled);
 
+<<<<<<< HEAD
+=======
+        protected INavigationManager NavigationManager { get; }
+
+        public DefaultPage()
+        {
+            NavigationManager = Globals.DependencyProvider.GetRequiredService<INavigationManager>();
+        }
+
+>>>>>>> update form orginal repo
         #region Properties
 
         /// -----------------------------------------------------------------------------
@@ -1777,7 +1824,11 @@ namespace DotNetNuke.Framework
                 return ((PortalSettings)HttpContext.Current.Items["PortalSettings"]).ActiveTab.SkinPath;
             }
         }
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> update form orginal repo
         #endregion
 
         #region IClientAPICallbackEventHandler Members
@@ -1811,14 +1862,22 @@ namespace DotNetNuke.Framework
 
         /// -----------------------------------------------------------------------------
         /// <summary>
+<<<<<<< HEAD
         /// 
+=======
+        ///
+>>>>>>> update form orginal repo
         /// </summary>
         /// <remarks>
         /// - Obtain PortalSettings from Current Context
         /// - redirect to a specific tab based on name
         /// - if first time loading this page then reload to avoid caching
         /// - set page title and stylesheet
+<<<<<<< HEAD
         /// - check to see if we should show the Assembly Version in Page Title 
+=======
+        /// - check to see if we should show the Assembly Version in Page Title
+>>>>>>> update form orginal repo
         /// - set the background image if there is one selected
         /// - set META tags, copyright, keywords and description
         /// </remarks>
@@ -1854,7 +1913,11 @@ namespace DotNetNuke.Framework
                                 break;
                         }
                     }
+<<<<<<< HEAD
                     Response.Redirect(Globals.NavigateURL(tab.TabID, Null.NullString, parameters.ToArray()), true);
+=======
+                    Response.Redirect(NavigationManager.NavigateURL(tab.TabID, Null.NullString, parameters.ToArray()), true);
+>>>>>>> update form orginal repo
                 }
                 else
                 {
@@ -1913,7 +1976,11 @@ namespace DotNetNuke.Framework
             {
                 metaPanel.Controls.Add(new LiteralControl(PortalSettings.PageHeadText));
             }
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> update form orginal repo
             //set page title
             if (UrlUtils.InPopUp())
             {
@@ -1944,7 +2011,11 @@ namespace DotNetNuke.Framework
                             break;
                     }
                     var title = Localization.LocalizeControlTitle(control);
+<<<<<<< HEAD
                     
+=======
+
+>>>>>>> update form orginal repo
                     strTitle.Append(string.Concat(" > ", PortalSettings.ActiveTab.LocalizedTabName));
                     strTitle.Append(string.Concat(" > ", title));
                 }
@@ -2139,7 +2210,11 @@ namespace DotNetNuke.Framework
         }
 
         //I realize the parsing of this is rather primitive.  A better solution would be to use json serialization
+<<<<<<< HEAD
         //unfortunately, I don't have the time to write it.  When we officially adopt MS AJAX, we will get this type of 
+=======
+        //unfortunately, I don't have the time to write it.  When we officially adopt MS AJAX, we will get this type of
+>>>>>>> update form orginal repo
         //functionality and this should be changed to utilize it for its plumbing.
         private Dictionary<string, string> ParsePageCallBackArgs(string strArg)
         {
@@ -2272,7 +2347,11 @@ namespace DotNetNuke.Framework
                 {
                     if (PortalSettings.HomeTabId > 0)
                     {
+<<<<<<< HEAD
                         Response.Redirect(Globals.NavigateURL(PortalSettings.HomeTabId), true);
+=======
+                        Response.Redirect(NavigationManager.NavigateURL(PortalSettings.HomeTabId), true);
+>>>>>>> update form orginal repo
                     }
                     else
                     {
@@ -2296,7 +2375,11 @@ namespace DotNetNuke.Framework
                 }
                 else //other modes just depend on the default alias
                 {
+<<<<<<< HEAD
                     if (string.Compare(PortalSettings.PortalAlias.HTTPAlias, PortalSettings.DefaultPortalAlias, StringComparison.InvariantCulture ) != 0) 
+=======
+                    if (string.Compare(PortalSettings.PortalAlias.HTTPAlias, PortalSettings.DefaultPortalAlias, StringComparison.InvariantCulture ) != 0)
+>>>>>>> update form orginal repo
                         primaryHttpAlias = PortalSettings.DefaultPortalAlias;
                 }
                 if (primaryHttpAlias != null && string.IsNullOrEmpty(CanonicalLinkUrl))//a primary http alias was identified
@@ -2340,7 +2423,11 @@ namespace DotNetNuke.Framework
             //add Favicon
             ManageFavicon();
 
+<<<<<<< HEAD
             //ClientCallback Logic 
+=======
+            //ClientCallback Logic
+>>>>>>> update form orginal repo
             ClientAPI.HandleClientAPICallbackEvent(this);
 
             //add viewstateuserkey to protect against CSRF attacks
@@ -2355,10 +2442,17 @@ namespace DotNetNuke.Framework
 		        AJAX.GetScriptManager(this).AsyncPostBackTimeout = Host.AsyncTimeout;
 	        }
         }
+<<<<<<< HEAD
         
         /// -----------------------------------------------------------------------------
         /// <summary>
         /// Initialize the Scrolltop html control which controls the open / closed nature of each module 
+=======
+
+        /// -----------------------------------------------------------------------------
+        /// <summary>
+        /// Initialize the Scrolltop html control which controls the open / closed nature of each module
+>>>>>>> update form orginal repo
         /// </summary>
         /// <param name="e"></param>
         /// <remarks>
@@ -2390,7 +2484,11 @@ namespace DotNetNuke.Framework
                 MetaAuthor.Content = PortalSettings.PortalName;
                 /*
                  * Never show to be html5 compatible and stay backward compatible
+<<<<<<< HEAD
                  * 
+=======
+                 *
+>>>>>>> update form orginal repo
                  * MetaCopyright.Content = Copyright;
                  * MetaCopyright.Visible = (!String.IsNullOrEmpty(Copyright));
                  */
@@ -2441,4 +2539,7 @@ namespace DotNetNuke.Framework
 
     }
 }
+<<<<<<< HEAD
 >>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)"
+=======
+>>>>>>> update form orginal repo

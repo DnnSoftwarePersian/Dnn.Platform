@@ -1,56 +1,55 @@
 ---
 name: Bug Report
-about: Report a bug in DNN Platform
-labels: "Status: New"
-assignees: dnnsoftware/triage
+about: Create a report to help us improve
 ---
-<!-- 
-  If you need community support or would like to solicit a Request for Comments (RFC), please post to the DNN Community forums at https://dnncommunity.org/forums for now.  In the future, we are planning to implement a more robust solution for cultivating new ideas and nuturing these from concept to creation.  We will update this template when this solution is generally available.  In the meantime, we appreciate your patience as we endeavor to streamline our GitHub focus and efforts.
-  
-  Please read the CONTRIBUTING guidelines at https://github.com/dnnsoftware/Dnn.Platform/blob/develop/CONTRIBUTING.md prior to submitting an issue.
 
-  Any potential security issues SHOULD NOT be posted on GitHub.  Instead, please send an email to security@dnnsoftware.com.
+<!-- 
+  Please read contribution guideline first: https://github.com/dnnsoftware/Dnn.Platform/blob/development/CONTRIBUTING.md 
+  Any potential security issues should be sent to security@dnnsoftware.com, rather than posted on GitHub
 -->
+
 ## Description of bug
-Provide a clear and concise description of the bug.
+Provide a clear and concise description of what the bug is.
 
 ## Steps to reproduce
-List the precise steps to reproduce the bug:
+List the steps to reproduce the behavior:
 1. Go to '...'
 2. Click on '....'
-3. Scroll to '....'
+3. Scroll down to '....'
 4. See error
 
-## Current behavior
-Explain the current behavior.
+## Current result
+Explain what the current result is.
 
-## Expected behavior
-Provide a clear and concise description of the expected behavior.
+## Expected result
+Provide a clear and concise description of what you expected to happen.
 
 ## Screenshots
-If applicable, provide screenshots to help explain the bug.
+If applicable, provide screenshots to help explain your problem.
 
-## Error information
-Provide any error information (console errors, error logs, etc.) related to this bug.
+## Error log
+Paste the error log that is related to this issue.
 
 ## Additional context
-Provide any additional context that may be helpful in understanding and/or resolving the bug.
+Add any other context about the bug that may be helpful for resolution.
 
 ## Affected version
 <!-- 
 Please add X in at least one of the boxes as appropriate. In order for an issue to be accepted, a developer needs to be able to reproduce the issue on a currently supported version. If you are looking for a workaround for an issue with an older version, please visit the forums at https://dnncommunity.org/forums
 -->
-* [ ] 10.00.00 alpha build
-* [ ] 09.06.01 release candidate
-* [ ] 09.06.00 latest supported release
+
+* [ ] 10.0.0 alpha build
+* [ ] 9.4.2 alpha build
+* [ ] 9.4.1 latest supported release
 
 ## Affected browser
 <!-- 
-  Check all that apply, and add more if necessary. As appropriate, please specify the exact version(s) of the browser and operating system.
+  Check all that apply and add more if necessary.
+  If possible, please also specify exact versions and mention the operating system
 -->
+
 * [ ] Chrome
 * [ ] Firefox
 * [ ] Safari
-* [ ] Internet Explorer 11
-* [ ] Microsoft Edge (Classic)
-* [ ] Microsoft Edge Chromium
+* [ ] Internet Explorer
+* [ ] Edge

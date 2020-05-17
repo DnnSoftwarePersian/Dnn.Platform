@@ -1,8 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿// 
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 =======
+=======
+>>>>>>> update form orginal repo
 ﻿#region Copyright
 
 // 
@@ -17,8 +20,19 @@
 // 
 // The above copyright notice and this permission notice shall be included in all copies or substantial portions 
 // of the Software.
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 // 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+// DEALINGS IN THE SOFTWARE.
+
+#endregion
+
 #region Usings
 
 using System;
@@ -111,7 +125,7 @@ namespace DotNetNuke.Entities.Urls
                 var result = new UrlAction(request)
                                         {
                                             IsSecureConnection = request.IsSecureConnection,
-                                            IsSSLOffloaded = UrlUtils.IsSslOffloadEnabled(request),
+                                            IsSSLOffloaded = IsSSLOffloadEnabled(request),
                                             RawUrl = request.RawUrl
                                         };
                 ProcessRequest(app.Context,
@@ -1649,6 +1663,22 @@ namespace DotNetNuke.Entities.Urls
             return url;
         }
 
+        private bool IsSSLOffloadEnabled(HttpRequest request)
+        {
+            var ssloffloadheader = HostController.Instance.GetString("SSLOffloadHeader");
+            //if the ssloffloadheader variable has been set check to see if a request header with that type exists
+            if (!string.IsNullOrEmpty(ssloffloadheader) && request != null)
+            {
+                string ssloffload = request.Headers[ssloffloadheader];
+                if (!string.IsNullOrEmpty(ssloffload))
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
+
         protected bool IsPortalAliasIncorrect(HttpContext context, 
                                                     HttpRequest request, 
                                                     Uri requestUri,
@@ -1682,9 +1712,7 @@ namespace DotNetNuke.Entities.Urls
                                     //var cpa = portalAliases.GetAliasByPortalIdAndSettings(result);
                                     string url = requestUri.ToString();
                                     RewriteController.CheckLanguageMatch(ref url, result);
-                                    var cpa = portalAliases
-                                        .Where(a => a.IsPrimary || result.PortalAliasMapping != PortalSettings.PortalAliasMapping.Redirect)
-                                        .GetAliasByPortalIdAndSettings(result.PortalId, result, result.CultureCode, result.BrowserType);
+                                    var cpa = portalAliases.GetAliasByPortalIdAndSettings(result.PortalId, result, result.CultureCode, result.BrowserType);
 
                                     if (cpa != null)
                                     {
@@ -2761,7 +2789,7 @@ namespace DotNetNuke.Entities.Urls
                                 //DNN-9158: prevent SSL Offloading infinite redirects
                                 if (!result.IsSecureConnection && result.IsSSLOffloaded && bestFriendlyNoScheme.StartsWith("https"))
                                 {
-                                    bestFriendlyNoScheme = $"http://{bestFriendlyNoScheme.Substring(8)}";
+                                    bestFriendlyNoScheme = bestFriendlyNoScheme.Replace("https://", "http://");
                                 }
 
                                 if (!(bestFriendlyNoScheme == requestedPathNoScheme

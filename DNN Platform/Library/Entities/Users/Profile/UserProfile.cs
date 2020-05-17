@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -24,7 +25,10 @@
 #endregion
 
 
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 using DotNetNuke.Common.Internal;
 
 #region Usings
@@ -66,8 +70,8 @@ namespace DotNetNuke.Entities.Users
         public const string USERPROFILE_Unit = "Unit";
         public const string USERPROFILE_Street = "Street";
         public const string USERPROFILE_City = "City";
-        public const string USERPROFILE_Country = "Country";
         public const string USERPROFILE_Region = "Region";
+        public const string USERPROFILE_Country = "Country";
         public const string USERPROFILE_PostalCode = "PostalCode";
 
         //Phone contact

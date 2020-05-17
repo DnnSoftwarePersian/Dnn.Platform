@@ -1,4 +1,5 @@
 #region Copyright
+<<<<<<< HEAD
 // 
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
@@ -16,6 +17,25 @@
 // TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
 // THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+=======
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>>> update form orginal repo
 // DEALINGS IN THE SOFTWARE.
 #endregion
 #region Usings
@@ -23,6 +43,10 @@
 using System;
 using System.Collections;
 using System.Web;
+<<<<<<< HEAD
+=======
+using Microsoft.Extensions.DependencyInjection;
+>>>>>>> update form orginal repo
 
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
@@ -39,6 +63,10 @@ using DotNetNuke.Services.Log.EventLog;
 using DotNetNuke.Services.Mail;
 using DotNetNuke.UI.Skins.Controls;
 using DotNetNuke.Services.UserRequest;
+<<<<<<< HEAD
+=======
+using DotNetNuke.Abstractions;
+>>>>>>> update form orginal repo
 
 #endregion
 
@@ -55,6 +83,14 @@ namespace DotNetNuke.Modules.Admin.Security
     public partial class SendPassword : UserModuleBase
     {
     	private static readonly ILog Logger = LoggerSource.Instance.GetLogger(typeof (SendPassword));
+<<<<<<< HEAD
+=======
+        private readonly INavigationManager _navigationManager;
+        public SendPassword()
+        {
+            _navigationManager = DependencyProvider.GetRequiredService<INavigationManager>();
+        }
+>>>>>>> update form orginal repo
 
         #region Private Members
 
@@ -79,11 +115,19 @@ namespace DotNetNuke.Modules.Admin.Security
 
                 if (Convert.ToInt32(setting) > 0) //redirect to after registration page
                 {
+<<<<<<< HEAD
                     _RedirectURL = Globals.NavigateURL(Convert.ToInt32(setting));
                 }
                 else
                 {
                 
+=======
+                    _RedirectURL = _navigationManager.NavigateURL(Convert.ToInt32(setting));
+                }
+                else
+                {
+
+>>>>>>> update form orginal repo
                 if (Convert.ToInt32(setting) <= 0)
                 {
                     if (Request.QueryString["returnurl"] != null)
@@ -106,19 +150,32 @@ namespace DotNetNuke.Modules.Admin.Security
                     }
                     if (String.IsNullOrEmpty(_RedirectURL))
                     {
+<<<<<<< HEAD
                         //redirect to current page 
                         _RedirectURL = Globals.NavigateURL();
+=======
+                        //redirect to current page
+                        _RedirectURL = _navigationManager.NavigateURL();
+>>>>>>> update form orginal repo
                     }
                 }
                 else //redirect to after registration page
                 {
+<<<<<<< HEAD
                     _RedirectURL = Globals.NavigateURL(Convert.ToInt32(setting));
+=======
+                    _RedirectURL = _navigationManager.NavigateURL(Convert.ToInt32(setting));
+>>>>>>> update form orginal repo
                 }
                 }
 
                 return _RedirectURL;
             }
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> update form orginal repo
 		}
 
         /// <summary>
@@ -179,7 +236,11 @@ namespace DotNetNuke.Modules.Admin.Security
             base.OnInit(e);
 
             var isEnabled = true;
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> update form orginal repo
             //both retrieval and reset now use password token resets
             if (MembershipProviderConfig.PasswordRetrievalEnabled || MembershipProviderConfig.PasswordResetEnabled)
             {
@@ -192,7 +253,11 @@ namespace DotNetNuke.Modules.Admin.Security
                 lblHelp.Text = Localization.GetString("DisabledPasswordHelp", LocalResourceFile);
                 divPassword.Visible = false;
             }
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> update form orginal repo
 			if (!MembershipProviderConfig.PasswordResetEnabled)
             {
                 isEnabled = false;
@@ -204,7 +269,11 @@ namespace DotNetNuke.Modules.Admin.Security
             {
                 lblHelp.Text += Localization.GetString("RequiresUniqueEmail", LocalResourceFile);
             }
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> update form orginal repo
             if (MembershipProviderConfig.RequiresQuestionAndAnswer && isEnabled)
             {
                 lblHelp.Text += Localization.GetString("RequiresQuestionAndAnswer", LocalResourceFile);
@@ -223,9 +292,15 @@ namespace DotNetNuke.Modules.Admin.Security
             base.OnLoad(e);
 
             cmdSendPassword.Click += OnSendPasswordClick;
+<<<<<<< HEAD
             lnkCancel.NavigateUrl = Globals.NavigateURL();
 
             _ipAddress = UserRequestIPAddressController.Instance.GetUserRequestIPAddress(new HttpRequestWrapper(Request));            
+=======
+            lnkCancel.NavigateUrl = _navigationManager.NavigateURL();
+
+            _ipAddress = UserRequestIPAddressController.Instance.GetUserRequestIPAddress(new HttpRequestWrapper(Request));
+>>>>>>> update form orginal repo
 
 			divEmail.Visible = ShowEmailField;
 			divUsername.Visible = !UsernameDisabled;
@@ -295,7 +370,11 @@ namespace DotNetNuke.Modules.Admin.Security
                         {
                             canSend = false;
                         }
+<<<<<<< HEAD
                         else 
+=======
+                        else
+>>>>>>> update form orginal repo
                         {
                             if (_user.Membership.Approved == false)
                             {
@@ -369,7 +448,11 @@ namespace DotNetNuke.Modules.Admin.Security
                 LogUserID = UserId,
                 LogUserName = portalSecurity.InputFilter(txtUsername.Text, PortalSecurity.FilterFlag.NoScripting | PortalSecurity.FilterFlag.NoAngleBrackets | PortalSecurity.FilterFlag.NoMarkup)
             };
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> update form orginal repo
             if (string.IsNullOrEmpty(message))
             {
                 log.LogTypeKey = "PASSWORD_SENT_SUCCESS";
@@ -379,9 +462,15 @@ namespace DotNetNuke.Modules.Admin.Security
                 log.LogTypeKey = "PASSWORD_SENT_FAILURE";
                 log.LogProperties.Add(new LogDetailInfo("Cause", message));
             }
+<<<<<<< HEAD
             
 			log.AddProperty("IP", _ipAddress);
             
+=======
+
+			log.AddProperty("IP", _ipAddress);
+
+>>>>>>> update form orginal repo
             LogController.Instance.AddLog(log);
 
         }
@@ -389,4 +478,8 @@ namespace DotNetNuke.Modules.Admin.Security
         #endregion
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> update form orginal repo

@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #region Copyright
 // 
 // DotNetNuke® - https://www.dnnsoftware.com
@@ -708,6 +709,26 @@ namespace DotNetNuke.Modules.Admin.EditExtension
 // TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
 // THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+=======
+#region Copyright
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>>> update form orginal repo
 // DEALINGS IN THE SOFTWARE.
 #endregion
 #region Usings
@@ -716,8 +737,15 @@ using System;
 using System.IO;
 using System.Web;
 using System.Web.UI;
+<<<<<<< HEAD
 
 using DotNetNuke.Common;
+=======
+using Microsoft.Extensions.DependencyInjection;
+
+using DotNetNuke.Common;
+using DotNetNuke.Abstractions;
+>>>>>>> update form orginal repo
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Framework;
 using DotNetNuke.Framework.JavaScriptLibraries;
@@ -744,10 +772,22 @@ namespace DotNetNuke.Modules.Admin.EditExtension
     /// </remarks>
     public partial class EditExtension : ModuleUserControlBase
     {
+<<<<<<< HEAD
 
         private Control _control;
         private PackageInfo _package;
 
+=======
+        private readonly INavigationManager _navigationManager;
+        private Control _control;
+        private PackageInfo _package;
+
+        public EditExtension()
+        {
+            _navigationManager = Globals.DependencyProvider.GetRequiredService<INavigationManager>();
+        }
+
+>>>>>>> update form orginal repo
         protected bool IsSuperTab
         {
             get
@@ -853,7 +893,11 @@ namespace DotNetNuke.Modules.Admin.EditExtension
             cmdUpdate.Visible = IsSuperTab;
             if (Package != null)
             {
+<<<<<<< HEAD
                 
+=======
+
+>>>>>>> update form orginal repo
                 if (PackageEditor == null || PackageID == Null.NullInteger)
                 {
                     extensionSection.Visible = false;
@@ -872,9 +916,15 @@ namespace DotNetNuke.Modules.Admin.EditExtension
 
                     Package.IconFile = Util.ParsePackageIconFileName(Package);
                 }
+<<<<<<< HEAD
                 
                 switch (Package.PackageType)
                 {                                        
+=======
+
+                switch (Package.PackageType)
+                {
+>>>>>>> update form orginal repo
                     case "Auth_System":
                     case "Container":
                     case "Module":
@@ -887,7 +937,11 @@ namespace DotNetNuke.Modules.Admin.EditExtension
                         Package.IconFile = "Not Available";
                         break;
                 }
+<<<<<<< HEAD
                 
+=======
+
+>>>>>>> update form orginal repo
                 if (Mode != "All")
                 {
                     packageType.Visible = false;
@@ -967,7 +1021,11 @@ namespace DotNetNuke.Modules.Admin.EditExtension
 
             if (!IsPostBack)
             {
+<<<<<<< HEAD
                 ReturnUrl = Request.UrlReferrer != null ? Request.UrlReferrer.ToString() : Globals.NavigateURL();
+=======
+                ReturnUrl = Request.UrlReferrer != null ? Request.UrlReferrer.ToString() : _navigationManager.NavigateURL();
+>>>>>>> update form orginal repo
                 switch (DisplayMode)
                 {
                     case "editor":
@@ -1030,4 +1088,7 @@ namespace DotNetNuke.Modules.Admin.EditExtension
 
     }
 }
+<<<<<<< HEAD
 >>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)"
+=======
+>>>>>>> update form orginal repo

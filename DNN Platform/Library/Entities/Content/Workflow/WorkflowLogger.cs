@@ -1,10 +1,11 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+﻿﻿#region Copyright
 // 
+<<<<<<< HEAD
 <<<<<<< HEAD
 ﻿using System;
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -25,7 +26,10 @@
 #endregion
 
 using System;
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 using System.Collections.Generic;
 using DotNetNuke.Entities.Content.Workflow.Entities;
 using DotNetNuke.Entities.Content.Workflow.Repositories;

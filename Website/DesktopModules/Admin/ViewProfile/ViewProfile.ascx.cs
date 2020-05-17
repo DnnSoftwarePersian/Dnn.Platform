@@ -1,4 +1,5 @@
 #region Copyright
+<<<<<<< HEAD
 // 
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
@@ -16,6 +17,25 @@
 // TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
 // THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+=======
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>>> update form orginal repo
 // DEALINGS IN THE SOFTWARE.
 #endregion
 #region Usings
@@ -24,7 +44,11 @@ using System;
 using System.Linq;
 using System.Text;
 using System.Threading;
+<<<<<<< HEAD
 using System.Web;
+=======
+using Microsoft.Extensions.DependencyInjection;
+>>>>>>> update form orginal repo
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Portals;
@@ -37,6 +61,10 @@ using DotNetNuke.Services.Tokens;
 using DotNetNuke.UI.Modules;
 using DotNetNuke.Entities.Users.Social;
 using DotNetNuke.Services.Social.Notifications;
+<<<<<<< HEAD
+=======
+using DotNetNuke.Abstractions;
+>>>>>>> update form orginal repo
 
 #endregion
 
@@ -48,6 +76,15 @@ namespace DotNetNuke.Modules.Admin.ViewProfile
 	/// </summary>
     public partial class ViewProfile : ProfileModuleUserControlBase
 	{
+<<<<<<< HEAD
+=======
+        private readonly INavigationManager _navigationManager;
+        public ViewProfile()
+        {
+            _navigationManager = Globals.DependencyProvider.GetRequiredService<INavigationManager>();
+        }
+
+>>>>>>> update form orginal repo
 		public override bool DisplayModule
 		{
 			get
@@ -56,7 +93,11 @@ namespace DotNetNuke.Modules.Admin.ViewProfile
 			}
 		}
 
+<<<<<<< HEAD
         public bool IncludeButton   
+=======
+        public bool IncludeButton
+>>>>>>> update form orginal repo
         {
             get
             {
@@ -112,8 +153,13 @@ namespace DotNetNuke.Modules.Admin.ViewProfile
                 {
                     template = Localization.GetString("DefaultTemplate", LocalResourceFile);
                 }
+<<<<<<< HEAD
 			    var editUrl = Globals.NavigateURL(ModuleContext.PortalSettings.ActiveTab.TabID, "Profile", "userId=" + ProfileUserId, "pageno=1");
                 var profileUrl = Globals.NavigateURL(ModuleContext.PortalSettings.ActiveTab.TabID, "Profile", "userId=" + ProfileUserId, "pageno=2");
+=======
+			    var editUrl = _navigationManager.NavigateURL(ModuleContext.PortalSettings.ActiveTab.TabID, "Profile", "userId=" + ProfileUserId, "pageno=1");
+                var profileUrl = _navigationManager.NavigateURL(ModuleContext.PortalSettings.ActiveTab.TabID, "Profile", "userId=" + ProfileUserId, "pageno=2");
+>>>>>>> update form orginal repo
 
                 if (template.Contains("[BUTTON:EDITPROFILE]"))
                 {
@@ -247,7 +293,11 @@ namespace DotNetNuke.Modules.Admin.ViewProfile
 
 			if (homeTabId > Null.NullInteger)
 			{
+<<<<<<< HEAD
 				redirectUrl = Globals.NavigateURL(homeTabId);
+=======
+				redirectUrl = _navigationManager.NavigateURL(homeTabId);
+>>>>>>> update form orginal repo
 			}
 			else
 			{
@@ -264,7 +314,11 @@ namespace DotNetNuke.Modules.Admin.ViewProfile
 
             var action = Request.QueryString["action"];
 
+<<<<<<< HEAD
             if (!Request.IsAuthenticated && !string.IsNullOrEmpty(action)) //action requested but not logged in. 
+=======
+            if (!Request.IsAuthenticated && !string.IsNullOrEmpty(action)) //action requested but not logged in.
+>>>>>>> update form orginal repo
             {
                 string loginUrl = Common.Globals.LoginURL(Request.RawUrl, false);
                 Response.Redirect(loginUrl);
@@ -272,7 +326,11 @@ namespace DotNetNuke.Modules.Admin.ViewProfile
             if (Request.IsAuthenticated && !string.IsNullOrEmpty(action) ) // only process this for authenticated requests
             {
                 //current user, i.e. the one that the request was for
+<<<<<<< HEAD
                 var currentUser = UserController.Instance.GetCurrentUserInfo();               
+=======
+                var currentUser = UserController.Instance.GetCurrentUserInfo();
+>>>>>>> update form orginal repo
                 // the initiating user,i.e. the one who wanted to be friend
                 // note that in this case here currentUser is visiting the profile of initiatingUser, most likely from a link in the notification e-mail
                 var initiatingUser = UserController.Instance.GetUserById(PortalSettings.Current.PortalId, Convert.ToInt32(Request.QueryString["UserID"]));
@@ -281,6 +339,7 @@ namespace DotNetNuke.Modules.Admin.ViewProfile
                 {
                     return; //do not further process for users who are on their own profile page
                 }
+<<<<<<< HEAD
             
                 var friendRelationship = RelationshipController.Instance.GetFriendRelationship(currentUser, initiatingUser);
 
@@ -290,6 +349,17 @@ namespace DotNetNuke.Modules.Admin.ViewProfile
                     {
                         var friend = UserController.GetUserById(PortalSettings.Current.PortalId, friendRelationship.UserId);
                         FriendsController.Instance.AcceptFriend(friend);                        
+=======
+
+                var friendRelationship = RelationshipController.Instance.GetFriendRelationship(currentUser, initiatingUser);
+
+                if (friendRelationship != null)
+                {
+                    if (action.ToLowerInvariant() == "acceptfriend")
+                    {
+                        var friend = UserController.GetUserById(PortalSettings.Current.PortalId, friendRelationship.UserId);
+                        FriendsController.Instance.AcceptFriend(friend);
+>>>>>>> update form orginal repo
                     }
 
                     if (action.ToLowerInvariant() == "followback")
@@ -308,7 +378,11 @@ namespace DotNetNuke.Modules.Admin.ViewProfile
                         {
                             //ignore
                         }
+<<<<<<< HEAD
                     }                    
+=======
+                    }
+>>>>>>> update form orginal repo
                 }
 
                 Response.Redirect(Common.Globals.UserProfileURL(initiatingUser.UserID));
@@ -317,4 +391,8 @@ namespace DotNetNuke.Modules.Admin.ViewProfile
 
         #endregion
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> update form orginal repo

@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -22,7 +23,10 @@
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 // DEALINGS IN THE SOFTWARE.
 #endregion
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 #region Usings
 
 using System;
@@ -56,7 +60,7 @@ using DotNetNuke.Services.Url.FriendlyUrl;
 using DotNetNuke.Instrumentation;
 using DotNetNuke.Security.Cookies;
 using DotNetNuke.Services.Installer.Blocker;
-using DotNetNuke.HttpModules.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 
 #endregion
 
@@ -88,10 +92,8 @@ namespace DotNetNuke.Web.Common.Internal
             var name = Config.GetSetting("ServerName");
             Globals.ServerName = String.IsNullOrEmpty(name) ? Dns.GetHostName() : name;
 
-            Globals.DependencyProvider = new LazyServiceProvider();
             var startup = new Startup();
-            (Globals.DependencyProvider as LazyServiceProvider).SetProvider(startup.DependencyProvider);
-            ServiceRequestScopeModule.SetServiceProvider(Globals.DependencyProvider);
+            Globals.DependencyProvider = startup.DependencyProvider;
 
             ComponentFactory.Container = new SimpleContainer();
 

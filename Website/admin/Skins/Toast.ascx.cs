@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #region Copyright
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
@@ -192,6 +193,8 @@ namespace DotNetNuke.UI.Skins.Controls
     }
 }
 =======
+=======
+>>>>>>> update form orginal repo
 #region Copyright
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
@@ -391,6 +394,7 @@ namespace DotNetNuke.UI.Skins.Controls
         }
     }
 }
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from 9.4.x into development (#3189)
 =======
 #region Copyright
@@ -585,3 +589,5 @@ namespace DotNetNuke.UI.Skins.Controls
     }
 }
 >>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)"
+=======
+>>>>>>> update form orginal repo

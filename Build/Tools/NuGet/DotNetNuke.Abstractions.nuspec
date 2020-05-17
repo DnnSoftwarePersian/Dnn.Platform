@@ -9,10 +9,14 @@
     <license type="expression">MIT</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <icon>images\logo-for-nuget.png</icon>
 =======
     <iconUrl>http://www.dnnsoftware.com/favicon.ico</iconUrl>
 >>>>>>> Merges latest changes from 9.4.x into development (#3189)
+=======
+    <iconUrl>http://www.dnnsoftware.com/favicon.ico</iconUrl>
+>>>>>>> update form orginal repo
     <projectUrl>https://github.com/dnnsoftware/Dnn.Platform</projectUrl>
     <description>
       Provides common abstraction API references for the DNN Platform.
@@ -23,8 +27,11 @@
     <file src="..\..\..\Website\bin\DotNetNuke.Abstractions.dll" target="lib\netstandard2.0" />
     <file src="..\..\..\Website\bin\DotNetNuke.Abstractions.pdb" target="lib\netstandard2.0" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <file src="logo-for-nuget.png" target="images\"/>
 =======
 >>>>>>> Merges latest changes from 9.4.x into development (#3189)
+=======
+>>>>>>> update form orginal repo
   </files>
 </package>

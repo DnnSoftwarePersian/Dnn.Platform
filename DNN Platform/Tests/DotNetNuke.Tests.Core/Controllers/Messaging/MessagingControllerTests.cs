@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+﻿#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -23,7 +24,10 @@
 // DEALINGS IN THE SOFTWARE.
 #endregion
 
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -36,10 +40,8 @@ using DotNetNuke.Data;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Portals.Internal;
 using DotNetNuke.Entities.Users;
-using DotNetNuke.Security.Permissions;
 using DotNetNuke.Security.Roles;
 using DotNetNuke.Services.Cache;
-using DotNetNuke.Services.FileSystem;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.Services.Social.Messaging.Data;
 using DotNetNuke.Services.Social.Messaging;
@@ -73,9 +75,6 @@ namespace DotNetNuke.Tests.Core.Controllers.Messaging
         private Mock<RoleProvider> _mockRoleProvider;
         private Mock<CachingProvider> _mockCacheProvider;
         private Mock<ILocalizationProvider> _mockLocalizationProvider;
-        private Mock<IFolderManager> _folderManager;
-        private Mock<IFileManager> _fileManager;
-        private Mock<IFolderPermissionController> _folderPermissionController;
 
         private DataTable _dtMessages;
         private DataTable _dtMessageAttachment;
@@ -118,21 +117,12 @@ namespace DotNetNuke.Tests.Core.Controllers.Messaging
 
             DataService.RegisterInstance(_mockDataService.Object);
 
-            _folderManager = new Mock<IFolderManager>();
-            _fileManager = new Mock<IFileManager>();
-            _folderPermissionController = new Mock<IFolderPermissionController>();
-
-            FolderManager.RegisterInstance(_folderManager.Object);
-            FileManager.RegisterInstance(_fileManager.Object);
-            FolderPermissionController.SetTestableInstance(_folderPermissionController.Object);
-
             SetupDataProvider();
             SetupRoleProvider();
             SetupDataTables();
             SetupUsers();
             SetupPortalSettings();
             SetupCachingProvider();
-            SetupFileControllers();
 
             _mockInternalMessagingController.Setup(m => m.GetLastSentMessage(It.IsAny<UserInfo>())).Returns((Message)null);
         }
@@ -212,13 +202,6 @@ namespace DotNetNuke.Tests.Core.Controllers.Messaging
             _mockRoleProvider.Setup(rp => rp.GetUserRoles(It.Is<UserInfo>(u => u.UserID == Constants.UserID_Admin), It.IsAny<bool>())).Returns(new List<UserRoleInfo> { adminRoleInfoForAdministrators, adminRoleInfoforRegisteredUsers });
             _mockRoleProvider.Setup(rp => rp.GetUserRoles(It.Is<UserInfo>(u => u.UserID == Constants.UserID_User12), It.IsAny<bool>())).Returns(new List<UserRoleInfo> { user12RoleInfoforRegisteredUsers });
             _mockRoleProvider.Setup(rp => rp.GetUserRoles(It.Is<UserInfo>(u => u.UserID == Constants.UserID_FirstSocialGroupOwner), It.IsAny<bool>())).Returns(new List<UserRoleInfo> { userFirstSocialGroupOwner });
-        }
-
-        private void SetupFileControllers()
-        {
-            _folderManager.Setup(f => f.GetFolder(It.IsAny<int>())).Returns(new FolderInfo());
-            _fileManager.Setup(f => f.GetFile(It.IsAny<int>())).Returns(new FileInfo());
-            _folderPermissionController.Setup(f => f.CanViewFolder(It.IsAny<IFolderInfo>())).Returns(true);
         }
 
         #endregion
@@ -811,8 +794,6 @@ namespace DotNetNuke.Tests.Core.Controllers.Messaging
         [Test]
         public void MessagingController_CreateMessage_Calls_DataService_CreateSocialMessageRecipientsForRole_On_Passing_Role_ByAdmin()
         {
-            InternalMessagingController.SetTestableInstance(_mockInternalMessagingController.Object);
-
             //Arrange
             var message = new Message { Subject = "subject", Body = "body" };
             var role = new RoleInfo { RoleName = Constants.RoleName_RegisteredUsers, RoleID = Constants.RoleID_RegisteredUsers };

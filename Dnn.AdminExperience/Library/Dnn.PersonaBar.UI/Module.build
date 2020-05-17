@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿<Project ToolsVersion="4.0" DefaultTargets="Build" 
   xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
@@ -10,13 +11,22 @@
   <Import Project="..\..\..\Build\BuildScripts\AEPackage.targets" />
   <Import Project="..\..\..\Build\BuildScripts\AEModule.build"/>
 
+=======
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+>>>>>>> update form orginal repo
   <PropertyGroup>
+    <BuildScriptsPath>$(MSBuildProjectDirectory)\..\..\Build\BuildScripts</BuildScriptsPath>
+    <WebsitePath>$(MSBuildProjectDirectory)\..\..\..\Website</WebsitePath>
+    <WebsiteBinPath>$(WebsitePath)\bin</WebsiteBinPath>
+    <WebsiteBinProvidersPath>$(WebsitePath)\bin\Providers</WebsiteBinProvidersPath>
+    <WebsiteInstallPath>$(WebsitePath)\Install\Module</WebsiteInstallPath>
     <Extension>zip</Extension>
     <DNNFileName>Dnn.PersonaBar.UI</DNNFileName>
     <PackageName>Dnn.PersonaBar.UI</PackageName>
     <ModuleFolderName>$(WebsitePath)\DesktopModules\admin\Dnn.PersonaBar</ModuleFolderName>
-    <InstallPath>$(WebsiteInstallPath)\Module</InstallPath>
   </PropertyGroup>
+  <Import Project="$(BuildScriptsPath)\Package.targets" />
+  <Import Project="$(BuildScriptsPath)\Module.build"/>
 
 =======
 ﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">

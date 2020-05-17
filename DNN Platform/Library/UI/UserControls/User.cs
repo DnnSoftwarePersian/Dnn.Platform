@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -22,7 +23,10 @@
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 // DEALINGS IN THE SOFTWARE.
 #endregion
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 #region Usings
 
 using System;
@@ -284,21 +288,21 @@ namespace DotNetNuke.UI.UserControls
                     txtIM.TabIndex = Convert.ToInt16(_StartTabIndex + 7);
                     txtFirstName.Text = _FirstName;
                     txtLastName.Text = _LastName;
-                    txtEmail.Text = _Email;		    
                     txtUsername.Text = _UserName;
                     lblUsername.Text = _UserName;
                     txtPassword.Text = _Password;
                     txtConfirm.Text = _Confirm;
+                    txtEmail.Text = _Email;
                     txtWebsite.Text = _Website;
                     txtIM.Text = _IM;
                     if (!String.IsNullOrEmpty(_ControlColumnWidth))
                     {
                         txtFirstName.Width = Unit.Parse(_ControlColumnWidth);
                         txtLastName.Width = Unit.Parse(_ControlColumnWidth);
-                        txtEmail.Width = Unit.Parse(_ControlColumnWidth);			
                         txtUsername.Width = Unit.Parse(_ControlColumnWidth);
                         txtPassword.Width = Unit.Parse(_ControlColumnWidth);
                         txtConfirm.Width = Unit.Parse(_ControlColumnWidth);
+                        txtEmail.Width = Unit.Parse(_ControlColumnWidth);
                         txtWebsite.Width = Unit.Parse(_ControlColumnWidth);
                         txtIM.Width = Unit.Parse(_ControlColumnWidth);
                     }

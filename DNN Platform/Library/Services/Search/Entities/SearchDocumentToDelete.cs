@@ -1,9 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿// 
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // 
 =======
+=======
+>>>>>>> update form orginal repo
 ﻿#region Copyright
 //
 // DotNetNuke® - https://www.dnnsoftware.com
@@ -24,7 +27,10 @@
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 #endregion
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 #region Usings
 
 using System;
@@ -137,21 +143,12 @@ namespace DotNetNuke.Services.Search.Entities
         }
 
         /// <summary>
-        /// This is to allow saving current instance into DB as JSON entity
-        /// </summary>
-        /// <returns></returns>
-        public string ToJsonString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
-
-        /// <summary>
-        /// This is overriden to present current instance as JSON string
+        /// This is overriden to allow saving into DB using object.ToString() as JSON entity
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
-            return this.ToJsonString();
+            return JsonConvert.SerializeObject(this);
         }
     }
 }

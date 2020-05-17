@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -23,7 +24,10 @@
 // DEALINGS IN THE SOFTWARE.
 #endregion
 
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -221,9 +225,7 @@ namespace DotNetNuke.Services.FileSystem
             // Does site management want the cachebuster parameter?
             if (portalSettings.AddCachebusterToResourceUris)
             {
-                var cachebusterToken = UrlUtils.EncryptParameter(file.LastModificationTime.GetHashCode().ToString());
-
-                return TestableGlobals.Instance.ResolveUrl(fullPath + "?ver=" + cachebusterToken);
+                return TestableGlobals.Instance.ResolveUrl(fullPath + "?ver=" + file.LastModificationTime.ToString("yyyy-MM-dd-HHmmss-fff"));
             }
 
             return TestableGlobals.Instance.ResolveUrl(fullPath);

@@ -1,4 +1,5 @@
 #region Copyright
+<<<<<<< HEAD
 // 
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
@@ -16,15 +17,41 @@
 // TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
 // THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+=======
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>>> update form orginal repo
 // DEALINGS IN THE SOFTWARE.
 #endregion
 #region Usings
 
 using System;
+<<<<<<< HEAD
 using System.Linq;
 using System.Web;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Host;
+=======
+using System.Web;
+using Microsoft.Extensions.DependencyInjection;
+using DotNetNuke.Abstractions;
+using DotNetNuke.Common.Utilities;
+>>>>>>> update form orginal repo
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Instrumentation;
@@ -33,7 +60,10 @@ using DotNetNuke.Security.Membership;
 using DotNetNuke.Services.Authentication;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.Skins.Controls;
+<<<<<<< HEAD
 using DotNetNuke.UI.Utilities;
+=======
+>>>>>>> update form orginal repo
 
 using Globals = DotNetNuke.Common.Globals;
 
@@ -52,6 +82,15 @@ namespace DotNetNuke.Modules.Admin.Authentication.DNN
 	public partial class Login : AuthenticationLoginBase
 	{
 		private static readonly ILog Logger = LoggerSource.Instance.GetLogger(typeof (Login));
+<<<<<<< HEAD
+=======
+        private readonly INavigationManager _navigationManager;
+
+        public Login()
+        {
+            _navigationManager = DependencyProvider.GetRequiredService<INavigationManager>();
+        }
+>>>>>>> update form orginal repo
 
 		#region Protected Properties
 
@@ -81,7 +120,11 @@ namespace DotNetNuke.Modules.Admin.Authentication.DNN
 				return AuthenticationConfig.GetConfig(PortalId).Enabled;
 			}
 		}
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> update form orginal repo
 		#endregion
 
 		#region Event Handlers
@@ -109,7 +152,11 @@ namespace DotNetNuke.Modules.Admin.Authentication.DNN
                 DotNetNuke.UI.Skins.Skin.AddModuleMessage(this, Localization.GetSystemMessage(PortalSettings, "MESSAGE_USERNAME_CHANGED_INSTRUCTIONS"), ModuleMessage.ModuleMessageType.BlueInfo);
             }
 
+<<<<<<< HEAD
             var returnUrl = Globals.NavigateURL();
+=======
+            var returnUrl = _navigationManager.NavigateURL();
+>>>>>>> update form orginal repo
             string url;
             if (PortalSettings.UserRegistration != (int)Globals.PortalRegistrationType.NoRegistration)
             {
@@ -140,7 +187,11 @@ namespace DotNetNuke.Modules.Admin.Authentication.DNN
             // no need to show password link if feature is disabled, let's check this first
             if (MembershipProviderConfig.PasswordRetrievalEnabled || MembershipProviderConfig.PasswordResetEnabled)
             {
+<<<<<<< HEAD
                 url = Globals.NavigateURL("SendPassword", "returnurl=" + returnUrl);
+=======
+                url = _navigationManager.NavigateURL("SendPassword", "returnurl=" + returnUrl);
+>>>>>>> update form orginal repo
                 passwordLink.NavigateUrl = url;
                 if (PortalSettings.EnablePopUps)
                 {
@@ -173,13 +224,21 @@ namespace DotNetNuke.Modules.Admin.Authentication.DNN
 
 	                    if (Request.IsAuthenticated)
 	                    {
+<<<<<<< HEAD
                             Response.Redirect(Globals.NavigateURL(redirectTabId > 0 ? redirectTabId : PortalSettings.HomeTabId, string.Empty, "VerificationSuccess=true"), true);
+=======
+                            Response.Redirect(_navigationManager.NavigateURL(redirectTabId > 0 ? redirectTabId : PortalSettings.HomeTabId, string.Empty, "VerificationSuccess=true"), true);
+>>>>>>> update form orginal repo
 	                    }
 	                    else
 	                    {
                             if (redirectTabId > 0)
                             {
+<<<<<<< HEAD
                                 var redirectUrl = Globals.NavigateURL(redirectTabId, string.Empty, "VerificationSuccess=true");
+=======
+                                var redirectUrl = _navigationManager.NavigateURL(redirectTabId, string.Empty, "VerificationSuccess=true");
+>>>>>>> update form orginal repo
                                 redirectUrl = redirectUrl.Replace(Globals.AddHTTP(PortalSettings.PortalAlias.HTTPAlias), string.Empty);
                                 Response.Cookies.Add(new HttpCookie("returnurl", redirectUrl) { Path = (!string.IsNullOrEmpty(Globals.ApplicationPath) ? Globals.ApplicationPath : "/") });
                             }
@@ -219,7 +278,11 @@ namespace DotNetNuke.Modules.Admin.Authentication.DNN
 					}
 					catch (Exception ex)
 					{
+<<<<<<< HEAD
 						//control not there 
+=======
+						//control not there
+>>>>>>> update form orginal repo
 						Logger.Error(ex);
 					}
 				}
@@ -257,25 +320,43 @@ namespace DotNetNuke.Modules.Admin.Authentication.DNN
 			if ((UseCaptcha && ctlCaptcha.IsValid) || !UseCaptcha)
 			{
 				var loginStatus = UserLoginStatus.LOGIN_FAILURE;
+<<<<<<< HEAD
 				string userName = PortalSecurity.Instance.InputFilter(txtUsername.Text, 
 										PortalSecurity.FilterFlag.NoScripting | 
                                         PortalSecurity.FilterFlag.NoAngleBrackets | 
+=======
+				string userName = PortalSecurity.Instance.InputFilter(txtUsername.Text,
+										PortalSecurity.FilterFlag.NoScripting |
+                                        PortalSecurity.FilterFlag.NoAngleBrackets |
+>>>>>>> update form orginal repo
                                         PortalSecurity.FilterFlag.NoMarkup);
 
                 //DNN-6093
                 //check if we use email address here rather than username
                 UserInfo userByEmail = null;
+<<<<<<< HEAD
                 var emailUsedAsUsername = PortalController.GetPortalSettingAsBoolean("Registration_UseEmailAsUserName", PortalId, false);                
+=======
+                var emailUsedAsUsername = PortalController.GetPortalSettingAsBoolean("Registration_UseEmailAsUserName", PortalId, false);
+>>>>>>> update form orginal repo
 
                 if (emailUsedAsUsername)
                 {
                     // one additonal call to db to see if an account with that email actually exists
+<<<<<<< HEAD
                     userByEmail = UserController.GetUserByEmail(PortalId, userName);                     
+=======
+                    userByEmail = UserController.GetUserByEmail(PortalId, userName);
+>>>>>>> update form orginal repo
 
                     if (userByEmail != null)
                     {
                         //we need the username of the account in order to authenticate in the next step
+<<<<<<< HEAD
                         userName = userByEmail.Username; 
+=======
+                        userName = userByEmail.Username;
+>>>>>>> update form orginal repo
                     }
                 }
 
@@ -306,18 +387,30 @@ namespace DotNetNuke.Modules.Admin.Authentication.DNN
                         userName = objUser.Username = objUser.Email;
                     }
                 }
+<<<<<<< HEAD
 				
 				//Raise UserAuthenticated Event
 				var eventArgs = new UserAuthenticatedEventArgs(objUser, userName, loginStatus, "DNN")
 				                    {
 				                        Authenticated = authenticated, 
+=======
+
+				//Raise UserAuthenticated Event
+				var eventArgs = new UserAuthenticatedEventArgs(objUser, userName, loginStatus, "DNN")
+				                    {
+				                        Authenticated = authenticated,
+>>>>>>> update form orginal repo
                                         Message = message,
                                         RememberMe = chkCookie.Checked
 				                    };
 				OnUserAuthenticated(eventArgs);
 			}
 		}
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> update form orginal repo
 		#endregion
 
 		#region Private Methods
@@ -328,7 +421,11 @@ namespace DotNetNuke.Modules.Admin.Authentication.DNN
 			var redirectAfterLogin = PortalSettings.Registration.RedirectAfterLogin;
 			if (checkSettings && redirectAfterLogin > 0) //redirect to after registration page
 			{
+<<<<<<< HEAD
 				redirectUrl = Globals.NavigateURL(redirectAfterLogin);
+=======
+				redirectUrl = _navigationManager.NavigateURL(redirectAfterLogin);
+>>>>>>> update form orginal repo
 			}
 			else
 			{
@@ -352,8 +449,13 @@ namespace DotNetNuke.Modules.Admin.Authentication.DNN
 				}
 				if (String.IsNullOrEmpty(redirectUrl))
 				{
+<<<<<<< HEAD
 					//redirect to current page 
 					redirectUrl = Globals.NavigateURL();
+=======
+					//redirect to current page
+					redirectUrl = _navigationManager.NavigateURL();
+>>>>>>> update form orginal repo
 				}
 			}
 
@@ -363,4 +465,8 @@ namespace DotNetNuke.Modules.Admin.Authentication.DNN
 		#endregion
 
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> update form orginal repo

@@ -1,8 +1,4 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -99,6 +95,10 @@ namespace DotNetNuke.Entities.Portals
         {
             var aliasList = aliases.ToList();
 
+            var defaultAlias = aliasList.ToList().Where(a => a.PortalID == portalId)
+                                        .OrderByDescending(a => a.IsPrimary)
+                                        .FirstOrDefault();
+
             //First check if our current alias is already a perfect match.
             PortalAliasInfo foundAlias = null;
             if (result != null && !string.IsNullOrEmpty(result.HttpAlias))
@@ -107,6 +107,7 @@ namespace DotNetNuke.Entities.Portals
                 foundAlias = aliasList.FirstOrDefault(a => a.BrowserType == browserType &&
                                                          (String.Compare(a.CultureCode, cultureCode,
                                                              StringComparison.OrdinalIgnoreCase) == 0)
+                                                         && a.IsPrimary
                                                          && a.PortalID == portalId
                                                          && a.HTTPAlias == result.HttpAlias);
                 if (foundAlias == null) //let us try again using Startswith() to find matching Hosts
@@ -114,6 +115,7 @@ namespace DotNetNuke.Entities.Portals
                     foundAlias = aliasList.FirstOrDefault(a => a.BrowserType == browserType &&
                                                          (String.Compare(a.CultureCode, cultureCode,
                                                              StringComparison.OrdinalIgnoreCase) == 0)
+                                                         && a.IsPrimary
                                                          && a.PortalID == portalId
                                                          && a.HTTPAlias.StartsWith(result.HttpAlias.Split('/')[0]));
                 }
@@ -162,15 +164,10 @@ namespace DotNetNuke.Entities.Portals
             }
             else
             {
-                // if we didn't find a specific match, return the default, which is the closest match
-                var defaultAlias = aliasList
-                    .Where(a => a.PortalID == portalId)
-                    .OrderByDescending(a => a.IsPrimary)
-                    .FirstOrDefault();
-
                 foundAlias = defaultAlias;
             }
 
+            //if we didn't find a specific match, return the default, which is the closest match
             return foundAlias;
         }
 

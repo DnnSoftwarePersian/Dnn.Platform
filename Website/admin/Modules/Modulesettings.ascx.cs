@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #region Copyright
 // 
 // DotNetNuke® - https://www.dnnsoftware.com
@@ -1522,6 +1523,26 @@ namespace DotNetNuke.Modules.Admin.Modules
 // TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
 // THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+=======
+#region Copyright
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>>> update form orginal repo
 // DEALINGS IN THE SOFTWARE.
 #endregion
 #region Usings
@@ -1533,6 +1554,10 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Web.UI;
+<<<<<<< HEAD
+=======
+using Microsoft.Extensions.DependencyInjection;
+>>>>>>> update form orginal repo
 
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
@@ -1550,6 +1575,10 @@ using DotNetNuke.UI.Skins;
 using DotNetNuke.UI.Skins.Controls;
 using Globals = DotNetNuke.Common.Globals;
 using DotNetNuke.Instrumentation;
+<<<<<<< HEAD
+=======
+using DotNetNuke.Abstractions;
+>>>>>>> update form orginal repo
 
 #endregion
 
@@ -1559,7 +1588,11 @@ namespace DotNetNuke.Modules.Admin.Modules
 {
 
     /// <summary>
+<<<<<<< HEAD
     /// The ModuleSettingsPage PortalModuleBase is used to edit the settings for a 
+=======
+    /// The ModuleSettingsPage PortalModuleBase is used to edit the settings for a
+>>>>>>> update form orginal repo
     /// module.
     /// </summary>
     /// <remarks>
@@ -1567,6 +1600,14 @@ namespace DotNetNuke.Modules.Admin.Modules
     public partial class ModuleSettingsPage : PortalModuleBase
     {
         private static readonly ILog Logger = LoggerSource.Instance.GetLogger(typeof(ModuleSettingsPage));
+<<<<<<< HEAD
+=======
+        private readonly INavigationManager _navigationManager;
+        public ModuleSettingsPage()
+        {
+            _navigationManager = DependencyProvider.GetRequiredService<INavigationManager>();
+        }
+>>>>>>> update form orginal repo
 
         #region Private Members
 
@@ -1595,7 +1636,11 @@ namespace DotNetNuke.Modules.Admin.Modules
         {
             get
             {
+<<<<<<< HEAD
                 return UrlUtils.ValidReturnUrl(Request.Params["ReturnURL"]) ?? Globals.NavigateURL();
+=======
+                return UrlUtils.ValidReturnUrl(Request.Params["ReturnURL"]) ?? _navigationManager.NavigateURL();
+>>>>>>> update form orginal repo
             }
         }
 
@@ -1766,7 +1811,11 @@ namespace DotNetNuke.Modules.Admin.Modules
                                              PortalAlias = defaultAlias
                                          };
 
+<<<<<<< HEAD
                 var tabUrl = Globals.NavigateURL(tab.TabID, portalSettings, string.Empty);
+=======
+                var tabUrl = _navigationManager.NavigateURL(tab.TabID, portalSettings, string.Empty);
+>>>>>>> update form orginal repo
 
                 foreach (TabInfo t in tab.BreadCrumbs)
                 {
@@ -1857,7 +1906,11 @@ namespace DotNetNuke.Modules.Admin.Modules
 
                     if (moduleControlInfo != null)
                     {
+<<<<<<< HEAD
                     
+=======
+
+>>>>>>> update form orginal repo
                         _control = ModuleControlFactory.LoadSettingsControl(Page, Module, moduleControlInfo.ControlSrc);
 
                         var settingsControl = _control as ISettingsControl;
@@ -1941,11 +1994,19 @@ namespace DotNetNuke.Modules.Admin.Modules
                         chkAllowIndex.Enabled = false;
                         cboTab.Enabled = false;
                     }
+<<<<<<< HEAD
                     
                     if (_moduleId != -1)
                     {
                         BindData();
                         cmdDelete.Visible = (ModulePermissionController.CanDeleteModule(Module) || 
+=======
+
+                    if (_moduleId != -1)
+                    {
+                        BindData();
+                        cmdDelete.Visible = (ModulePermissionController.CanDeleteModule(Module) ||
+>>>>>>> update form orginal repo
                              TabPermissionController.CanAddContentToPage()) && !HideDeleteButton;
                     }
                     else
@@ -2167,8 +2228,13 @@ namespace DotNetNuke.Modules.Admin.Modules
                         }
                     }
 
+<<<<<<< HEAD
                     //These Module Copy/Move statements must be 
                     //at the end of the Update as the Controller code assumes all the 
+=======
+                    //These Module Copy/Move statements must be
+                    //at the end of the Update as the Controller code assumes all the
+>>>>>>> update form orginal repo
                     //Updates to the Module have been carried out.
 
                     //Check if the Module is to be Moved to a new Tab
@@ -2251,4 +2317,7 @@ namespace DotNetNuke.Modules.Admin.Modules
 
     }
 }
+<<<<<<< HEAD
 >>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)"
+=======
+>>>>>>> update form orginal repo

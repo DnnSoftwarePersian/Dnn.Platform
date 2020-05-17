@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+﻿#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -22,7 +23,10 @@
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 // DEALINGS IN THE SOFTWARE.
 #endregion
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 #region Usings
 
 using System;
@@ -37,9 +41,7 @@ using DotNetNuke.Entities.Portals.Internal;
 using DotNetNuke.Framework;
 using DotNetNuke.Security;
 using DotNetNuke.Entities.Users;
-using DotNetNuke.Security.Permissions;
 using DotNetNuke.Security.Roles;
-using DotNetNuke.Services.FileSystem;
 using DotNetNuke.Services.Social.Messaging.Data;
 using DotNetNuke.Services.Social.Messaging.Exceptions;
 using DotNetNuke.Services.Social.Messaging.Internal;
@@ -216,10 +218,7 @@ namespace DotNetNuke.Services.Social.Messaging
             {
                 foreach (var attachment in fileIDs.Select(fileId => new MessageAttachment { MessageAttachmentID = Null.NullInteger, FileID = fileId, MessageID = message.MessageID }))
                 {
-                    if (CanViewFile(attachment.FileID))
-                    {
-                        _dataService.SaveMessageAttachment(attachment, UserController.Instance.GetCurrentUserInfo().UserID);
-                    }
+                    _dataService.SaveMessageAttachment(attachment, UserController.Instance.GetCurrentUserInfo().UserID);
                 }
             }
 
@@ -300,17 +299,5 @@ namespace DotNetNuke.Services.Social.Messaging
         }
 
         #endregion
-
-        private bool CanViewFile(int fileId)
-        {
-            var file = FileManager.Instance.GetFile(fileId);
-            if (file == null)
-            {
-                return false;
-            }
-
-            var folder = FolderManager.Instance.GetFolder(file.FolderId);
-            return folder != null && FolderPermissionController.Instance.CanViewFolder(folder);
-        }
     }
 }

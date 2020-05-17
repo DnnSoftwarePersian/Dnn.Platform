@@ -1,14 +1,14 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="SiteExportImport" type="Library" isSystem="false" version="09.06.01">
+    <package name="SiteExportImport" type="Library" isSystem="false">
       <friendlyName>Site Export Import</friendlyName>
       <description>DotNetNuke Corporation Site Export Import Library</description>
       <iconFile>Images/Files_32x32_Standard.png</iconFile>
       <owner>
         <name>DNN</name>
-        <organization>.NET Foundation</organization>
-        <url>https://dnncommunity.org</url>
-        <email>info@dnncommunity.org</email>
+        <organization>DNN Corp.</organization>
+        <url>http://www.dnnsoftware.com</url>
+        <email>support@dnnsoftware.com</email>
       </owner>
       <license src="License.txt"></license>
       <releaseNotes src="ReleaseNotes.txt"></releaseNotes>

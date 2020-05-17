@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -22,6 +23,7 @@
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 // DEALINGS IN THE SOFTWARE.
 #endregion
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
 #region Usings
 
@@ -31,6 +33,10 @@ using System;
 
 =======
 >>>>>>> Merges latest changes from 9.4.x into development (#3189)
+=======
+#region Usings
+
+>>>>>>> update form orginal repo
 using DotNetNuke.Abstractions.Portals;
 =======
 >>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)"
@@ -62,6 +68,7 @@ namespace DotNetNuke.Services.Url.FriendlyUrl
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         [Obsolete("Deprecated in Platform 9.4.3. Scheduled for removal in v11.0.0. Use the IPortalSettings overload")]
         public virtual string FriendlyUrl(TabInfo tab, string path, string pageName, PortalSettings settings)
         {
@@ -70,6 +77,8 @@ namespace DotNetNuke.Services.Url.FriendlyUrl
         
 =======
 >>>>>>> Merges latest changes from 9.4.x into development (#3189)
+=======
+>>>>>>> update form orginal repo
         public abstract string FriendlyUrl(TabInfo tab, string path, string pageName, IPortalSettings settings);
 =======
         public abstract string FriendlyUrl(TabInfo tab, string path, string pageName, PortalSettings settings);

@@ -1,16 +1,5 @@
-string connectionString = @"server=(localdb)\MSSQLLocalDB";
 
-Task("BuildWithDatabase")
-    .IsDependentOn("CleanArtifacts")
-    .IsDependentOn("UpdateDnnManifests")
-	.IsDependentOn("CreateInstall")
-	.IsDependentOn("CreateUpgrade")
-	.IsDependentOn("CreateDeploy")
-    .IsDependentOn("CreateSymbols")
-    .IsDependentOn("CreateDatabase")
-    .Does(() =>
-	{
-	});
+string connectionString = @"server=(localdb)\MSSQLLocalDB";
 
 Task("CreateDatabase")
   .Does(() => 

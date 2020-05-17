@@ -1,8 +1,4 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
-// DNN 6.0.0 version
+﻿// DNN 6.0.0 version
 
 using System;
 using System.Collections.Generic;

@@ -1,8 +1,4 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using DotNetNuke.Data;
 using DotNetNuke.Entities.Users;
@@ -165,6 +161,7 @@ namespace DotNetNuke.Modules.Groups
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             Response.Redirect(ModuleContext.NavigateUrl(TabId, string.Empty, false, null));
 =======
             Response.Redirect(_navigationManager.NavigateURL(GroupViewTabId, "", new String[] { "groupid=" + roleInfo.RoleID.ToString() }));
@@ -172,6 +169,9 @@ namespace DotNetNuke.Modules.Groups
 =======
             Response.Redirect(Globals.NavigateURL(GroupViewTabId, "", new String[] { "groupid=" + roleInfo.RoleID.ToString() }));
 >>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)"
+=======
+            Response.Redirect(_navigationManager.NavigateURL(GroupViewTabId, "", new String[] { "groupid=" + roleInfo.RoleID.ToString() }));
+>>>>>>> update form orginal repo
         }
     }
 }

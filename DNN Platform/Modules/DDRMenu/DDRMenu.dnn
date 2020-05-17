@@ -1,12 +1,16 @@
 ﻿<dotnetnuke type="Package" version="5.0">
 	<packages>
-		<package name="DDRMenu" type="Module" version="09.06.01">
+		<package name="DDRMenu" type="Module">
 			<friendlyName>DDR Menu</friendlyName>
 			<description>DotNetNuke Navigation Provider.</description>
 			<owner>
-				<organization>.NET Foundation</organization>
-				<url>https://dnncommunity.org</url>
-				<email>info@dnncommunity.org</email>
+				<organization>DotNetNuke Corporation</organization>
+				<url>
+					<![CDATA[<a href="https://www.dnnsoftware.com/">www.dnnsoftware.com</a>]]>
+				</url>
+				<email>
+					<![CDATA[<a href="mailto:support@dnnsoftware.com">support@dnnsoftware.com</a>]]>
+				</email>
 			</owner>
 			<license src="License.txt" />
 			<releaseNotes src="ReleaseNotes.txt" />
@@ -30,7 +34,7 @@
 								<defaultCacheTime>0</defaultCacheTime>
 								<moduleControls>
 									<moduleControl>
-										<controlKey/>
+										<controlKey />
 										<controlSrc>DesktopModules/DDRMenu/MenuView.ascx</controlSrc>
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle>DDR menu</controlTitle>

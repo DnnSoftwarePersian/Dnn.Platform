@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -22,7 +23,10 @@
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 // DEALINGS IN THE SOFTWARE.
 #endregion
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 #region Usings
 
 using System;
@@ -518,6 +522,8 @@ namespace DotNetNuke.Entities.Modules
                 {
                     var portal = PortalController.Instance.GetPortal(PortalId);
 
+                    content = HttpContext.Current.Server.HtmlDecode(content);
+
                     //Determine if the Module is copmpletely installed 
                     //(ie are we running in the same request that installed the module).
                     if (module.DesktopModule.SupportedFeatures == Null.NullInteger)
@@ -537,8 +543,7 @@ namespace DotNetNuke.Entities.Modules
                                 var controller = businessController as IPortable;
                                 if (controller != null)
                                 {
-                                    var decodedContent = HttpContext.Current.Server.HtmlDecode(content);
-                                    controller.ImportModule(module.ModuleID, decodedContent, version, portal.AdministratorId);
+                                    controller.ImportModule(module.ModuleID, content, version, portal.AdministratorId);
                                 }
                             }
                             catch
@@ -818,28 +823,30 @@ namespace DotNetNuke.Entities.Modules
                 var currentUser = UserController.Instance.GetCurrentUserInfo();
                 dr = dataProvider.GetModuleSetting(moduleId, settingName);
 
+	            var settingExist = false;
 	            string existValue = null;
                 if (dr.Read())
                 {
+					settingExist = true;
 	                existValue = dr.GetString(1);
                 }
 
 				dr.Close();
 
-                if (existValue == null)
-                {
-                    dataProvider.UpdateModuleSetting(moduleId, settingName, settingValue, currentUser.UserID);
-                    EventLogController.AddSettingLog(EventLogController.EventLogType.MODULE_SETTING_CREATED,
-                        "ModuleId", moduleId, settingName, settingValue,
-                        currentUser.UserID);
-                } 
-                else if (existValue != settingValue)
-                {
-                    dataProvider.UpdateModuleSetting(moduleId, settingName, settingValue, currentUser.UserID);
-                    EventLogController.AddSettingLog(EventLogController.EventLogType.MODULE_SETTING_UPDATED,
-                                                        "ModuleId", moduleId, settingName, settingValue,
-                                                        currentUser.UserID);
-                }
+				if (existValue != settingValue)
+	            {
+					dataProvider.UpdateModuleSetting(moduleId, settingName, settingValue, currentUser.UserID);
+					EventLogController.AddSettingLog(EventLogController.EventLogType.MODULE_SETTING_UPDATED,
+														"ModuleId", moduleId, settingName, settingValue,
+														currentUser.UserID);
+				}
+				else if (!settingExist)
+				{
+					dataProvider.UpdateModuleSetting(moduleId, settingName, settingValue, currentUser.UserID);
+					EventLogController.AddSettingLog(EventLogController.EventLogType.MODULE_SETTING_CREATED,
+													"ModuleId", moduleId, settingName, settingValue,
+													currentUser.UserID);
+				}
 
                 if (updateVersion)
                 {
@@ -1903,21 +1910,6 @@ namespace DotNetNuke.Entities.Modules
         {
             //Move the module to the Tab
             dataProvider.MoveTabModule(fromTabId, moduleId, toTabId, toPaneName, UserController.Instance.GetCurrentUserInfo().UserID);
-
-            //Update the Tab reference for the module's ContentItems
-            var contentController = Util.GetContentController();
-            var contentItems = contentController.GetContentItemsByModuleId(moduleId);
-            if (contentItems != null)
-            {
-                foreach (var item in contentItems)
-                {
-                    if (item.TabID != toTabId)
-                    {
-                        item.TabID = toTabId;
-                        contentController.UpdateContentItem(item);
-                    }
-                }
-            }
 
             //Update Module Order for source tab, also updates the tabmodule version guid
             UpdateTabModuleOrder(fromTabId);

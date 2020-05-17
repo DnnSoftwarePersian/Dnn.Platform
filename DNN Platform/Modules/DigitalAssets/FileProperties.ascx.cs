@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+﻿#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -23,7 +24,10 @@
 // DEALINGS IN THE SOFTWARE.
 #endregion
 
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -79,8 +83,7 @@ namespace DotNetNuke.Modules.DigitalAssets
         {
             get
             {
-                var activeTab = Request.QueryString["activeTab"];
-                return string.IsNullOrEmpty(activeTab) ? "" : System.Text.RegularExpressions.Regex.Replace(activeTab, "[^\\w]", "");
+                return Request.QueryString["activeTab"];
             }
         }
 
@@ -180,7 +183,7 @@ namespace DotNetNuke.Modules.DigitalAssets
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
         }
-
+        
         private void OnItemUpdated()
         {
             SetFilePreviewInfo();
@@ -237,7 +240,7 @@ namespace DotNetNuke.Modules.DigitalAssets
         private void SetFilePreviewInfo()
         {
             var previewPanelInstance = (PreviewPanelControl)previewPanelControl;
-            previewPanelInstance.SetPreviewInfo(controller.GetFilePreviewInfo(file, fileItem));
+            previewPanelInstance.SetPreviewInfo(controller.GetFilePreviewInfo(file, fileItem));            
         }
 
         private void PrepareFilePreviewInfoControl()

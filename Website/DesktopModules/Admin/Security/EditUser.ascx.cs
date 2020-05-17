@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿#region Copyright
 // 
 // DotNetNuke® - https://www.dnnsoftware.com
@@ -1353,11 +1354,35 @@ namespace DotNetNuke.Modules.Admin.Users
 // TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
 // THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+=======
+﻿#region Copyright
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>>> update form orginal repo
 // DEALINGS IN THE SOFTWARE.
 #endregion
 #region Usings
 
 using DotNetNuke.Common;
+<<<<<<< HEAD
+=======
+using DotNetNuke.Abstractions;
+>>>>>>> update form orginal repo
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Portals;
@@ -1377,6 +1402,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+<<<<<<< HEAD
+=======
+using Microsoft.Extensions.DependencyInjection;
+>>>>>>> update form orginal repo
 using MembershipProvider = DotNetNuke.Security.Membership.MembershipProvider;
 
 #endregion
@@ -1392,6 +1421,15 @@ namespace DotNetNuke.Modules.Admin.Users
     public partial class EditUser : UserModuleBase
     {
         private static readonly ILog Logger = LoggerSource.Instance.GetLogger(typeof(EditUser));
+<<<<<<< HEAD
+=======
+        private readonly INavigationManager _navigationManager;
+
+        public EditUser()
+        {
+            _navigationManager = DependencyProvider.GetRequiredService<INavigationManager>();
+        }
+>>>>>>> update form orginal repo
 
         #region Protected Members
 
@@ -1438,13 +1476,22 @@ namespace DotNetNuke.Modules.Admin.Users
                     }
                     if (String.IsNullOrEmpty(_RedirectURL))
                     {
+<<<<<<< HEAD
                         //redirect to current page 
                         _RedirectURL = Globals.NavigateURL();
+=======
+                        //redirect to current page
+                        _RedirectURL = _navigationManager.NavigateURL();
+>>>>>>> update form orginal repo
                     }
                 }
                 else //redirect to after registration page
                 {
+<<<<<<< HEAD
                     _RedirectURL = Globals.NavigateURL(PortalSettings.Registration.RedirectAfterRegistration);
+=======
+                    _RedirectURL = _navigationManager.NavigateURL(PortalSettings.Registration.RedirectAfterRegistration);
+>>>>>>> update form orginal repo
                 }
                 return _RedirectURL;
             }
@@ -1458,7 +1505,11 @@ namespace DotNetNuke.Modules.Admin.Users
         {
             get
             {
+<<<<<<< HEAD
                 return Globals.NavigateURL(TabId, "", !String.IsNullOrEmpty(UserFilter) ? UserFilter : "");
+=======
+                return _navigationManager.NavigateURL(TabId, "", !String.IsNullOrEmpty(UserFilter) ? UserFilter : "");
+>>>>>>> update form orginal repo
             }
         }
 
@@ -1650,7 +1701,11 @@ namespace DotNetNuke.Modules.Admin.Users
                         if (!PortalSecurity.IsInRole(PortalSettings.AdministratorRoleName))
                         {
                             //Display current user's profile
+<<<<<<< HEAD
                             Response.Redirect(Globals.NavigateURL(PortalSettings.UserTabId, "", "UserID=" + UserInfo.UserID), true);
+=======
+                            Response.Redirect(_navigationManager.NavigateURL(PortalSettings.UserTabId, "", "UserID=" + UserInfo.UserID), true);
+>>>>>>> update form orginal repo
                         }
                     }
                     else
@@ -1811,9 +1866,15 @@ namespace DotNetNuke.Modules.Admin.Users
                 AddModuleMessage("UserDeleteError", ModuleMessage.ModuleMessageType.RedError, true);
             }
 
+<<<<<<< HEAD
             //DNN-26777 
             PortalSecurity.Instance.SignOut();
             Response.Redirect(Globals.NavigateURL(PortalSettings.HomeTabId));
+=======
+            //DNN-26777
+            PortalSecurity.Instance.SignOut();
+            Response.Redirect(_navigationManager.NavigateURL(PortalSettings.HomeTabId));
+>>>>>>> update form orginal repo
         }
 
         protected void cmdUpdate_Click(object sender, EventArgs e)
@@ -1920,7 +1981,11 @@ namespace DotNetNuke.Modules.Admin.Users
                     var accessingUser = (UserInfo)HttpContext.Current.Items["UserInfo"];
                     if (accessingUser.UserID != User.UserID)
                     {
+<<<<<<< HEAD
                         //The password was changed by someone else 
+=======
+                        //The password was changed by someone else
+>>>>>>> update form orginal repo
                         Mail.SendMail(User, MessageType.PasswordReminder, PortalSettings);
                     }
                     else
@@ -1997,4 +2062,7 @@ namespace DotNetNuke.Modules.Admin.Users
         #endregion
     }
 }
+<<<<<<< HEAD
 >>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)"
+=======
+>>>>>>> update form orginal repo

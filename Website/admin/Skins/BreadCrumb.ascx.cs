@@ -1,4 +1,5 @@
 #region Copyright
+<<<<<<< HEAD
 // 
 // DotNetNuke? - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
@@ -16,6 +17,25 @@
 // TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
 // THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+=======
+//
+// DotNetNuke? - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>>> update form orginal repo
 // DEALINGS IN THE SOFTWARE.
 #endregion
 
@@ -24,7 +44,13 @@
 using System;
 using System.Text;
 using System.Text.RegularExpressions;
+<<<<<<< HEAD
 using DotNetNuke.Common;
+=======
+using Microsoft.Extensions.DependencyInjection;
+using DotNetNuke.Common;
+using DotNetNuke.Abstractions;
+>>>>>>> update form orginal repo
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Tabs;
 
@@ -46,6 +72,14 @@ namespace DotNetNuke.UI.Skins.Controls
         private readonly StringBuilder _breadcrumb = new StringBuilder("<span itemscope itemtype=\"http://schema.org/BreadcrumbList\">");
         private string _homeUrl = "";
         private string _homeTabName = "Root";
+<<<<<<< HEAD
+=======
+        private readonly INavigationManager _navigationManager;
+        public BreadCrumb()
+        {
+            _navigationManager = Globals.DependencyProvider.GetRequiredService<INavigationManager>();
+        }
+>>>>>>> update form orginal repo
 
         // Separator between breadcrumb elements
         public string Separator
@@ -128,7 +162,11 @@ namespace DotNetNuke.UI.Skins.Controls
                 // Make sure we have a home tab ID set
                 if (PortalSettings.HomeTabId != -1)
                 {
+<<<<<<< HEAD
                     _homeUrl = Globals.NavigateURL(PortalSettings.HomeTabId);
+=======
+                    _homeUrl = _navigationManager.NavigateURL(PortalSettings.HomeTabId);
+>>>>>>> update form orginal repo
 
                     var tc = new TabController();
                     var homeTab = tc.GetTab(PortalSettings.HomeTabId, PortalSettings.PortalId, false);
@@ -174,6 +212,7 @@ namespace DotNetNuke.UI.Skins.Controls
                 // Get the absolute URL of the tab
                 var tabUrl = tab.FullUrl;
 
+<<<<<<< HEAD
                 // 
                 if (ProfileUserId > -1)
                 {
@@ -184,6 +223,18 @@ namespace DotNetNuke.UI.Skins.Controls
                 if (GroupId > -1)
                 {
                     tabUrl = Globals.NavigateURL(tab.TabID, "", "GroupId=" + GroupId);
+=======
+                //
+                if (ProfileUserId > -1)
+                {
+                    tabUrl = _navigationManager.NavigateURL(tab.TabID, "", "UserId=" + ProfileUserId);
+                }
+
+                //
+                if (GroupId > -1)
+                {
+                    tabUrl = _navigationManager.NavigateURL(tab.TabID, "", "GroupId=" + GroupId);
+>>>>>>> update form orginal repo
                 }
 
                 // Begin breadcrumb
@@ -204,7 +255,11 @@ namespace DotNetNuke.UI.Skins.Controls
             }
 
             _breadcrumb.Append("</span>"); //End of BreadcrumbList
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> update form orginal repo
             lblBreadCrumb.Text = _breadcrumb.ToString();
         }
 
@@ -244,9 +299,15 @@ namespace DotNetNuke.UI.Skins.Controls
 
                     if (changed)
                     {
+<<<<<<< HEAD
                         var newMatch = string.Format("{0}={1}{2}{3}", 
                                                         match.Groups[1].Value, 
                                                         match.Groups[2].Value, 
+=======
+                        var newMatch = string.Format("{0}={1}{2}{3}",
+                                                        match.Groups[1].Value,
+                                                        match.Groups[2].Value,
+>>>>>>> update form orginal repo
                                                         url,
                                                         match.Groups[4].Value);
 
@@ -257,4 +318,8 @@ namespace DotNetNuke.UI.Skins.Controls
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> update form orginal repo

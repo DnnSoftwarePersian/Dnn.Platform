@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -22,7 +23,10 @@
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 // DEALINGS IN THE SOFTWARE.
 #endregion
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 #region Usings
 
 using System;
@@ -89,12 +93,12 @@ namespace DotNetNuke.Application
         /// <summary>
         /// Gets the help URL related to the DotNetNuke application
         /// </summary>
-        /// <value>Fixed result: https://dnndocs.com/ </value>
+        /// <value>Fixed result: https://www.dnnsoftware.com/docs/ </value>
         public string HelpUrl
         {
             get
             {
-                return "https://dnndocs.com/";
+                return "https://www.dnnsoftware.com/docs/";
             }
         }
 
@@ -102,19 +106,27 @@ namespace DotNetNuke.Application
         /// Gets the legal copyright.
         /// </summary>
 <<<<<<< HEAD
+<<<<<<< HEAD
         /// <value>Dynamic: DNN Platform is copyright 2002-todays year by .NET Foundation"</value>
 =======
         /// <value>Dynamic: DotNetNuke� is copyright 2002-todays year by DotNetNuke Corporation"</value>
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+        /// <value>Dynamic: DotNetNuke� is copyright 2002-todays year by DotNetNuke Corporation"</value>
+>>>>>>> update form orginal repo
         public string LegalCopyright
         {
             get
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 return string.Concat("DNN Platform is copyright 2002-", DateTime.Today.ToString("yyyy")," by .NET Foundation");
 =======
                 return string.Concat("DotNetNuke� is copyright 2002-", DateTime.Today.ToString("yyyy")," by DotNetNuke Corporation");
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+                return string.Concat("DotNetNuke� is copyright 2002-", DateTime.Today.ToString("yyyy")," by DotNetNuke Corporation");
+>>>>>>> update form orginal repo
             }
         }
 
@@ -210,7 +222,7 @@ namespace DotNetNuke.Application
         /// <summary>
         /// Gets the upgrade URL.
         /// </summary>
-        /// <value>Fixed value: https://dnnplatform.io </value>
+        /// <value>Fixed value: http://update.dotnetnuke.com </value>
         public string UpgradeUrl
         {
             get
@@ -218,7 +230,7 @@ namespace DotNetNuke.Application
 	            var url = Config.GetSetting("UpdateServiceUrl");
 				if (string.IsNullOrEmpty(url))
 				{
-					return "https://dnnplatform.io";
+					return "http://update.dotnetnuke.com";
 				}
 	            return url;
             }
@@ -228,19 +240,27 @@ namespace DotNetNuke.Application
         /// Gets the URL of the application
         /// </summary>
 <<<<<<< HEAD
+<<<<<<< HEAD
         /// <value>Fixed value: https://dnncommunity.org</value>
 =======
         /// <value>Fixed value: https://www.dnnsoftware.com </value>
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+        /// <value>Fixed value: https://www.dnnsoftware.com </value>
+>>>>>>> update form orginal repo
         public string Url
         {
             get
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 return "https://dnncommunity.org";
 =======
                 return "https://www.dnnsoftware.com";
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+                return "https://www.dnnsoftware.com";
+>>>>>>> update form orginal repo
             }
         }
 

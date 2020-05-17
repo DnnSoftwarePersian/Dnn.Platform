@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #region Copyright
 // 
 // DotNetNuke® - https://www.dnnsoftware.com
@@ -2883,6 +2884,26 @@ namespace DotNetNuke.Modules.Admin.Authentication
 // TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
 // THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+=======
+#region Copyright
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>>> update form orginal repo
 // DEALINGS IN THE SOFTWARE.
 #endregion
 #region Usings
@@ -2922,6 +2943,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+<<<<<<< HEAD
+=======
+using DotNetNuke.Abstractions;
+using Microsoft.Extensions.DependencyInjection;
+>>>>>>> update form orginal repo
 
 #endregion
 
@@ -2937,10 +2963,22 @@ namespace DotNetNuke.Modules.Admin.Authentication
     public partial class Login : UserModuleBase
     {
         private static readonly ILog Logger = LoggerSource.Instance.GetLogger(typeof(Login));
+<<<<<<< HEAD
+=======
+        private readonly INavigationManager _navigationManager;
+>>>>>>> update form orginal repo
 
         private static readonly Regex UserLanguageRegex = new Regex("(.*)(&|\\?)(language=)([^&\\?]+)(.*)",
             RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
+<<<<<<< HEAD
+=======
+        public Login()
+        {
+            _navigationManager = DependencyProvider.GetRequiredService<INavigationManager>();
+        }
+
+>>>>>>> update form orginal repo
         #region Private Members
 
         private readonly List<AuthenticationLoginBase> _loginControls = new List<AuthenticationLoginBase>();
@@ -3059,7 +3097,11 @@ namespace DotNetNuke.Modules.Admin.Authentication
                 }
                 if (Request.Params["appctx"] != null)
                 {
+<<<<<<< HEAD
                     //HACK return to the url passed to signin (LiveID) 
+=======
+                    //HACK return to the url passed to signin (LiveID)
+>>>>>>> update form orginal repo
                     redirectURL = HttpUtility.UrlDecode(Request.Params["appctx"]);
 
                     //clean the return url to avoid possible XSS attack.
@@ -3080,19 +3122,32 @@ namespace DotNetNuke.Modules.Admin.Authentication
                         && Convert.ToInt32(setting) != Null.NullInteger
                         )
                     {
+<<<<<<< HEAD
                         redirectURL = Globals.NavigateURL(Convert.ToInt32(setting));
+=======
+                        redirectURL = _navigationManager.NavigateURL(Convert.ToInt32(setting));
+>>>>>>> update form orginal repo
                     }
                     else
                     {
                         if (PortalSettings.LoginTabId != -1 && PortalSettings.HomeTabId != -1)
                         {
                             //redirect to portal home page specified
+<<<<<<< HEAD
                             redirectURL = Globals.NavigateURL(PortalSettings.HomeTabId);
                         }
                         else
                         {
                             //redirect to current page 
                             redirectURL = Globals.NavigateURL();
+=======
+                            redirectURL = _navigationManager.NavigateURL(PortalSettings.HomeTabId);
+                        }
+                        else
+                        {
+                            //redirect to current page
+                            redirectURL = _navigationManager.NavigateURL();
+>>>>>>> update form orginal repo
                         }
                     }
 
@@ -3406,7 +3461,11 @@ namespace DotNetNuke.Modules.Admin.Authentication
             //Verify that the current user has access to this page
             if (PortalSettings.UserRegistration == (int)Globals.PortalRegistrationType.NoRegistration && Request.IsAuthenticated == false)
             {
+<<<<<<< HEAD
                 Response.Redirect(Globals.NavigateURL("Access Denied"), true);
+=======
+                Response.Redirect(_navigationManager.NavigateURL("Access Denied"), true);
+>>>>>>> update form orginal repo
             }
             lblRegisterHelp.Text = Localization.GetSystemMessage(PortalSettings, "MESSAGE_REGISTRATION_INSTRUCTIONS");
             switch (PortalSettings.UserRegistration)
@@ -3500,7 +3559,11 @@ namespace DotNetNuke.Modules.Admin.Authentication
             //Load any Profile properties that may have been returned
             UpdateProfile(User, false);
 
+<<<<<<< HEAD
             //Set UserName to authentication Token            
+=======
+            //Set UserName to authentication Token
+>>>>>>> update form orginal repo
             User.Username = GenerateUserName();
 
             //Set DisplayName to UserToken if null
@@ -3570,7 +3633,11 @@ namespace DotNetNuke.Modules.Admin.Authentication
                 }
             }
 
+<<<<<<< HEAD
             //Try First Name + space + First letter last name            
+=======
+            //Try First Name + space + First letter last name
+>>>>>>> update form orginal repo
             if (!string.IsNullOrEmpty(User.LastName) && !string.IsNullOrEmpty(User.FirstName))
             {
                 var newUserName = User.FirstName + " " + User.LastName.Substring(0, 1);
@@ -3761,7 +3828,11 @@ namespace DotNetNuke.Modules.Admin.Authentication
                         Localization.SetLanguage(PortalSettings.DefaultLanguage);
                     }
 
+<<<<<<< HEAD
                     //Set the Authentication Type used 
+=======
+                    //Set the Authentication Type used
+>>>>>>> update form orginal repo
                     AuthenticationController.SetAuthenticationType(AuthenticationType);
 
                     //Complete Login
@@ -3837,7 +3908,11 @@ namespace DotNetNuke.Modules.Admin.Authentication
                         // Use the reset password token to identify the user during the redirect
                         UserController.ResetPasswordToken(objUser);
                         objUser = UserController.GetUserById(objUser.PortalID, objUser.UserID);
+<<<<<<< HEAD
                         Response.Redirect(Globals.NavigateURL(PortalSettings.DataConsentConsentRedirect, "", string.Format("token={0}", objUser.PasswordResetToken)));
+=======
+                        Response.Redirect(_navigationManager.NavigateURL(PortalSettings.DataConsentConsentRedirect, "", string.Format("token={0}", objUser.PasswordResetToken)));
+>>>>>>> update form orginal repo
                     }
                     break;
             }
@@ -3937,7 +4012,11 @@ namespace DotNetNuke.Modules.Admin.Authentication
                     {
                         parameters[2] = "verificationcode=" + HttpUtility.UrlEncode(Request.QueryString["verificationcode"]);
                     }
+<<<<<<< HEAD
                     Response.Redirect(Globals.NavigateURL(PortalSettings.LoginTabId, "", parameters));
+=======
+                    Response.Redirect(_navigationManager.NavigateURL(PortalSettings.LoginTabId, "", parameters));
+>>>>>>> update form orginal repo
                 }
             }
             if (Page.IsPostBack == false)
@@ -3948,7 +4027,11 @@ namespace DotNetNuke.Modules.Admin.Authentication
                 }
                 catch (Exception ex)
                 {
+<<<<<<< HEAD
                     //control not there 
+=======
+                    //control not there
+>>>>>>> update form orginal repo
                     Logger.Error(ex);
                 }
             }
@@ -3961,13 +4044,21 @@ namespace DotNetNuke.Modules.Admin.Authentication
                 //if a Login Page has not been specified for the portal
                 if (Globals.IsAdminControl())
                 {
+<<<<<<< HEAD
                     //redirect browser 
+=======
+                    //redirect browser
+>>>>>>> update form orginal repo
                     Response.Redirect(RedirectURL, true);
                 }
                 else //make module container invisible if user is not a page admin
                 {
                     var path = RedirectURL.Split('?')[0];
+<<<<<<< HEAD
                     if (NeedRedirectAfterLogin && path != Globals.NavigateURL() && path != Globals.NavigateURL(PortalSettings.HomeTabId))
+=======
+                    if (NeedRedirectAfterLogin && path != _navigationManager.NavigateURL() && path != _navigationManager.NavigateURL(PortalSettings.HomeTabId))
+>>>>>>> update form orginal repo
                     {
                         Response.Redirect(RedirectURL, true);
                     }
@@ -4108,7 +4199,11 @@ namespace DotNetNuke.Modules.Admin.Authentication
                     break;
                 case DataConsent.DataConsentStatus.Cancelled:
                 case DataConsent.DataConsentStatus.RemovedAccount:
+<<<<<<< HEAD
                     Response.Redirect(Globals.NavigateURL(PortalSettings.HomeTabId), true);
+=======
+                    Response.Redirect(_navigationManager.NavigateURL(PortalSettings.HomeTabId), true);
+>>>>>>> update form orginal repo
                     break;
                 case DataConsent.DataConsentStatus.FailedToRemoveAccount:
                     AddModuleMessage("FailedToRemoveAccount", ModuleMessage.ModuleMessageType.RedError, true);
@@ -4292,4 +4387,7 @@ namespace DotNetNuke.Modules.Admin.Authentication
 
     }
 }
+<<<<<<< HEAD
 >>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)"
+=======
+>>>>>>> update form orginal repo

@@ -1,9 +1,10 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+#region Copyright
 // 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> update form orginal repo
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
 // by DotNetNuke Corporation
@@ -23,7 +24,10 @@
 // DEALINGS IN THE SOFTWARE.
 #endregion
 
+<<<<<<< HEAD
 >>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 #region Usings
 
 using System;
@@ -84,33 +88,33 @@ namespace DotNetNuke.Security
             new Regex("<ilayer[^>]*>.*?</ilayer[^><]*>", RxOptions),
             new Regex("<form[^>]*>", RxOptions),
             new Regex("</form[^><]*>", RxOptions),
-            new Regex("\bonerror\b", RxOptions),
-            new Regex("\bonload\b", RxOptions),
-            new Regex("\bonfocus\b", RxOptions),
-            new Regex("\bonblur\b", RxOptions),
-            new Regex("\bonclick\b", RxOptions),
-            new Regex("\bondblclick\b", RxOptions),
-            new Regex("\bonchange\b", RxOptions),
-            new Regex("\bonselect\b", RxOptions),
-            new Regex("\bonsubmit\b", RxOptions),
-            new Regex("\bonreset\b", RxOptions),
-            new Regex("\bonkeydown\b", RxOptions),
-            new Regex("\bonkeyup\b", RxOptions),
-            new Regex("\bonkeypress\b", RxOptions),
-            new Regex("\bonmousedown\b", RxOptions),
-            new Regex("\bonmousemove\b", RxOptions),
-            new Regex("\bonmouseout\b", RxOptions),
-            new Regex("\bonmouseover\b", RxOptions),
-            new Regex("\bonmouseup\b", RxOptions),
-            new Regex("\bonreadystatechange\b", RxOptions),
-            new Regex("\bonfinish\b", RxOptions),
+            new Regex("onerror", RxOptions),
+            new Regex("onload", RxOptions),
+            new Regex("onfocus", RxOptions),
+            new Regex("onblur", RxOptions),
+            new Regex("onclick", RxOptions),
+            new Regex("ondblclick", RxOptions),
+            new Regex("onchange", RxOptions),
+            new Regex("onselect", RxOptions),
+            new Regex("onsubmit", RxOptions),
+            new Regex("onreset", RxOptions),
+            new Regex("onkeydown", RxOptions),
+            new Regex("onkeyup", RxOptions),
+            new Regex("onkeypress", RxOptions),
+            new Regex("onmousedown", RxOptions),
+            new Regex("onmousemove", RxOptions),
+            new Regex("onmouseout", RxOptions),
+            new Regex("onmouseover", RxOptions),
+            new Regex("onmouseup", RxOptions),
+            new Regex("onreadystatechange", RxOptions),
+            new Regex("onfinish", RxOptions),
             new Regex("javascript:", RxOptions),
             new Regex("vbscript:", RxOptions),
             new Regex("unescape", RxOptions),
             new Regex("alert[\\s(&nbsp;)]*\\([\\s(&nbsp;)]*'?[\\s(&nbsp;)]*[\"(&quot;)]?", RxOptions),
             new Regex(@"eval*.\(", RxOptions),
         };
-
+        
         private static readonly Regex DangerElementsRegex = new Regex(@"(<[^>]*?) on.*?\=(['""]*)[\s\S]*?(\2)( *)([^>]*?>)", RxOptions);
         private static readonly Regex DangerElementContentRegex = new Regex(@"on.*?\=(['""]*)[\s\S]*?(\1)( *)", RxOptions);
 
@@ -132,7 +136,7 @@ namespace DotNetNuke.Security
             NoScripting = 4,
             NoSQL = 8,
             NoAngleBrackets = 16,
-            NoProfanity = 32
+            NoProfanity =32
         }
 
         /// <summary>
@@ -258,7 +262,7 @@ namespace DotNetNuke.Security
                         roleAllowed = true;
                     }
                 }
-            }
+            }            
         }
 
         private static RoleType GetRoleType(string roleName)
@@ -302,7 +306,7 @@ namespace DotNetNuke.Security
         ///-----------------------------------------------------------------------------
         private static string FilterStrings(string strInput)
         {
-            //setup up list of search terms as items may be used twice
+			//setup up list of search terms as items may be used twice
             var tempInput = strInput;
             if (string.IsNullOrEmpty(tempInput))
             {
@@ -323,7 +327,7 @@ namespace DotNetNuke.Security
             //check if text contains encoded angle brackets, if it does it we decode it to check the plain text
             if (tempInput.Contains("&gt;") || tempInput.Contains("&lt;"))
             {
-                //text is encoded, so decode and try again
+				//text is encoded, so decode and try again
                 tempInput = HttpUtility.HtmlDecode(tempInput);
                 tempInput = RxListStrings.Aggregate(tempInput, (current, s) => s.Replace(current, replacement));
 
@@ -421,10 +425,10 @@ namespace DotNetNuke.Security
         {
             return StripTagsRegex.IsMatch(strInput);
         }
-
-        #endregion
-
-        #region Public Methods
+		
+		#endregion
+		
+		#region Public Methods
 
         ///-----------------------------------------------------------------------------
         /// <summary>
@@ -596,14 +600,14 @@ namespace DotNetNuke.Security
                 case ConfigType.ListController:
                     const RegexOptions options = RegexOptions.IgnoreCase | RegexOptions.Singleline;
                     const string listName = "ProfanityFilter";
-
+            
                     var listController = new ListController();
-
+                
                     PortalSettings settings;
 
                     IEnumerable<ListEntryInfo> listEntryHostInfos;
                     IEnumerable<ListEntryInfo> listEntryPortalInfos;
-
+            
                     switch (filterScope)
                     {
                         case FilterScope.SystemList:
@@ -620,7 +624,7 @@ namespace DotNetNuke.Security
                         case FilterScope.PortalList:
                             settings = PortalController.Instance.GetCurrentPortalSettings();
                             listEntryPortalInfos = listController.GetListEntryInfoItems(listName + "-" + settings.PortalId, "", settings.PortalId);
-                            inputString = listEntryPortalInfos.Aggregate(inputString, (current, removeItem) => Regex.Replace(current, @"\b" + Regex.Escape(removeItem.Text) + @"\b", string.Empty, options));
+                            inputString = listEntryPortalInfos.Aggregate(inputString, (current, removeItem) => Regex.Replace(current, @"\b" + Regex.Escape(removeItem.Text) + @"\b", string.Empty, options));        
                             break;
                     }
 
@@ -650,12 +654,12 @@ namespace DotNetNuke.Security
 
                 //Create a new Cookie
                 var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedAuthTicket)
-                {
-                    Expires = authenticationTicket.Expiration,
-                    Domain = GetCookieDomain(user.PortalID),
-                    Path = FormsAuthentication.FormsCookiePath,
-                    Secure = FormsAuthentication.RequireSSL
-                };
+                                        {
+                                            Expires = authenticationTicket.Expiration,
+                                            Domain = GetCookieDomain(user.PortalID),
+                                            Path = FormsAuthentication.FormsCookiePath,
+                                            Secure = FormsAuthentication.RequireSSL
+                                        };
 
                 if (HttpContext.Current.Response.Cookies[FormsAuthentication.FormsCookieName] != null)
                     HttpContext.Current.Response.Cookies.Remove(FormsAuthentication.FormsCookieName);
@@ -756,7 +760,7 @@ namespace DotNetNuke.Security
             }
 
             //Remove current userinfo from context items
-            HttpContext.Current.Items.Remove("UserInfo");
+			HttpContext.Current.Items.Remove("UserInfo");
 
             //remove language cookie
             var httpCookie = HttpContext.Current.Response.Cookies["language"];
@@ -777,7 +781,7 @@ namespace DotNetNuke.Security
             if (cookie != null)
             {
                 cookie.Value = null;
-                cookie.Path = (!string.IsNullOrEmpty(Globals.ApplicationPath) ? Globals.ApplicationPath : "/");
+				cookie.Path = (!string.IsNullOrEmpty(Globals.ApplicationPath) ? Globals.ApplicationPath : "/");
                 cookie.Expires = DateTime.Now.AddYears(-30);
             }
 
@@ -785,7 +789,7 @@ namespace DotNetNuke.Security
             if (cookie != null)
             {
                 cookie.Value = null;
-                cookie.Path = (!string.IsNullOrEmpty(Globals.ApplicationPath) ? Globals.ApplicationPath : "/");
+				cookie.Path = (!string.IsNullOrEmpty(Globals.ApplicationPath) ? Globals.ApplicationPath : "/");
                 cookie.Expires = DateTime.Now.AddYears(-30);
             }
 
@@ -799,7 +803,7 @@ namespace DotNetNuke.Security
                     if (auth != null)
                     {
                         auth.Value = null;
-                        auth.Path = (!string.IsNullOrEmpty(Globals.ApplicationPath) ? Globals.ApplicationPath : "/");
+						auth.Path = (!string.IsNullOrEmpty(Globals.ApplicationPath) ? Globals.ApplicationPath : "/");
                         auth.Expires = DateTime.Now.AddYears(-30);
                     }
                 }
@@ -831,44 +835,19 @@ namespace DotNetNuke.Security
 
             return (userInput == filteredInput);
         }
-
-        /// <summary>
-        /// This function loops through every portal that has set its own AllowedExtensionWhitelist
-        /// and checks that there are no extensions there that are restriced by the host
-        /// 
-        /// The only time we should call this is if the host allowed extensions list has changed
-        /// </summary>
-        /// <param name="newMasterList">Comma separated list of extensions that govern all users on this installation</param>
-        public void CheckAllPortalFileExtensionWhitelists(string newMasterList)
-        {
-            var masterList = new FileExtensionWhitelist(newMasterList);
-            var portalSettings = Data.DataProvider.Instance().GetPortalSettingsBySetting("AllowedExtensionsWhitelist", null);
-            foreach (var portalId in portalSettings.Keys)
-            {
-                if (!string.IsNullOrEmpty(portalSettings[portalId]))
-                {
-                    var portalExts = new FileExtensionWhitelist(portalSettings[portalId]);
-                    var newValue = portalExts.RestrictBy(masterList).ToStorageString();
-                    if (newValue != portalSettings[portalId])
-                    {
-                        PortalController.UpdatePortalSetting(portalId, "AllowedExtensionsWhitelist", newValue, false);
-                    }
-                }
-            }
-        }
-
-        #endregion
-
-        #region Public Shared/Static Methods
+		
+		#endregion
+		
+		#region Public Shared/Static Methods
 
         public static void ForceSecureConnection()
         {
-            //get current url
+			//get current url
             var url = HttpContext.Current.Request.Url.ToString();
-            //if unsecure connection
+			//if unsecure connection
             if (url.StartsWith("http://", StringComparison.InvariantCultureIgnoreCase))
             {
-                //switch to secure connection
+				//switch to secure connection
                 url = "https://" + url.Substring("http://".Length);
                 //append ssl parameter to querystring to indicate secure connection processing has already occurred
                 if (url.IndexOf("?", StringComparison.Ordinal) == -1)
@@ -893,9 +872,9 @@ namespace DotNetNuke.Security
                 var groupController = new PortalGroupController();
                 var group = groupController.GetPortalGroups().SingleOrDefault(p => p.MasterPortalId == PortalController.GetEffectivePortalId(portalId));
 
-                if (@group != null
-                        && !string.IsNullOrEmpty(@group.AuthenticationDomain)
-                        && PortalSettings.Current.PortalAlias.HTTPAlias.Contains(@group.AuthenticationDomain))
+				if (@group != null 
+						&& !string.IsNullOrEmpty(@group.AuthenticationDomain)
+						&& PortalSettings.Current.PortalAlias.HTTPAlias.Contains(@group.AuthenticationDomain))
                 {
                     cookieDomain = @group.AuthenticationDomain;
                 }
@@ -921,7 +900,7 @@ namespace DotNetNuke.Security
             PortalSettings settings = PortalController.Instance.GetCurrentPortalSettings();
             return IsDenied(objUserInfo, settings, roles);
         }
-         
+
         public static bool IsDenied(UserInfo objUserInfo, PortalSettings settings, string roles)
         {
             //super user always has full access
@@ -974,7 +953,7 @@ namespace DotNetNuke.Security
         {
             UserInfo objUserInfo = UserController.Instance.GetCurrentUserInfo();
             PortalSettings settings = PortalController.Instance.GetCurrentPortalSettings();
-            return IsInRoles(objUserInfo, settings, roles);
+            return IsInRoles(objUserInfo, settings, roles);            
         }
 
         public static bool IsInRoles(UserInfo objUserInfo, PortalSettings settings, string roles)
@@ -985,7 +964,7 @@ namespace DotNetNuke.Security
             if (!isInRoles)
             {
                 if (roles != null)
-                {
+                {                    
                     foreach (string role in roles.Split(new[] { ';' }))
                     {
                         bool? roleAllowed;
@@ -998,7 +977,7 @@ namespace DotNetNuke.Security
                     }
                 }
             }
-            return isInRoles;
+            return isInRoles; 
         }
 
         public static bool IsFriend(int userId)
@@ -1021,6 +1000,6 @@ namespace DotNetNuke.Security
             PortalSettings settings = PortalController.Instance.GetCurrentPortalSettings();
             return IsInRoles(objUserInfo, settings, RoleOwnerPrefix + userId);
         }
-        #endregion
-    }
+		#endregion
+    }    
 }

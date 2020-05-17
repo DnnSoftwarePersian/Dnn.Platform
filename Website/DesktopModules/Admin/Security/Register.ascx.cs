@@ -1,5 +1,6 @@
 ﻿#region Copyright
 
+<<<<<<< HEAD
 // 
 // DotNetNuke® - https://www.dnnsoftware.com
 // Copyright (c) 2002-2018
@@ -17,6 +18,25 @@
 // TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
 // THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
 // CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+=======
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+>>>>>>> update form orginal repo
 // DEALINGS IN THE SOFTWARE.
 
 #endregion
@@ -24,7 +44,10 @@
 #region Usings
 
 using System;
+<<<<<<< HEAD
 using System.Collections;
+=======
+>>>>>>> update form orginal repo
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Globalization;
@@ -33,6 +56,10 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.UI;
+<<<<<<< HEAD
+=======
+using Microsoft.Extensions.DependencyInjection;
+>>>>>>> update form orginal repo
 
 using DotNetNuke.Common;
 using DotNetNuke.Common.Lists;
@@ -53,7 +80,11 @@ using DotNetNuke.UI.WebControls;
 using System.Web.UI.WebControls;
 using DotNetNuke.Entities.Users.Membership;
 using DotNetNuke.Framework.JavaScriptLibraries;
+<<<<<<< HEAD
 using DotNetNuke.Services.Cache;
+=======
+using DotNetNuke.Abstractions;
+>>>>>>> update form orginal repo
 
 #endregion
 
@@ -67,6 +98,15 @@ namespace DotNetNuke.Modules.Admin.Users
 		protected const string ConfirmPasswordTextBoxCssClass = "password-confirm";
 
 		private readonly List<AuthenticationLoginBase> _loginControls = new List<AuthenticationLoginBase>();
+<<<<<<< HEAD
+=======
+        private readonly INavigationManager _navigationManager;
+
+        public Register()
+        {
+            _navigationManager = DependencyProvider.GetRequiredService<INavigationManager>();
+        }
+>>>>>>> update form orginal repo
 
 		#region Protected Properties
 
@@ -245,7 +285,11 @@ namespace DotNetNuke.Modules.Admin.Users
 			{
 			    try
 			    {
+<<<<<<< HEAD
 			        Response.Redirect(Globals.NavigateURL("Access Denied"), true);
+=======
+			        Response.Redirect(_navigationManager.NavigateURL("Access Denied"), true);
+>>>>>>> update form orginal repo
 			    }
 			    catch (ThreadAbortException)
 			    {
@@ -294,8 +338,13 @@ namespace DotNetNuke.Modules.Admin.Users
 				//if a Login Page has not been specified for the portal
 				if (Globals.IsAdminControl())
 				{
+<<<<<<< HEAD
 					//redirect to current page 
 					Response.Redirect(Globals.NavigateURL(), true);
+=======
+					//redirect to current page
+					Response.Redirect(_navigationManager.NavigateURL(), true);
+>>>>>>> update form orginal repo
 				}
 				else //make module container invisible if user is not a page admin
 				{
@@ -509,7 +558,11 @@ namespace DotNetNuke.Modules.Admin.Users
 			User.Membership.Approved = PortalSettings.UserRegistration == (int)Globals.PortalRegistrationType.PublicRegistration;
 			var user = User;
 			CreateStatus = UserController.CreateUser(ref user);
+<<<<<<< HEAD
             		    
+=======
+
+>>>>>>> update form orginal repo
             DataCache.ClearPortalUserCountCache(PortalId);
 
             try
@@ -783,7 +836,11 @@ namespace DotNetNuke.Modules.Admin.Users
 			var redirectAfterRegistration = PortalSettings.Registration.RedirectAfterRegistration;
 			if (checkSetting && redirectAfterRegistration > 0) //redirect to after registration page
 			{
+<<<<<<< HEAD
 				redirectUrl = Globals.NavigateURL(redirectAfterRegistration);
+=======
+				redirectUrl = _navigationManager.NavigateURL(redirectAfterRegistration);
+>>>>>>> update form orginal repo
 			}
 			else
 			{
@@ -807,8 +864,13 @@ namespace DotNetNuke.Modules.Admin.Users
 				}
 				if (String.IsNullOrEmpty(redirectUrl))
 				{
+<<<<<<< HEAD
 					//redirect to current page 
 					redirectUrl = Globals.NavigateURL();
+=======
+					//redirect to current page
+					redirectUrl = _navigationManager.NavigateURL();
+>>>>>>> update form orginal repo
 				}
 			}
 

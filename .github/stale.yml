@@ -5,6 +5,7 @@ daysUntilClose: 14
 # Issues with these labels will never be considered stale
 exemptLabels:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - "Alert: Noteworthy"
   - "Alert: Pinned"
   - "Type: Bug"
@@ -13,15 +14,22 @@ exemptLabels:
   - "Status: Review"
   - "Status: Testing"
 =======
+=======
+>>>>>>> update form orginal repo
   - pinned
   - security
   - bug
   - noteworthy
+<<<<<<< HEAD
 >>>>>>> Addition of configuration for StaleBot (#3072)
+=======
+  - pull request submitted
+>>>>>>> update form orginal repo
 # Label to use when marking an issue as stale
 staleLabel: stale
 # Comment to post when marking an issue as stale. Set to `false` to disable
 markComment: >
+<<<<<<< HEAD
 <<<<<<< HEAD
   We have detected this issue has not had any activity during the last 90 
   days. That could mean this issue is no longer relevant and/or nobody has 
@@ -50,3 +58,17 @@ closeComment: >
 closeComment: >
   This issue has been closed automatically due to inactivity.
 >>>>>>> Addition of configuration for StaleBot (#3072)
+=======
+  This issue has been automatically marked as 'stale' because no activity has 
+  been detected in the last 90 days. The intent is to bring awareness to the 
+  issue and to alert to the fact that the issue will be closed if no further 
+  activity is detected within the next 14 days. If you are unable to make a 
+  pull request for this issue, then please consider partnering with another 
+  developer in the DNN community that is willing and able to assist. Thank 
+  you for your continued contributions.
+# Comment to post when closing a stale issue. Set to `false` to disable
+closeComment: >
+  This issue has been closed automatically due to the aforementioned detection 
+  of activity. Feel free to re-open the issue if you believe it should not be 
+  closed.
+>>>>>>> update form orginal repo

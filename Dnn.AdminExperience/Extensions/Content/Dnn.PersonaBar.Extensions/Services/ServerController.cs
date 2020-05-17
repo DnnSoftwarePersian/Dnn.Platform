@@ -28,6 +28,10 @@ using System.Web.Http;
 using Dnn.PersonaBar.Library;
 using Dnn.PersonaBar.Library.Attributes;
 using DotNetNuke.Common;
+<<<<<<< HEAD
+=======
+using DotNetNuke.Abstractions;
+>>>>>>> update form orginal repo
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Instrumentation;
 using DotNetNuke.Services.Localization;
@@ -41,9 +45,20 @@ namespace Dnn.PersonaBar.Servers.Services
     public class ServerController : PersonaBarApiController
     {
         private static readonly ILog Logger = LoggerSource.Instance.GetLogger(typeof(ServerController));
+<<<<<<< HEAD
 
         internal static string LocalResourceFile => Path.Combine("~/DesktopModules/admin/Dnn.PersonaBar/Modules/Dnn.Servers/App_LocalResources/Servers.resx");
 
+=======
+        protected INavigationManager NavigationManager { get; }
+        internal static string LocalResourceFile => Path.Combine("~/DesktopModules/admin/Dnn.PersonaBar/Modules/Dnn.Servers/App_LocalResources/Servers.resx");
+
+        public ServerController(INavigationManager navigationManager)
+        {
+            NavigationManager = navigationManager;
+        }
+
+>>>>>>> update form orginal repo
         [HttpPost]
         [ValidateAntiForgeryToken]
         public HttpResponseMessage RestartApplication()
@@ -54,7 +69,11 @@ namespace Dnn.PersonaBar.Servers.Services
                 log.AddProperty("Message", Localization.GetString("UserRestart", LocalResourceFile));
                 LogController.Instance.AddLog(log);
                 Config.Touch();
+<<<<<<< HEAD
                 return Request.CreateResponse(HttpStatusCode.OK, new {url = Globals.NavigateURL()});
+=======
+                return Request.CreateResponse(HttpStatusCode.OK, new {url = NavigationManager.NavigateURL()});
+>>>>>>> update form orginal repo
             }
             catch (Exception exc)
             {
@@ -71,7 +90,11 @@ namespace Dnn.PersonaBar.Servers.Services
             {
                 DataCache.ClearCache();
                 ClientResourceManager.ClearCache();
+<<<<<<< HEAD
                 return Request.CreateResponse(HttpStatusCode.OK, new {url = Globals.NavigateURL() });
+=======
+                return Request.CreateResponse(HttpStatusCode.OK, new {url = NavigationManager.NavigateURL() });
+>>>>>>> update form orginal repo
             }
             catch (Exception exc)
             {
@@ -80,4 +103,8 @@ namespace Dnn.PersonaBar.Servers.Services
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> update form orginal repo

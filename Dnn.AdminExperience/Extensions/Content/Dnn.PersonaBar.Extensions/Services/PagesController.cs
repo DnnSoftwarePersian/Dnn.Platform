@@ -54,6 +54,10 @@ using DotNetNuke.Security.Permissions;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.Services.Social.Notifications;
 using Localization = Dnn.PersonaBar.Pages.Components.Localization;
+<<<<<<< HEAD
+=======
+using DotNetNuke.Abstractions;
+>>>>>>> update form orginal repo
 
 namespace Dnn.PersonaBar.Pages.Services
 {
@@ -63,6 +67,10 @@ namespace Dnn.PersonaBar.Pages.Services
     {
         private static readonly ILog Logger = LoggerSource.Instance.GetLogger(typeof(PagesController));
         private const string LocalResourceFile = Library.Constants.PersonaBarRelativePath + "Modules/Dnn.Pages/App_LocalResources/Pages.resx";
+<<<<<<< HEAD
+=======
+        protected INavigationManager NavigationManager { get; }
+>>>>>>> update form orginal repo
 
         private readonly IPagesController _pagesController;
         private readonly IBulkPagesController _bulkPagesController;
@@ -74,8 +82,15 @@ namespace Dnn.PersonaBar.Pages.Services
         private readonly ILocaleController _localeController;
         private readonly ISecurityService _securityService;
 
+<<<<<<< HEAD
         public PagesController()
         {
+=======
+        public PagesController(INavigationManager navigationManager)
+        {
+            NavigationManager = navigationManager;
+
+>>>>>>> update form orginal repo
             _pagesController = Components.PagesController.Instance;
             _themesController = ThemesController.Instance;
             _bulkPagesController = BulkPagesController.Instance;
@@ -990,7 +1005,11 @@ namespace Dnn.PersonaBar.Pages.Services
                 dnnPage.CanAdminPage = TabPermissionController.CanAdminPage(tabInfo);
                 dnnPage.CanViewPage = TabPermissionController.CanViewPage(tabInfo);
                 dnnPage.LocalResourceFile = LocalResourceFile;
+<<<<<<< HEAD
                 dnnPage.PageUrl = Globals.NavigateURL(localTabInfo.TabID, false, PortalSettings, "", localTabInfo.CultureCode);
+=======
+                dnnPage.PageUrl = NavigationManager.NavigateURL(localTabInfo.TabID, false, PortalSettings, "", localTabInfo.CultureCode);
+>>>>>>> update form orginal repo
 
                 // calculate position in the form of 1.3.2...
                 var siblingTabs = tabInfos.Where(t => t.ParentId == localTabInfo.ParentId && t.CultureCode == localTabInfo.CultureCode || t.CultureCode == null).OrderBy(t => t.TabOrder).ToList();
@@ -1277,7 +1296,11 @@ namespace Dnn.PersonaBar.Pages.Services
             var subject = LocalizeString("NewContentMessage.Subject");
             var body = string.Format(LocalizeString("NewContentMessage.Body"),
                 tabInfo.TabName,
+<<<<<<< HEAD
                 Globals.NavigateURL(tabInfo.TabID, false, PortalSettings, Null.NullString, tabInfo.CultureCode),
+=======
+                NavigationManager.NavigateURL(tabInfo.TabID, false, PortalSettings, Null.NullString, tabInfo.CultureCode),
+>>>>>>> update form orginal repo
                 comment);
 
             var sender = UserController.GetUserById(PortalSettings.PortalId, PortalSettings.AdministratorId);

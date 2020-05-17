@@ -23,6 +23,10 @@ using Dnn.PersonaBar.Library;
 using Dnn.PersonaBar.Library.Attributes;
 using Dnn.PersonaBar.SiteSettings.Services.Dto;
 using DotNetNuke.Common;
+<<<<<<< HEAD
+=======
+using DotNetNuke.Abstractions;
+>>>>>>> update form orginal repo
 using DotNetNuke.Common.Lists;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Controllers;
@@ -60,6 +64,10 @@ using System.Threading;
 using System.Web;
 using System.Web.Http;
 using FileInfo = System.IO.FileInfo;
+<<<<<<< HEAD
+=======
+using Constants = Dnn.PersonaBar.Library.Constants;
+>>>>>>> update form orginal repo
 
 namespace Dnn.PersonaBar.SiteSettings.Services
 {
@@ -86,6 +94,15 @@ namespace Dnn.PersonaBar.SiteSettings.Services
 
         private const double DefaultMessagingThrottlingInterval = 0.5; // set default MessagingThrottlingInterval value to 30 seconds.
 
+<<<<<<< HEAD
+=======
+        protected INavigationManager NavigationManager { get; }
+        public SiteSettingsController(INavigationManager navigationManager)
+        {
+            NavigationManager = navigationManager;
+        }
+
+>>>>>>> update form orginal repo
         #region Site Info API
 
         /// GET: api/SiteSettings/GetPortalSettings
@@ -2727,7 +2744,11 @@ namespace Dnn.PersonaBar.SiteSettings.Services
 
                         if (LocaleController.Instance.GetLocales(pid).Count == 2)
                         {
+<<<<<<< HEAD
                             redirectUrl = Globals.NavigateURL();
+=======
+                            redirectUrl = NavigationManager.NavigateURL();
+>>>>>>> update form orginal repo
                         }
                     }
                     else
@@ -2741,7 +2762,11 @@ namespace Dnn.PersonaBar.SiteSettings.Services
                                 StringComparison.OrdinalIgnoreCase) ||
                             LocaleController.Instance.GetLocales(pid).Count == 1)
                         {
+<<<<<<< HEAD
                             redirectUrl = Globals.NavigateURL(PortalSettings.ActiveTab.TabID,
+=======
+                            redirectUrl = NavigationManager.NavigateURL(PortalSettings.ActiveTab.TabID,
+>>>>>>> update form orginal repo
                                 PortalSettings.ActiveTab.IsSuperTab,
                                 PortalSettings, "", defaultLocale.Code);
                         }
