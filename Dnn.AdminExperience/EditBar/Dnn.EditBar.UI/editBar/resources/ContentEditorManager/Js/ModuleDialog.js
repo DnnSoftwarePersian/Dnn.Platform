@@ -1,7 +1,9 @@
-﻿// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+﻿// DotNetNuke® - http://www.dnnsoftware.com
+//
+// Copyright (c) 2002-2018, DNN Corp.
+// All rights reserved.
 
-if (typeof dnn === "undefined" || dnn === null) { dnn = {}; };
+﻿if (typeof dnn === "undefined" || dnn === null) { dnn = {}; };
 if (typeof dnn.ContentEditorManager === "undefined" || dnn.ContentEditorManager === null) { dnn.ContentEditorManager = {}; };
 
 (function ($) {
@@ -224,10 +226,8 @@ if (typeof dnn.ContentEditorManager === "undefined" || dnn.ContentEditorManager 
         setModuleId: function (moduleId) {
             if (moduleId <= 0) {
                 this._removeCookie('CEM_NewModuleId');
-                this._removeCookie('CEM_ExistingModule');
             } else {
                 this._setCookie('CEM_NewModuleId', moduleId);
-                this._setCookie('CEM_ExistingModule', this._callFromExistingModule);
             }
         },
 

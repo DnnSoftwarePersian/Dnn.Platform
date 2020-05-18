@@ -1,7 +1,9 @@
 # Building Dnn
 
-Important: **Dnn.Platform does not support "Hit F5 and see your website come up".** I.e. you can't run DNN by hitting F5 on the source code in Visual Studio.
+You do not always need to build the entire solution, you can download and install from the releases and only build the part you are working on, please read [How to Contribue](CONTRIBUTING.md) first.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 There are three supported build scenarios:
 1. **Build to create a platform distribution package**. You'd only use this to test a complete package (how it installs, works, etc). This build process is used by our Continuous Integration system and creates the release packages everyone uses to install the platform.
 2. **Build to create a local DNN development website**. You'd typically not do this all the time, but only when you wish to set up a new development site or revert your development website to the current DNN repository state.
@@ -12,26 +14,35 @@ When contributing to DNN, you'd typically go through steps 2 and 3 at least and 
 ## External sources
 
 There are two projects not included in this repository that are distributed with DNN:
+=======
+If you do need to build the entire solution and the distribution packages, you need to be aware that the entire distribution is split in multiple github repositories.
+* This repository - contains all the core APIs and the Admin Experience (Persona Bar)
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+If you do need to build the entire solution and the distribution packages, you need to be aware that the entire distribution is split in multiple github repositories.
+* This repository - contains all the core APIs and the Admin Experience (Persona Bar)
+>>>>>>> update form orginal repo
 * [CKEditorProvider](https://github.com/DNN-Connect/CKEditorProvider) - The default HTML Editor Provider
 * [CDF](https://github.com/dnnsoftware/ClientDependency) - The Dnn Client Dependency Framework
 
-If you wish to make changes to those, please keep this in mind.
+Also, we currently maintain two branches, the development branch is the next major release and we also maintain a release/x.x.x branch that allows doing bug fixes on the current major version.
 
-## Used Build Technologies
+To prevent issues with long paths in some build scripts, fork this repository in a short named folder on the root of any drive such as `c:\dnnsrc\` if you fork to a long path such as `c:\users\username\documents\dnn\source\` you may encounter long path issues.
 
-DNN uses the following technologies to create a working build:
-1. MSBuild. This is Microsoft Visual Studio's built in mechanism to compile C#. It can also run auxiliary tasks (like packaging the included modules). These tasks are specified in `.build` and `.targets` files and can leverage .net assemblies to do its magic. Almost all central MSBuild code is in the `Build/BuildScripts` folder. Main folder location settings can be found in the `DNN_Platform.build` file in the root of the repository which can be overridden using a `DNN_Platform.local.build` file at the same location.
-2. Webpack. The "Admin Experience" (which is the project that contains the UI for managing DNN) contains a number of client-side Javascript projects (mostly React projects). These are built using Webpack. Webpack is triggered in the main build process in the `Build/BuildScripts/AEModule.build` script. But it can be run on individual projects if you need to.
-3. [Cake Build](https://cakebuild.net/). This uses C# code to run build tasks. We use Cake for orchestrating the entire build process (e.g. packaging of the platform) and for auxiliary tasks like creating a dev site. All Cake scripts are found in the `Build/Cake` folder. After Cake first runs it bootstraps itself and creates the `tools` folder where the various assemblies can be found. Note the scripts use the [DNN Cake Utils](https://github.com/DNNCommunity/Dnn.CakeUtils) assembly to do the heavy lifting.
-
-## Build to create packages
-
-This process uses Cake. Open Powershell at the root of the repository folder and enter:
-
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+In order to build the whole solution and produce the install and upgrade packages, you simply need to open PowerShell and run the following command:
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+In order to build the whole solution and produce the install and upgrade packages, you simply need to open PowerShell and run the following command:
+>>>>>>> update form orginal repo
 ```
 .\build.ps1
 ```
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 This will trigger the build and packaging logic. The packages are created in the `artifacts` folder. 
 
 Note that (unless a build version has been specified, see below) this process will retrieve the latest version from Github and use that to version dlls and manifests. This creates a bunch of changed `.dnn` files and you'll need to make sure you don't include those in any Pull Requests when contributing.
@@ -50,45 +61,30 @@ The build process uses a local settings file which is excluded from source contr
 
 ```
 .\Build.ps1 -Target CreateSettings
+=======
+The version you are building is the current version on the branch you are. However there are 2 external repositories that get bundled into Dnn build:
+[Dnn.Connect CKEditor provider](https://github.com/DNN-Connect/CKEditorProvider) is the default HTML editor provider and its default branch is development.	
+[Dnn.ClientDependency](https://github.com/dnnsoftware/ClientDependency), the default branch is dnn
+Under normal situations they are the branches used for the next release, however if you have a need to specify a different branch to pull during the build you can specify them as such:
+```
+.\build.ps1 -ScriptArgs '--CkBranch="branch-name"','--CdfBranch="branch-name"'
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+The version you are building is the current version on the branch you are. However there are 2 external repositories that get bundled into Dnn build:
+[Dnn.Connect CKEditor provider](https://github.com/DNN-Connect/CKEditorProvider) is the default HTML editor provider and its default branch is development.	
+[Dnn.ClientDependency](https://github.com/dnnsoftware/ClientDependency), the default branch is dnn
+Under normal situations they are the branches used for the next release, however if you have a need to specify a different branch to pull during the build you can specify them as such:
+```
+.\build.ps1 -ScriptArgs '--CkBranch="branch-name"','--CdfBranch="branch-name"'
+>>>>>>> update form orginal repo
 ```
 
-This will create a file called `settings.local.json` at the root with the following content:
-
-``` json
-{
-  "WebsitePath": "",
-  "WebsiteUrl": "",
-  "SaConnectionString": "server=(local);Trusted_Connection=True;",
-  "DnnConnectionString": "",
-  "DbOwner": "dbo",
-  "ObjectQualifier": "",
-  "DnnDatabaseName": "Dnn_Platform",
-  "DnnSqlUsername": "",
-  "DatabasePath": "",
-  "Version": "auto"
-}
+If you encounter any build issues, please re-run the build with more verbosity as such:
 ```
-
-The settings are as follows:
-
-|Name|Description|
-|---|---|
-|WebsitePath|Full physical path to the folder of your (dev) website|
-|WebsiteUrl|Url for that website (unused for now)|
-|SaConnectionString|SQL connection string with admin privileges. This allows the scripts to drop and recreate your database.|
-|DnnConnectionString|Connection string used in the web.config of your dev site to connect to the SQL database|
-|DbOwner|If you wish other than the default "dbo", please specify here.|
-|ObjectQualifier|The DNN database Object Qualifier. This is optional.|
-|DnnDatabaseName|Name to use for your DNN database. This is used in the drop and create scripts.|
-|DnnSqlUsername|User name for the account that has ownership of the database. This setting is used in the create scripts to ensure the account has the proper access rights.|
-|DatabasePath|Physical path to where you wish to create the database. Note this is just the folder, not the filename of the database.|
-|Version|You can force the build process to build for a specific version. E.g. 9.4.4.5. That will be used to build the correct versioned dlls and modules.|
-
-Once you've set up the above, run the following in Powershell:
-
+.\build.ps1 -Verbosity diagnostic
 ```
-.\Build.ps1 -Target ResetDevSite
-```
+<<<<<<< HEAD
+<<<<<<< HEAD
 
 This will attempt to delete all content in `WebsitePath` and will build DNN to that location.
 
@@ -104,8 +100,12 @@ To build the .net projects to the right location, you'll need to create your ove
     <WebsitePath Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">C:\Path\to\my\DNN\DevSite</WebsitePath>
   </PropertyGroup>
 </Project>
+=======
+.\build.ps1 -Verbosity diagnostic
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
 ```
 
+<<<<<<< HEAD
 Once you've created this file every time you click "rebuild" in Visual Studio on a project (or the solution) you'll see the content change in your dev site.
 
 For the Webpack projects it is set up to read from the `settings.local.json` file and use the `WebsitePath` to copy generated js files to their right place.
@@ -129,3 +129,19 @@ If you encounter PowerShell security issues, please read [Cake - PowerShell Secu
 ### Git branching strategy
 
 Our default branch is called **develop**, this is the branch most pull requests should target in order to be merged into the very next release (bug fixes, minor improvements that are not breaking changes). If you know your change will be a breaking change or more risky, then you should submit it targeting the **future/xx** branch (where xx is the next major release). **release/x.x.x** branches are temporary, they get created at code-freeze to built an alpha release for the testing team, when initial testing is done, we publish one or more release candiate versions (RC1, RC2) as needed until we find the version stable for release, at which point we release that new version and close the release/x.x.x branch. The only pull requests that will be accepted for release/x.x.x branches are for regression issues (the problem was introduced in this very version) or showstopper issues (can't use Dnn with this bug in).
+=======
+Also, the build scripts should leave you with 0 tracked modified files in git.
+If a build fails midway and you have tracked artifacts, you can simply run:
+`git reset --hard` and/or `git clean -dxf` in order to come back to a clean state.
+
+If you encounter PowerShell security issues, please read [Cake - PowerShell Security](https://cakebuild.net/docs/tutorials/powershell-security)
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+This will log much more information about the problem and allow you to open an issue with those more detailed logs.
+
+Also, the build scripts should leave you with 0 tracked modified files in git.
+If a build fails midway and you have tracked artifacts, you can simply run:
+`git reset --hard` and/or `git clean -dxf` in order to come back to a clean state.
+
+If you encounter PowerShell security issues, please read [Cake - PowerShell Security](https://cakebuild.net/docs/tutorials/powershell-security)
+>>>>>>> update form orginal repo

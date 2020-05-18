@@ -1,7 +1,12 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+﻿#region Copyright
+
 // 
+// Copyright (c) _YEAR_
+// by _OWNER_
+// 
+
+#endregion
+
 #region Using Statements
 
 using System.Collections.Generic;

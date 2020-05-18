@@ -1,8 +1,4 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
-using System.Globalization;
+﻿using System.Globalization;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Services.Tokens;
 using DotNetNuke.Common;

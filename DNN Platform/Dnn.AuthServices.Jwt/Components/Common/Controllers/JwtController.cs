@@ -1,7 +1,37 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 ﻿// 
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // 
+=======
+=======
+>>>>>>> update form orginal repo
+﻿#region Copyright
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+#endregion
+
+<<<<<<< HEAD
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens;
@@ -35,6 +65,7 @@ namespace Dnn.AuthServices.Jwt.Components.Common.Controllers
         private const int SessionTokenTtl = 60; // in minutes = 1 hour
         private const int RenewalTokenTtl = 14; // in days = 2 weeks
         private const string SessionClaimType = "sid";
+        private const string AudienceClaimType = "aud";
         private static readonly Encoding TextEncoder = Encoding.UTF8;
 
         public const string AuthScheme = "Bearer";
@@ -151,7 +182,7 @@ namespace Dnn.AuthServices.Jwt.Components.Common.Controllers
             };
 
             var secret = ObtainSecret(sessionId, portalSettings.GUID, userInfo.Membership.LastPasswordChangeDate);
-            var jwt = CreateJwtToken(secret, portalSettings.PortalAlias.HTTPAlias, ptoken, userInfo.Roles);
+            var jwt = CreateJwtToken(secret, portalSettings.PortalAlias.HTTPAlias, loginData.Audience, ptoken, userInfo.Roles);
             var accessToken = jwt.RawData;
 
             ptoken.TokenHash = GetHashedStr(accessToken);
@@ -231,10 +262,11 @@ namespace Dnn.AuthServices.Jwt.Components.Common.Controllers
                 return EmptyWithError("bad-token");
             }
 
-            return UpdateToken(renewalToken, ptoken, userInfo);
+            var audience = GetJwtAudienceValue(jwt);
+            return UpdateToken(renewalToken, ptoken, userInfo, audience);
         }
 
-        private LoginResultData UpdateToken(string renewalToken, PersistedToken ptoken, UserInfo userInfo)
+        private LoginResultData UpdateToken(string renewalToken, PersistedToken ptoken, UserInfo userInfo, string audience)
         {
             var expiry = DateTime.UtcNow.AddMinutes(SessionTokenTtl);
             if (expiry > ptoken.RenewalExpiry)
@@ -246,7 +278,7 @@ namespace Dnn.AuthServices.Jwt.Components.Common.Controllers
 
             var portalSettings = PortalController.Instance.GetCurrentPortalSettings();
             var secret = ObtainSecret(ptoken.TokenId, portalSettings.GUID, userInfo.Membership.LastPasswordChangeDate);
-            var jwt = CreateJwtToken(secret, portalSettings.PortalAlias.HTTPAlias, ptoken, userInfo.Roles);
+            var jwt = CreateJwtToken(secret, portalSettings.PortalAlias.HTTPAlias, audience, ptoken, userInfo.Roles);
             var accessToken = jwt.RawData;
 
             // save hash values in DB so no one with access can create JWT header from existing data
@@ -273,7 +305,7 @@ namespace Dnn.AuthServices.Jwt.Components.Common.Controllers
             return new LoginResultData { Error = error };
         }
 
-        private static JwtSecurityToken CreateJwtToken(byte[] symmetricKey, string issuer, PersistedToken ptoken, IEnumerable<string> roles)
+        private static JwtSecurityToken CreateJwtToken(byte[] symmetricKey, string issuer, string audience, PersistedToken ptoken, IEnumerable<string> roles)
         {
             //var key = Convert.FromBase64String(symmetricKey);
             var credentials = new SigningCredentials(
@@ -288,7 +320,7 @@ namespace Dnn.AuthServices.Jwt.Components.Common.Controllers
             var notBefore = DateTime.UtcNow.AddMinutes(-ClockSkew);
             var notAfter = ptoken.TokenExpiry;
             var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(issuer, null, claimsIdentity, notBefore, notAfter, credentials);
+            var token = tokenHandler.CreateToken(issuer, audience, claimsIdentity, notBefore, notAfter, credentials);
             return token;
         }
 
@@ -453,6 +485,12 @@ namespace Dnn.AuthServices.Jwt.Components.Common.Controllers
         {
             var sessionClaim = jwt?.Claims?.FirstOrDefault(claim => SessionClaimType.Equals(claim.Type));
             return sessionClaim?.Value;
+        }
+
+        private static string GetJwtAudienceValue(JwtSecurityToken jwt)
+        {
+            var audienceClaim = jwt?.Claims?.FirstOrDefault(claim => AudienceClaimType.Equals(claim.Type));
+            return audienceClaim?.Value;
         }
 
         private static byte[] ObtainSecret(string sessionId, Guid portalGuid, DateTime userCreationDate)

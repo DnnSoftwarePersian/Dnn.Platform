@@ -1,7 +1,32 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+﻿#region Copyright
 // 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> update form orginal repo
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions 
+// of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+// DEALINGS IN THE SOFTWARE.
+#endregion
+<<<<<<< HEAD
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -80,11 +105,6 @@ namespace DotNetNuke.Services.FileSystem
         /// <returns>A <see cref="DotNetNuke.Services.FileSystem.IFileInfo">IFileInfo</see> with the information of the copied file.</returns>
         IFileInfo CopyFile(IFileInfo file, IFolderInfo destinationFolder);
 
-        /// <summary>
-        /// Gets the system defined content types
-        /// </summary>
-		[Obsolete("Deprecated in DNN 7.4.2.  It has been replaced by FileContentTypeManager.Instance.ContentTypes. Scheduled removal in v10.0.0.")]
-        IDictionary<string, string> ContentTypes { get; }
 
         /// <summary>
         /// Deletes the specified file.
@@ -114,15 +134,7 @@ namespace DotNetNuke.Services.FileSystem
         /// <param name="retrieveUnpublishedFiles">Indicates if the file is retrieved from All files or from Published files</param>
         /// <returns>A boolean value indicating whether the file exists or not in the specified folder.</returns>
         bool FileExists(IFolderInfo folder, string fileName, bool retrieveUnpublishedFiles);
-
-        /// <summary>
-        /// Gets the Content Type for the specified file extension.
-        /// </summary>
-        /// <param name="extension">The file extension.</param>
-        /// <returns>The Content Type for the specified extension.</returns>
-		[Obsolete("Deprecated in DNN 7.4.2.  It has been replaced by FileContentTypeManager.Instance.GetContentType(string extension). Scheduled removal in v10.0.0.")]
-        string GetContentType(string extension);
-
+        
         /// <summary>
         /// Gets the file metadata for the specified file.
         /// </summary>

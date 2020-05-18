@@ -1,7 +1,6 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
+﻿// Copyright (c) DNN Software. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,8 +12,6 @@ using NUnit.Framework;
 
 namespace DotNetNuke.Tests.Core.Entities.Modules.Settings
 {
-    using System.Runtime.Remoting.Channels;
-
     [TestFixture]
     public class TabModuleSettingsTests : BaseSettingsTests
     {
@@ -127,6 +124,7 @@ namespace DotNetNuke.Tests.Core.Entities.Modules.Settings
                 ComplexProperty = complexValue,
             };
 
+            MockTabModuleSettings(moduleInfo, new Hashtable());
             MockModuleController.Setup(mc => mc.UpdateTabModuleSetting(TabModuleId, SettingNamePrefix + "StringProperty", stringValue));
             MockModuleController.Setup(mc => mc.UpdateTabModuleSetting(TabModuleId, SettingNamePrefix + "IntegerProperty", integerValue.ToString()));
             MockModuleController.Setup(mc => mc.UpdateTabModuleSetting(TabModuleId, SettingNamePrefix + "DoubleProperty", doubleValue.ToString(CultureInfo.InvariantCulture)));
@@ -152,6 +150,7 @@ namespace DotNetNuke.Tests.Core.Entities.Modules.Settings
             var moduleInfo = GetModuleInfo;
             var settings = new MyTabModuleSettings();
 
+            MockTabModuleSettings(moduleInfo, new Hashtable());
             MockCache.Setup(c => c.Insert(CacheKey(moduleInfo), settings));
             var settingsRepository = new MyTabModuleSettingsRepository();
 
@@ -168,6 +167,7 @@ namespace DotNetNuke.Tests.Core.Entities.Modules.Settings
             //Arrange
             var moduleInfo = GetModuleInfo;
 
+            MockTabModuleSettings(moduleInfo, new Hashtable());
             MockCache.Setup(c => c.GetItem("DNN_" + CacheKey(moduleInfo))).Returns(new MyTabModuleSettings());
             var settingsRepository = new MyTabModuleSettingsRepository();
 

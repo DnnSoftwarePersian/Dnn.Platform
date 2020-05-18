@@ -1,7 +1,11 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 ﻿// 
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // 
+=======
+>>>>>>> update form orginal repo
 #region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
@@ -9,6 +13,15 @@
 // this work for additional information regarding copyright ownership. 
 // The ASF licenses this file to you under the Apache License, Version 2.0
 // (the "License"); you may not use this file except in compliance with 
+=======
+#region Apache License
+//
+// Licensed to the Apache Software Foundation (ASF) under one or more
+// contributor license agreements. See the NOTICE file distributed with
+// this work for additional information regarding copyright ownership.
+// The ASF licenses this file to you under the Apache License, Version 2.0
+// (the "License"); you may not use this file except in compliance with
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 // the License. You may obtain a copy of the License at
 //
 // http://www.apache.org/licenses/LICENSE-2.0
@@ -51,13 +64,21 @@ namespace log4net
 	/// <threadsafety static="true" instance="true" />
 	/// <author>Nicko Cadell</author>
 	/// <author>Gert Driesen</author>
+<<<<<<< HEAD
 	[Obsolete("MDC has been replaced by ThreadContext.Properties. Scheduled removal in v10.0.0.")]
+=======
+	/*[Obsolete("MDC has been replaced by ThreadContext.Properties")]*/
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 	public sealed class MDC
 	{
 		#region Private Instance Constructors
 
 		/// <summary>
+<<<<<<< HEAD
 		/// Initializes a new instance of the <see cref="MDC" /> class. 
+=======
+		/// Initializes a new instance of the <see cref="MDC" /> class.
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		/// </summary>
 		/// <remarks>
 		/// Uses a private access modifier to prevent instantiation of this class.
@@ -87,7 +108,11 @@ namespace log4net
 		/// previously defined context then <c>null</c> will be returned.
 		/// </para>
 		/// </remarks>
+<<<<<<< HEAD
 		/*[Obsolete("MDC has been replaced by ThreadContext.Properties. Scheduled removal in v11.0.0.")]*/
+=======
+		/*[Obsolete("MDC has been replaced by ThreadContext.Properties")]*/
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		public static string Get(string key)
 		{
 			object obj = ThreadContext.Properties[key];
@@ -117,11 +142,19 @@ namespace log4net
 		/// </para>
 		/// <para>
 		/// If a value is already defined for the <paramref name="key" />
+<<<<<<< HEAD
 		/// specified then the value will be replaced. If the <paramref name="value" /> 
 		/// is specified as <c>null</c> then the key value mapping will be removed.
 		/// </para>
 		/// </remarks>
 		[Obsolete("MDC has been replaced by ThreadContext.Properties. Scheduled removal in v10.0.0.")]
+=======
+		/// specified then the value will be replaced. If the <paramref name="value" />
+		/// is specified as <c>null</c> then the key value mapping will be removed.
+		/// </para>
+		/// </remarks>
+		/*[Obsolete("MDC has been replaced by ThreadContext.Properties")]*/
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		public static void Set(string key, string value)
 		{
 			ThreadContext.Properties[key] = value;
@@ -142,7 +175,11 @@ namespace log4net
 		/// Remove the specified entry from this thread's MDC
 		/// </para>
 		/// </remarks>
+<<<<<<< HEAD
 		[Obsolete("MDC has been replaced by ThreadContext.Properties. Scheduled removal in v10.0.0.")]
+=======
+		/*[Obsolete("MDC has been replaced by ThreadContext.Properties")]*/
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		public static void Remove(string key)
 		{
 			ThreadContext.Properties.Remove(key);
@@ -162,7 +199,11 @@ namespace log4net
 		/// Remove all the entries from this thread's MDC
 		/// </para>
 		/// </remarks>
+<<<<<<< HEAD
 		[Obsolete("MDC has been replaced by ThreadContext.Properties. Scheduled removal in v10.0.0.")]
+=======
+		/*[Obsolete("MDC has been replaced by ThreadContext.Properties")]*/
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		public static void Clear()
 		{
 			ThreadContext.Properties.Clear();

@@ -1,24 +1,50 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+﻿#region Copyright
 // 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> update form orginal repo
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions 
+// of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+// DEALINGS IN THE SOFTWARE.
+#endregion
+
+<<<<<<< HEAD
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Data;
 using System.Reflection;
 using System.Web;
-using DotNetNuke.Abstractions;
-using DotNetNuke.Common;
+
 using DotNetNuke.Common.Internal;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.ComponentModel;
 using DotNetNuke.Data;
 using DotNetNuke.Entities.Controllers;
-using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Tabs;
 using DotNetNuke.Security.Roles;
 using DotNetNuke.Services.Cache;
 using DotNetNuke.Services.ClientCapability;
+using DotNetNuke.Services.Localization;
 using DotNetNuke.Services.Mobile;
 using DotNetNuke.Tests.Core.Services.ClientCapability;
 using DotNetNuke.Tests.Instance.Utilities;
@@ -34,11 +60,11 @@ namespace DotNetNuke.Tests.Core.Services.Mobile
 	///   Summary description for RedirectionControllerTests
 	/// </summary>
 	[TestFixture]
-    public class RedirectionControllerTests
+	public class RedirectionControllerTests
 	{
-        #region Private Properties
+		#region Private Properties
 
-        private Mock<DataProvider> _dataProvider;
+		private Mock<DataProvider> _dataProvider;
 		private RedirectionController _redirectionController;
         private Mock<ClientCapabilityProvider> _clientCapabilityProvider;
 	    private Mock<IHostController> _mockHostController;
@@ -81,7 +107,15 @@ namespace DotNetNuke.Tests.Core.Services.Mobile
 	    public const bool EnabledFlag = true;
         public const bool DisabledFlag = false;
         public const bool IncludeChildTabsFlag = true;
+<<<<<<< HEAD
+<<<<<<< HEAD
 	    public const string ExternalSite = "https://dnncommunity.org";
+=======
+	    public const string ExternalSite = "https://www.dnnsoftware.com";
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+	    public const string ExternalSite = "https://www.dnnsoftware.com";
+>>>>>>> update form orginal repo
 
 		private const string DisableMobileRedirectCookieName = "disablemobileredirect";
 		private const string DisableRedirectPresistCookieName = "disableredirectpresist";
@@ -90,11 +124,11 @@ namespace DotNetNuke.Tests.Core.Services.Mobile
 		#endregion
 
 		#region Set Up
+
 		[SetUp]
 		public void SetUp()
 		{
-            SetupContianer();
-            ComponentFactory.Container = new SimpleContainer();
+			ComponentFactory.Container = new SimpleContainer();
             UnitTestHelper.ClearHttpContext();
 			_dataProvider = MockComponentProvider.CreateDataProvider();
 			MockComponentProvider.CreateDataCacheProvider();
@@ -120,8 +154,6 @@ namespace DotNetNuke.Tests.Core.Services.Mobile
         [TearDown]
         public void TearDown()
         {
-            TestableGlobals.ClearInstance();
-            PortalController.ClearInstance();
             CachingProvider.Instance().PurgeCache();
             MockComponentProvider.ResetContainer();
             UnitTestHelper.ClearHttpContext();
@@ -138,22 +170,13 @@ namespace DotNetNuke.Tests.Core.Services.Mobile
             ComponentFactory.Container = null;
         }
 
-        private void SetupContianer()
-        {
-            var navigationManagerMock = new Mock<INavigationManager>();
-            navigationManagerMock.Setup(x => x.NavigateURL(It.IsAny<int>())).Returns<int>(x => NavigateUrl(x));
-            var containerMock = new Mock<IServiceProvider>();
-            containerMock.Setup(x => x.GetService(typeof(INavigationManager))).Returns(navigationManagerMock.Object);
-            Globals.DependencyProvider = containerMock.Object;
-        }
-        #endregion
+		#endregion
 
-        #region Tests
+		#region Tests
 
-        #region CURD API Tests
+		#region CURD API Tests
 
-
-        [Test]
+		[Test]
 		public void RedirectionController_Save_Valid_Redirection()
 		{
 			var redirection = new Redirection { Name = "Test R", PortalId = Portal0, SortOrder = 1, SourceTabId = -1, Type = RedirectionType.MobilePhone, TargetType = TargetType.Portal, TargetValue = Portal1 };
@@ -731,7 +754,7 @@ namespace DotNetNuke.Tests.Core.Services.Mobile
             else if (portalId == Portal1)
                 homePage = HomePageOnPortal1;
 
-            table.Rows.Add(portalId, null, "My Website", "Logo.png", "Copyright 2011 by DotNetNuke Corporation", null, "2", "0", "2", "USD", "0", "0", "0", "0", "0", "1", "My Website", "DotNetNuke, DNN, Content, Management, CMS", null, "1057AC7A-3C08-4849-A3A6-3D2AB4662020", null, null, null, "0", "admin@changeme.invalid", "en-US", "-8", "58", "Portals/0", null, homePage.ToString(), null, null, "57", "56", "-1", "-1", null, null, "7", "-1", "2011-08-25 07:34:11", "-1", "2011-08-25 07:34:29", culture);
+            table.Rows.Add(portalId, null, "My Website", "Logo.png", "Copyright 2011 by DotNetNuke Corporation", null, "2", "0", "2", "USD", "0", "0", "0", "0", "0", "1", "My Website", "DotNetNuke, DNN, Content, Management, CMS", null, "1057AC7A-3C08-4849-A3A6-3D2AB4662020", null, null, null, "0", "admin@change.me", "en-US", "-8", "58", "Portals/0", null, homePage.ToString(), null, null, "57", "56", "-1", "-1", null, null, "7", "-1", "2011-08-25 07:34:11", "-1", "2011-08-25 07:34:29", culture);
 
 			return table.CreateDataReader();
 		}

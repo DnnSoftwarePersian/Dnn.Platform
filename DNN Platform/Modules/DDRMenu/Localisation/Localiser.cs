@@ -1,8 +1,4 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
-using DotNetNuke.Common.Utilities;
+﻿using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Tabs;
 using DotNetNuke.UI.WebControls;
 using EaloTabInfo = effority.Ealo.Specialized.TabInfo;
@@ -20,7 +16,7 @@ namespace DotNetNuke.Web.DDRMenu.Localisation
 			{
 				if (!apiChecked)
 				{
-                    foreach (var api in new ILocalisation[] { new Generic(), new Ealo(), new Apollo() }) //new Adequation() 
+                    foreach (var api in new ILocalisation[] { new Generic() })
                     {
                         if (api.HaveApi())
                         {

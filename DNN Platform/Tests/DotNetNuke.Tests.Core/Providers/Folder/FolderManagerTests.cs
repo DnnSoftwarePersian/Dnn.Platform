@@ -1,7 +1,32 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+﻿#region Copyright
 // 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> update form orginal repo
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions 
+// of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+// DEALINGS IN THE SOFTWARE.
+#endregion
+<<<<<<< HEAD
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -184,54 +209,6 @@ namespace DotNetNuke.Tests.Core.Providers.Folder
 
             _mockFolderManager.Object.AddFolder(folderMapping, Constants.FOLDER_ValidSubFolderRelativePath);
 
-        }
-
-        [Test]
-        [ExpectedException(typeof(InvalidFolderPathException))]
-        public void AddFolder_Throws_When_FolderPath_Is_Invalid()
-        {
-            // arrange
-            var folderMapping = new FolderMappingInfo
-            {
-                PortalID = Constants.CONTENT_ValidPortalId
-            };
-
-            _mockFolderManager
-                .Setup(mfm => mfm.FolderExists(It.IsAny<int>(), It.IsAny<string>()))
-                .Returns(false);
-
-            _mockFolderManager
-                .Setup(mfm => mfm.IsValidFolderPath(It.IsAny<string>()))
-                .Returns(false);
-
-            // act
-            _mockFolderManager.Object.AddFolder(folderMapping, Constants.FOLDER_ValidSubFolderRelativePath);
-
-            // assert (implicit)
-        }
-
-        [Test]
-        public void IsValidFolderPath_Returns_True_When_FolderPath_Is_Valid()
-        {
-            // arrange (implicit)
-
-            // act
-            var result = _mockFolderManager.Object.IsValidFolderPath(Constants.FOLDER_ValidSubFolderRelativePath);
-
-            // assert
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void IsValidFolderPath_Returns_False_When_FolderPath_Is_Invalid()
-        {
-            // arrange (implicit)
-
-            // act
-            var result = _mockFolderManager.Object.IsValidFolderPath(Constants.FOLDER_InvalidSubFolderRelativePath);
-
-            // assert
-            Assert.IsFalse(result);
         }
 
         #endregion
@@ -475,7 +452,7 @@ namespace DotNetNuke.Tests.Core.Providers.Folder
             _mockFolder.Setup(mf => mf.DeleteFolder(_folderInfo.Object));
 
             _directory.Setup(d => d.Exists(Constants.FOLDER_ValidFolderPath)).Returns(true);
-            _directory.Setup(d => d.Delete(Constants.FOLDER_ValidFolderPath, true)).Verifiable();
+            _directory.Setup(d => d.Delete(Constants.FOLDER_ValidFolderPath, false)).Verifiable();
 
             _mockFolderManager.Setup(mfm => mfm.DeleteFolder(Constants.CONTENT_ValidPortalId, Constants.FOLDER_ValidFolderRelativePath));
 
@@ -2163,22 +2140,6 @@ namespace DotNetNuke.Tests.Core.Providers.Folder
         #endregion
 
         #region MoveFolder
-
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void MoveFolder_Throws_On_Null_Folder()
-        {
-            _folderManager.MoveFolder(null, It.IsAny<string>());
-        }
-
-        [Test]
-        [TestCase(null)]
-        [TestCase("")]
-        [ExpectedException(typeof(ArgumentException))]
-        public void MoveFolder_Throws_On_Null_Or_Emtpy_NewFolderPath(string newFolderPath)
-        {
-            _folderManager.MoveFolder(_folderInfo.Object, newFolderPath);
-        }
 
         [Test]
         public void MoveFolder_Returns_The_Same_Folder_If_The_Paths_Are_The_Same()

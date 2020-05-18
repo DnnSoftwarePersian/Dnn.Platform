@@ -1,7 +1,60 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 ﻿// 
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // 
+<<<<<<< HEAD
+=======
+=======
+#region Copyright
+<<<<<<< HEAD
+//
+>>>>>>> Merges latest changes from 9.4.x into development (#3189)
+=======
+// 
+>>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)"
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions 
+// of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+// DEALINGS IN THE SOFTWARE.
+#endregion
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+#region Copyright
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+#endregion
+>>>>>>> update form orginal repo
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +63,6 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Xml;
-using Microsoft.Extensions.DependencyInjection;
 
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
@@ -23,13 +75,11 @@ using DotNetNuke.Modules.Html.Components;
 using DotNetNuke.Security;
 using DotNetNuke.Security.Permissions;
 using DotNetNuke.Security.Roles;
-using DotNetNuke.Security.Roles.Internal;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.Services.Search.Entities;
 using DotNetNuke.Services.Social.Notifications;
 using DotNetNuke.Services.Tokens;
 using DotNetNuke.Services.Exceptions;
-using DotNetNuke.Abstractions;
 
 namespace DotNetNuke.Modules.Html
 {
@@ -47,11 +97,6 @@ namespace DotNetNuke.Modules.Html
     {
 		public const int MAX_DESCRIPTION_LENGTH = 100;
         private const string PortalRootToken = "{{PortalRoot}}";
-        protected INavigationManager NavigationManager { get; }
-        public HtmlTextController()
-        {
-            NavigationManager = Globals.DependencyProvider.GetRequiredService<INavigationManager>();
-        }
 
         #region Private Methods
 
@@ -99,7 +144,7 @@ namespace DotNetNuke.Modules.Html
             // if not published
             if (objHtmlText.IsPublished == false)
             {
-                arrUsers.Add(objHtmlText.CreatedByUserID); // include content owner
+                arrUsers.Add(objHtmlText.CreatedByUserID); // include content owner 
             }
 
             // if not draft and not published
@@ -139,7 +184,7 @@ namespace DotNetNuke.Modules.Html
             // process notifications
             if (arrUsers.Count > 0 || (objHtmlText.IsPublished && objHtmlText.Notify))
             {
-                // get tabid from module
+                // get tabid from module 
                 ModuleInfo objModule = ModuleController.Instance.GetModule(objHtmlText.ModuleID, Null.NullInteger, true);
 
                 PortalSettings objPortalSettings = PortalController.Instance.GetCurrentPortalSettings();
@@ -152,14 +197,14 @@ namespace DotNetNuke.Modules.Html
                                                            Localization.LocalSharedResourceFile);
                     string strSubject = Localization.GetString("NotificationSubject", strResourceFile);
                     string strBody = Localization.GetString("NotificationBody", strResourceFile);
-                    strBody = strBody.Replace("[URL]", NavigationManager.NavigateURL(objModule.TabID));
+                    strBody = strBody.Replace("[URL]", Globals.NavigateURL(objModule.TabID));
                     strBody = strBody.Replace("[STATE]", objHtmlText.StateName);
 
                     // process user notification collection
 
                     foreach (int intUserID in arrUsers)
                     {
-                        // create user notification record
+                        // create user notification record 
                         _htmlTextUser = new HtmlTextUserInfo();
                         _htmlTextUser.ItemID = objHtmlText.ItemID;
                         _htmlTextUser.StateID = objHtmlText.StateID;
@@ -256,7 +301,7 @@ namespace DotNetNuke.Modules.Html
             var aliases = PortalAliasController.Instance.GetPortalAliases();
             if (!aliases.Contains(domain))
             {
-                // this is no not a portal url so even if it contains /portals/..
+                // this is no not a portal url so even if it contains /portals/.. 
                 // we do not need to replace it with a token
                 return m.ToString();
             }
@@ -371,8 +416,8 @@ namespace DotNetNuke.Modules.Html
                     htmlText.WorkflowName = "[REPAIR_WORKFLOW]";
 
                     var workflowStateController = new WorkflowStateController();
-                    htmlText.StateID = htmlText.IsPublished
-                                        ? workflowStateController.GetLastWorkflowStateID(workflowId)
+                    htmlText.StateID = htmlText.IsPublished 
+                                        ? workflowStateController.GetLastWorkflowStateID(workflowId) 
                                         : workflowStateController.GetFirstWorkflowStateID(workflowId);
                     // update object
                     UpdateHtmlText(htmlText, GetMaximumVersionHistory(htmlText.PortalID));
@@ -507,7 +552,7 @@ namespace DotNetNuke.Modules.Html
                             strURL = strURL.Substring(strURL.IndexOf(strDirectory) + strDirectory.Length);
                         }
                         // add upload directory
-                        if (!strURL.StartsWith("/")
+                        if (!strURL.StartsWith("/") 
                             && !String.IsNullOrEmpty(strURL.Trim())) //We don't write the UploadDirectory if the token/attribute has not value. Therefore we will avoid an unnecessary request
                         {
                             sbBuff.Append(uploadDirectory);
@@ -828,7 +873,7 @@ namespace DotNetNuke.Modules.Html
 
             return collectTagsFunc(terms, new List<string>());
         }
-
+		
         #endregion
 
         #region IUpgradeable Members

@@ -1,17 +1,68 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 ﻿// 
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // 
+<<<<<<< HEAD
+=======
+=======
+﻿#region Copyright
+<<<<<<< HEAD
+//
+>>>>>>> Merges latest changes from 9.4.x into development (#3189)
+=======
+// 
+>>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)"
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions 
+// of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+// DEALINGS IN THE SOFTWARE.
+#endregion
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+﻿#region Copyright
+//
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+#endregion
+>>>>>>> update form orginal repo
 #region Usings
 
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web.UI.WebControls;
-using Microsoft.Extensions.DependencyInjection;
 
 using DotNetNuke.Common;
-using DotNetNuke.Abstractions;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Modules.Definitions;
@@ -32,15 +83,9 @@ namespace DotNetNuke.Modules.RazorHost
     public partial class CreateModule : ModuleUserControlBase
     {
 		private static readonly ILog Logger = LoggerSource.Instance.GetLogger(typeof(CreateModule));
-        private readonly INavigationManager _navigationManager;
 
         private string razorScriptFileFormatString = "~/DesktopModules/RazorModules/RazorHost/Scripts/{0}";
         private string razorScriptFolder = "~/DesktopModules/RazorModules/RazorHost/Scripts/";
-
-        public CreateModule()
-        {
-            _navigationManager = Globals.DependencyProvider.GetRequiredService<INavigationManager>();
-        }
 
         [Obsolete("Deprecated in 9.3.2, will be removed in 11.0.0, use Razor Pages instead")]
         protected string ModuleControl
@@ -143,7 +188,7 @@ namespace DotNetNuke.Modules.RazorHost
 	        {
 				Logger.Error(ex);
 	        }
-
+			
 
             //Optionally goto new Page
             if (chkAddPage.Checked)
@@ -175,7 +220,7 @@ namespace DotNetNuke.Modules.RazorHost
                     objModule.AllTabs = false;
                     ModuleController.Instance.AddModule(objModule);
 
-                    Response.Redirect(_navigationManager.NavigateURL(newTab.TabID), true);
+                    Response.Redirect(Globals.NavigateURL(newTab.TabID), true);
                 }
                 else
                 {
@@ -185,7 +230,7 @@ namespace DotNetNuke.Modules.RazorHost
             else
             {
                 //Redirect to main extensions page
-                Response.Redirect(_navigationManager.NavigateURL(), true);
+                Response.Redirect(Globals.NavigateURL(), true);
             }
         }
 
@@ -279,7 +324,7 @@ namespace DotNetNuke.Modules.RazorHost
 
             if (! ModuleContext.PortalSettings.UserInfo.IsSuperUser)
             {
-                Response.Redirect(_navigationManager.NavigateURL("Access Denied"), true);
+                Response.Redirect(Globals.NavigateURL("Access Denied"), true);
             }
 
             if (! Page.IsPostBack)
@@ -293,7 +338,7 @@ namespace DotNetNuke.Modules.RazorHost
         {
             try
             {
-                Response.Redirect(_navigationManager.NavigateURL(), true);
+                Response.Redirect(Globals.NavigateURL(), true);
             }
             catch (Exception exc) //Module failed to load
             {
@@ -307,7 +352,7 @@ namespace DotNetNuke.Modules.RazorHost
             {
                 if (! ModuleContext.PortalSettings.UserInfo.IsSuperUser)
                 {
-                    Response.Redirect(_navigationManager.NavigateURL("Access Denied"), true);
+                    Response.Redirect(Globals.NavigateURL("Access Denied"), true);
                 }
 
                 if (Page.IsValid)

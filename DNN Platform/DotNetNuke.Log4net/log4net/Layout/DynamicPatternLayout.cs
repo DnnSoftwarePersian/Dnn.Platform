@@ -1,8 +1,4 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with

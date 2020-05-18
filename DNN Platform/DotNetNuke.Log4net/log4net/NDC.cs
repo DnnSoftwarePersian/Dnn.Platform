@@ -1,7 +1,11 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 ﻿// 
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // 
+=======
+>>>>>>> update form orginal repo
 #region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
@@ -9,6 +13,15 @@
 // this work for additional information regarding copyright ownership. 
 // The ASF licenses this file to you under the Apache License, Version 2.0
 // (the "License"); you may not use this file except in compliance with 
+=======
+#region Apache License
+//
+// Licensed to the Apache Software Foundation (ASF) under one or more
+// contributor license agreements. See the NOTICE file distributed with
+// this work for additional information regarding copyright ownership.
+// The ASF licenses this file to you under the Apache License, Version 2.0
+// (the "License"); you may not use this file except in compliance with
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 // the License. You may obtain a copy of the License at
 //
 // http://www.apache.org/licenses/LICENSE-2.0
@@ -62,20 +75,33 @@ namespace log4net
 	///	using(NDC.Push("my context message"))
 	///	{
 	///		... all log calls will have 'my context message' included ...
+<<<<<<< HEAD
 	///	
 	///	} // at the end of the using block the message is automatically removed 
+=======
+	///
+	///	} // at the end of the using block the message is automatically removed
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 	/// </code>
 	/// </example>
 	/// <threadsafety static="true" instance="true" />
 	/// <author>Nicko Cadell</author>
 	/// <author>Gert Driesen</author>
+<<<<<<< HEAD
 	[Obsolete("NDC has been replaced by ThreadContext.Stacks. Scheduled removal in v10.0.0.")]
+=======
+	/*[Obsolete("NDC has been replaced by ThreadContext.Stacks")]*/
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 	public sealed class NDC
 	{
 		#region Private Instance Constructors
 
 		/// <summary>
+<<<<<<< HEAD
 		/// Initializes a new instance of the <see cref="NDC" /> class. 
+=======
+		/// Initializes a new instance of the <see cref="NDC" /> class.
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		/// </summary>
 		/// <remarks>
 		/// Uses a private access modifier to prevent instantiation of this class.
@@ -103,12 +129,20 @@ namespace log4net
 		/// The number of context values pushed onto the context stack.
 		/// </para>
 		/// <para>
+<<<<<<< HEAD
 		/// Used to record the current depth of the context. This can then 
+=======
+		/// Used to record the current depth of the context. This can then
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		/// be restored using the <see cref="SetMaxDepth"/> method.
 		/// </para>
 		/// </remarks>
 		/// <seealso cref="SetMaxDepth"/>
+<<<<<<< HEAD
 		/*[Obsolete("NDC has been replaced by ThreadContext.Stacks. Scheduled removal in v11.0.0.")]*/
+=======
+		/*[Obsolete("NDC has been replaced by ThreadContext.Stacks")]*/
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		public static int Depth
 		{
 			get { return ThreadContext.Stacks["NDC"].Count; }
@@ -132,8 +166,13 @@ namespace log4net
 		/// Clears the stack of NDC data held on the current thread.
 		/// </para>
 		/// </remarks>
+<<<<<<< HEAD
 		[Obsolete("NDC has been replaced by ThreadContext.Stacks. Scheduled removal in v10.0.0.")]
 		public static void Clear() 
+=======
+		/*[Obsolete("NDC has been replaced by ThreadContext.Stacks")]*/
+		public static void Clear()
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		{
 			ThreadContext.Stacks["NDC"].Clear();
 		}
@@ -150,6 +189,7 @@ namespace log4net
 		/// </para>
 		/// </note>
 		/// <para>
+<<<<<<< HEAD
 		/// The results of this method can be passed to the <see cref="Inherit"/> 
 		/// method to allow child threads to inherit the context of their 
 		/// parent thread.
@@ -157,6 +197,15 @@ namespace log4net
 		/// </remarks>
 		[Obsolete("NDC has been replaced by ThreadContext.Stacks. Scheduled removal in v10.0.0.")]
 		public static Stack CloneStack() 
+=======
+		/// The results of this method can be passed to the <see cref="Inherit"/>
+		/// method to allow child threads to inherit the context of their
+		/// parent thread.
+		/// </para>
+		/// </remarks>
+		/*[Obsolete("NDC has been replaced by ThreadContext.Stacks")]*/
+		public static Stack CloneStack()
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		{
 			return ThreadContext.Stacks["NDC"].InternalStack;
 		}
@@ -182,8 +231,13 @@ namespace log4net
 		/// this method.
 		/// </para>
 		/// </remarks>
+<<<<<<< HEAD
 		[Obsolete("NDC has been replaced by ThreadContext.Stacks. Scheduled removal in v10.0.0.", true)]
 		public static void Inherit(Stack stack) 
+=======
+		/*[Obsolete("NDC has been replaced by ThreadContext.Stacks", true)]*/
+		public static void Inherit(Stack stack)
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		{
 			ThreadContext.Stacks["NDC"].InternalStack = stack;
 		}
@@ -192,7 +246,11 @@ namespace log4net
 		/// Removes the top context from the stack.
 		/// </summary>
 		/// <returns>
+<<<<<<< HEAD
 		/// The message in the context that was removed from the top 
+=======
+		/// The message in the context that was removed from the top
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		/// of the stack.
 		/// </returns>
 		/// <remarks>
@@ -208,8 +266,13 @@ namespace log4net
 		/// empty string (not <c>null</c>) is returned.
 		/// </para>
 		/// </remarks>
+<<<<<<< HEAD
 		/*[Obsolete("NDC has been replaced by ThreadContext.Stacks. Scheduled removal in v11.0.0.")]*/
 		public static string Pop() 
+=======
+		/*[Obsolete("NDC has been replaced by ThreadContext.Stacks")]*/
+		public static string Pop()
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		{
 			return ThreadContext.Stacks["NDC"].Pop();
 		}
@@ -219,7 +282,11 @@ namespace log4net
 		/// </summary>
 		/// <param name="message">The new context message.</param>
 		/// <returns>
+<<<<<<< HEAD
 		/// An <see cref="IDisposable"/> that can be used to clean up 
+=======
+		/// An <see cref="IDisposable"/> that can be used to clean up
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		/// the context stack.
 		/// </returns>
 		/// <remarks>
@@ -244,8 +311,13 @@ namespace log4net
 		///	}
 		/// </code>
 		/// </example>
+<<<<<<< HEAD
 		[Obsolete("NDC has been replaced by ThreadContext.Stacks. Scheduled removal in v10.0.0.")]
 		public static IDisposable Push(string message) 
+=======
+		/*[Obsolete("NDC has been replaced by ThreadContext.Stacks")]*/
+		public static IDisposable Push(string message)
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		{
 			return ThreadContext.Stacks["NDC"].Push(message);
 		}
@@ -256,7 +328,11 @@ namespace log4net
 		/// <param name="messageFormat">The new context message string format.</param>
 		/// <param name="args">Arguments to be passed into messageFormat.</param>
 		/// <returns>
+<<<<<<< HEAD
 		/// An <see cref="IDisposable"/> that can be used to clean up 
+=======
+		/// An <see cref="IDisposable"/> that can be used to clean up
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		/// the context stack.
 		/// </returns>
 		/// <remarks>
@@ -282,7 +358,11 @@ namespace log4net
 		///	}
 		/// </code>
 		/// </example>
+<<<<<<< HEAD
 		[Obsolete("NDC has been replaced by ThreadContext.Stacks. Scheduled removal in v10.0.0.")]
+=======
+		/*[Obsolete("NDC has been replaced by ThreadContext.Stacks")]*/
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		public static IDisposable PushFormat(string messageFormat, params object[] args)
 		{
 			return Push(string.Format(messageFormat, args));
@@ -303,8 +383,13 @@ namespace log4net
 		/// This method is not implemented.
 		/// </para>
 		/// </remarks>
+<<<<<<< HEAD
 		[Obsolete("NDC has been replaced by ThreadContext.Stacks. Scheduled removal in v10.0.0.")]
 		public static void Remove() 
+=======
+		/*[Obsolete("NDC has been replaced by ThreadContext.Stacks")]*/
+		public static void Remove()
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		{
 		}
 
@@ -321,14 +406,23 @@ namespace log4net
 		/// </note>
 		/// <para>
 		/// Forces the stack depth to be at most <paramref name="maxDepth"/>.
+<<<<<<< HEAD
 		/// This may truncate the head of the stack. This only affects the 
+=======
+		/// This may truncate the head of the stack. This only affects the
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		/// stack in the current thread. Also it does not prevent it from
 		/// growing, it only sets the maximum depth at the time of the
 		/// call. This can be used to return to a known context depth.
 		/// </para>
 		/// </remarks>
+<<<<<<< HEAD
 		[Obsolete("NDC has been replaced by ThreadContext.Stacks. Scheduled removal in v10.0.0.")]
 		public static void SetMaxDepth(int maxDepth) 
+=======
+		/*[Obsolete("NDC has been replaced by ThreadContext.Stacks")]*/
+		public static void SetMaxDepth(int maxDepth)
+>>>>>>> DNN-30782: merge changes from https://github.com/apache/logging-log4net/tree/release/2.1.0. (#2894)
 		{
 			if (maxDepth >= 0)
 			{

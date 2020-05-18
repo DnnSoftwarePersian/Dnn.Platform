@@ -1,8 +1,4 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +8,6 @@ using DotNetNuke;
 using DotNetNuke.UI.WebControls;
 using DotNetNuke.Common;
 using DotNetNuke.Security.Roles;
-using DotNetNuke.Security.Roles.Internal;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.UI.Skins.Controls;
 using DotNetNuke.Services.Localization;

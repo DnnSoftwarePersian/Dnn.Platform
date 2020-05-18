@@ -1,8 +1,16 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 ﻿// 
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // 
 // Licensed to the .NET Foundation under one or more agreements.
+=======
+﻿// Licensed to the .NET Foundation under one or more agreements.
+>>>>>>> Merges latest changes from 9.4.x into development (#3189)
+=======
+﻿// Licensed to the .NET Foundation under one or more agreements.
+>>>>>>> update form orginal repo
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information. 
 

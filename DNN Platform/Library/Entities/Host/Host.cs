@@ -1,7 +1,32 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+#region Copyright
 // 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> update form orginal repo
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions 
+// of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+// DEALINGS IN THE SOFTWARE.
+#endregion
+<<<<<<< HEAD
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 #region Usings
 
 using System;
@@ -619,18 +644,7 @@ namespace DotNetNuke.Entities.Host
                 return new FileExtensionWhitelist(HostController.Instance.GetString("FileExtensions"));
             }
         }
-
-        /// <summary>
-        ///   Default list of extensions an end user is allowed to upload.
-        /// </summary>
-        public static FileExtensionWhitelist DefaultEndUserExtensionWhitelist
-        {
-            get
-            {
-                return new FileExtensionWhitelist(HostController.Instance.GetString("DefaultEndUserExtensionWhitelist"));
-            }
-        }
-
+        
         /// -----------------------------------------------------------------------------
         /// <summary>
         ///   Gets the GUID
@@ -1513,104 +1527,7 @@ namespace DotNetNuke.Entities.Host
             }
         }
 
-        /// <summary>
-        ///   Gets whether to use the minified or debug version of the jQuery scripts
-        /// </summary>
-        /// <remarks>
-        ///   Defaults to False
-        /// </remarks>
-        [Obsolete("This is managed through the JavaScript Library package. Scheduled removal in v10.0.0.")]
-        public static bool jQueryDebug
-        {
-            get
-            {
-                return HostController.Instance.GetBoolean("jQueryDebug", false);
-            }
-        }
 
-        /// <summary>
-        ///   Gets whether to use a hosted version of the jQuery script file
-        /// </summary>
-        /// <remarks>
-        ///   Defaults to False
-        /// </remarks>
-        [Obsolete("This is managed through the JavaScript Library package. Scheduled removal in v10.0.0.")]
-        public static bool jQueryHosted
-        {
-            get
-            {
-                return HostController.Instance.GetBoolean("jQueryHosted", false);
-            }
-        }
-
-        /// <summary>
-        ///   Gets the Url for a hosted version of jQuery
-        /// </summary>
-        /// <remarks>
-        ///   Defaults to the DefaultHostedUrl constant in the jQuery class.
-        ///   The framework will default to the latest released 1.x version hosted on Google.
-        /// </remarks>
-        [Obsolete("This is managed through the JavaScript Library package. Scheduled removal in v10.0.0.")]
-        public static string jQueryUrl
-        {
-            get
-            {
-                if (HttpContext.Current.Request.IsSecureConnection)
-                {
-                    return HostController.Instance.GetString("jQueryUrl", jQuery.DefaultHostedUrl).Replace("http://", "https://");
-                }
-                else
-                {
-                    return HostController.Instance.GetString("jQueryUrl", jQuery.DefaultHostedUrl);
-                }
-            }
-        }
-
-		/// <summary>
-		///   Gets the Url for a hosted version of jQuery Migrate plugin.
-		/// </summary>
-		/// <remarks>
-		///   Defaults to the DefaultHostedUrl constant in the jQuery class.
-		///   The framework will default to the latest released 1.x version hosted on Google.
-		/// </remarks>
-		[Obsolete("This is managed through the JavaScript Library package. Scheduled removal in v10.0.0.")]
-		public static string jQueryMigrateUrl
-		{
-			get
-			{
-				if (HttpContext.Current.Request.IsSecureConnection)
-				{
-					return HostController.Instance.GetString("jQueryMigrateUrl", string.Empty).Replace("http://", "https://");
-				}
-				else
-				{
-					return HostController.Instance.GetString("jQueryMigrateUrl", string.Empty);
-				}
-			}
-		}
-
-        /// <summary>
-        ///   Gets the Url for a hosted version of jQuery UI
-        /// </summary>
-        /// <remarks>
-        ///   Defaults to the DefaultUIHostedUrl constant in the jQuery class.
-        ///   The framework will default to the latest released 1.x version hosted on Google.
-        /// </remarks>
-        [Obsolete("This is managed through the JavaScript Library package. Scheduled removal in v10.0.0.")]
-        public static string jQueryUIUrl
-        {
-            get
-            {
-                if (HttpContext.Current.Request.IsSecureConnection)
-                {
-                    return HostController.Instance.GetString("jQueryUIUrl", jQuery.DefaultUIHostedUrl).Replace("http://", "https://");
-                }
-                else
-                {
-                    return HostController.Instance.GetString("jQueryUIUrl", jQuery.DefaultUIHostedUrl);
-                }
-            }
-        }
 
 		/// <summary>
 		///   Gets whether to use a hosted version of the MS Ajax Library
@@ -1626,46 +1543,7 @@ namespace DotNetNuke.Entities.Host
 		    }
 	    }
 
-		/// <summary>
-		///   Gets whether to use a hosted version of the Telerik Library
-		/// </summary>
-		/// <remarks>
-		///   Defaults to False
-		/// </remarks>
-		[Obsolete("Not used anymore. Scheduled removal in v10.0.0.")]
-		public static bool EnableTelerikCdn
-		{
-			get
-			{
-				return HostController.Instance.GetBoolean("EnableTelerikCDN", false);
-			}
-		}
-
         /// <summary>
-        /// Get Telerik CDN Basic Path.
-        /// </summary>
-        [Obsolete("Not used anymore. Scheduled removal in v10.0.0.")]
-        public static string TelerikCdnBasicUrl
-	    {
-			get
-			{
-				return HostController.Instance.GetString("TelerikCDNBasicUrl");
-			}
-	    }
-
-        /// <summary>
-        /// Get Telerik CDN Secure Path.
-        /// </summary>
-        [Obsolete("Not used anymore. Scheduled removal in v10.0.0.")]
-        public static string TelerikCdnSecureUrl
-		{
-			get
-			{
-				return HostController.Instance.GetString("TelerikCDNSecureUrl");
-			}
-		}
-
-		/// <summary>
 		/// Get the time, in seconds, before asynchronous postbacks time out if no response is received.
 		/// </summary>
 		public static int AsyncTimeout

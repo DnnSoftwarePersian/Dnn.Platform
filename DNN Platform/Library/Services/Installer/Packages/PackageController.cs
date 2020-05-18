@@ -1,7 +1,24 @@
-ï»¿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+#region Copyright
 // 
+// DotNetNuke® - http://www.dotnetnuke.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions 
+// of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+// DEALINGS IN THE SOFTWARE.
+#endregion
+
 #region Usings
 
 using System;
@@ -356,7 +373,6 @@ namespace DotNetNuke.Services.Installer.Packages
                 ZipEntry entry = unzip.GetNextEntry();
                 while (entry != null)
                 {
-                    entry.CheckZipEntry();
                     if (!entry.IsDirectory)
                     {
                         var fileName = entry.Name;
@@ -509,101 +525,6 @@ namespace DotNetNuke.Services.Installer.Packages
         }
 
         #endregion
-
-        #region Deprecated Methods
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by SaveExtensionPackage(PackageInfo package). Scheduled removal in v10.0.0.")]
-        public static int AddPackage(PackageInfo package, bool includeDetail)
-        {
-            Instance.SaveExtensionPackage(package);
-            return package.PackageID;
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by DeleteExtensionPackage(PackageInfo package). Scheduled removal in v10.0.0.")]
-        public static void DeletePackage(PackageInfo package)
-        {
-            Instance.DeleteExtensionPackage(package);
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by DeleteExtensionPackage(PackageInfo package). Scheduled removal in v10.0.0.")]
-        public static void DeletePackage(int packageID)
-        {
-            Instance.DeleteExtensionPackage(Instance.GetExtensionPackage(Null.NullInteger, p => p.PackageID == packageID));
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by GetExtensionPackage(int portalId, Func<PackageInfo, bool> predicate). Scheduled removal in v10.0.0.")]
-        public static PackageInfo GetPackage(int packageID)
-        {
-            return Instance.GetExtensionPackage(Null.NullInteger, p => p.PackageID == packageID);
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by GetExtensionPackage(int portalId, Func<PackageInfo, bool> predicate). Scheduled removal in v10.0.0.")]
-        public static PackageInfo GetPackage(int packageID, bool ignoreCache)
-        {
-            return Instance.GetExtensionPackage(Null.NullInteger, p => p.PackageID == packageID);
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by GetExtensionPackage(int portalId, Func<PackageInfo, bool> predicate). Scheduled removal in v10.0.0.")]
-        public static PackageInfo GetPackageByName(string name)
-        {
-            return Instance.GetExtensionPackage(Null.NullInteger, p => p.Name == name);
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by GetExtensionPackage(int portalId, Func<PackageInfo, bool> predicate). Scheduled removal in v10.0.0.")]
-        public static PackageInfo GetPackageByName(int portalId, string name)
-        {
-            return Instance.GetExtensionPackage(portalId, p => p.Name == name);
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by GetExtensionPackages(int portalId, Func<PackageInfo, bool> predicate). Scheduled removal in v10.0.0.")]
-        public static List<PackageInfo> GetPackages()
-        {
-            return Instance.GetExtensionPackages(Null.NullInteger).ToList();
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by GetExtensionPackages(int portalId, Func<PackageInfo, bool> predicate). Scheduled removal in v10.0.0.")]
-        public static List<PackageInfo> GetPackages(int portalId)
-        {
-            return Instance.GetExtensionPackages(portalId).ToList();
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by GetExtensionPackages(int portalId, Func<PackageInfo, bool> predicate). Scheduled removal in v10.0.0.")]
-        public static List<PackageInfo> GetPackagesByType(string type)
-        {
-            return Instance.GetExtensionPackages(Null.NullInteger, p => p.PackageType.Equals(type, StringComparison.OrdinalIgnoreCase)).ToList();
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by GetExtensionPackages(int portalId, Func<PackageInfo, bool> predicate). Scheduled removal in v10.0.0.")]
-        public static List<PackageInfo> GetPackagesByType(int portalId, string type)
-        {
-            return Instance.GetExtensionPackages(portalId, p => p.PackageType.Equals(type, StringComparison.OrdinalIgnoreCase)).ToList();
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by GetExtensionPackageType(Func<PackageType, bool> predicate). Scheduled removal in v10.0.0.")]
-        public static PackageType GetPackageType(string type)
-        {
-            return Instance.GetExtensionPackageType(t => t.PackageType == type);
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by GetExtensionPackageTypes(). Scheduled removal in v10.0.0.")]
-        public static List<PackageType> GetPackageTypes()
-        {
-            return Instance.GetExtensionPackageTypes().ToList();
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by SaveExtensionPackage(PackageInfo package). Scheduled removal in v10.0.0.")]
-        public static void SavePackage(PackageInfo package)
-        {
-            Instance.SaveExtensionPackage(package);
-        }
-
-        [Obsolete("Deprecated in DNN 7.2, Replaced by SaveExtensionPackage(PackageInfo package). Scheduled removal in v10.0.0.")]
-        public static void UpdatePackage(PackageInfo package)
-        {
-            Instance.SaveExtensionPackage(package);
-        }
-		
-		#endregion
 
     }
 }

@@ -1,7 +1,3 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
 #region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
@@ -107,21 +103,6 @@ namespace log4net.Appender
 			m_machineName		= ".";	// Only log on the local machine
 		}
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="EventLogAppender" /> class
-		/// with the specified <see cref="ILayout" />.
-		/// </summary>
-		/// <param name="layout">The <see cref="ILayout" /> to use with this appender.</param>
-		/// <remarks>
-		/// <para>
-		/// Obsolete constructor.
-		/// </para>
-		/// </remarks>
-		[Obsolete("Instead use the default constructor and set the Layout property. Scheduled removal in v10.0.0.")]
-		public EventLogAppender(ILayout layout) : this()
-		{
-			Layout = layout;
-		}
 
 		#endregion // Public Instance Constructors
 

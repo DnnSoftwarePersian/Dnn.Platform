@@ -1,16 +1,40 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+#region Copyright
 // 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> update form orginal repo
+// DotNetNuke® - https://www.dnnsoftware.com
+// Copyright (c) 2002-2018
+// by DotNetNuke Corporation
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
+// to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions 
+// of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
+// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+// DEALINGS IN THE SOFTWARE.
+#endregion
+<<<<<<< HEAD
+>>>>>>> Merges latest changes from release/9.4.x into development (#3178)
+=======
+>>>>>>> update form orginal repo
 #region Usings
 
 using System;
 using System.Reflection;
 using System.Threading;
 using System.Web.Compilation;
-using DotNetNuke.Common;
+
 using DotNetNuke.Instrumentation;
-using Microsoft.Extensions.DependencyInjection;
 
 #endregion
 
@@ -62,14 +86,12 @@ namespace DotNetNuke.Services.Scheduling
 
         public void Run(ScheduleHistoryItem objScheduleHistoryItem)
         {
-            IServiceScope serviceScope = null;
             SchedulerClient Process = null;
             try
             {
                 //This is called from RunPooledThread()
                 ticksElapsed = Environment.TickCount - ticksElapsed;
-                serviceScope = Globals.DependencyProvider.CreateScope();
-                Process = GetSchedulerClient(serviceScope.ServiceProvider, objScheduleHistoryItem.TypeFullName, objScheduleHistoryItem);
+                Process = GetSchedulerClient(objScheduleHistoryItem.TypeFullName, objScheduleHistoryItem);
                 Process.ScheduleHistoryItem = objScheduleHistoryItem;
                 
 				//Set up the handlers for the CoreScheduler
@@ -150,8 +172,6 @@ namespace DotNetNuke.Services.Scheduling
             }
             finally
             {
-                serviceScope?.Dispose();
-
                 //Track how many processes have completed for
                 //this instanciation of the ProcessGroup
                 numberOfProcessesInQueue -= 1;
@@ -159,12 +179,22 @@ namespace DotNetNuke.Services.Scheduling
             }
         }
 
-        private SchedulerClient GetSchedulerClient(IServiceProvider services, string strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+        private SchedulerClient GetSchedulerClient(string strProcess, ScheduleHistoryItem objScheduleHistoryItem)
         {
             //This is a method to encapsulate returning
             //an object whose class inherits SchedulerClient.
             Type t = BuildManager.GetType(strProcess, true, true);
-            return (SchedulerClient)ActivatorUtilities.CreateInstance(services, t, objScheduleHistoryItem);
+            var param = new ScheduleHistoryItem[1];
+            param[0] = objScheduleHistoryItem;
+            var types = new Type[1];
+            
+			//Get the constructor for the Class
+            types[0] = typeof (ScheduleHistoryItem);
+            ConstructorInfo objConstructor;
+            objConstructor = t.GetConstructor(types);
+            
+			//Return an instance of the class as an object
+            return (SchedulerClient) objConstructor.Invoke(param);
         }
 
         //This subroutine is callback for Threadpool.QueueWorkItem.  This is the necessary

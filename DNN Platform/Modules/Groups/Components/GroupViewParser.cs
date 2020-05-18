@@ -1,24 +1,18 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.Extensions.DependencyInjection;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Security.Roles;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Common;
 using DotNetNuke.Services.Localization;
-using DotNetNuke.Abstractions;
 
 namespace DotNetNuke.Modules.Groups.Components
 {
     public class GroupViewParser
     {
-        protected INavigationManager NavigationManager { get; }
+        
         PortalSettings PortalSettings { get; set; }
         RoleInfo RoleInfo { get; set; }
         UserInfo CurrentUser { get; set; }
@@ -33,7 +27,6 @@ namespace DotNetNuke.Modules.Groups.Components
             CurrentUser = currentUser;
             Template = template;
             GroupViewTabId = groupViewTabId;
-            NavigationManager = Globals.DependencyProvider.GetRequiredService<INavigationManager>();
         }
 
         public string ParseView()
@@ -94,8 +87,8 @@ namespace DotNetNuke.Modules.Groups.Components
 
             Template = Template.Replace("[GROUPEDITBUTTON]", String.Empty);
 
-            var url = NavigationManager.NavigateURL(GroupViewTabId, "", new String[] { "groupid=" + RoleInfo.RoleID.ToString() });
-
+            var url = Globals.NavigateURL(GroupViewTabId, "", new String[] { "groupid=" + RoleInfo.RoleID.ToString() });
+            
             Template = Utilities.ParseTokenWrapper(Template, "IsPendingMember", membershipPending);
             Template = Template.Replace("[groupviewurl]", url);
             Components.GroupItemTokenReplace tokenReplace = new Components.GroupItemTokenReplace(RoleInfo);

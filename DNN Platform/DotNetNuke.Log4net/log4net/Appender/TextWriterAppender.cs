@@ -1,7 +1,3 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
 #region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
@@ -62,43 +58,6 @@ namespace log4net.Appender
 		{
 		}
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="TextWriterAppender" /> class and
-		/// sets the output destination to a new <see cref="StreamWriter"/> initialized 
-		/// with the specified <see cref="Stream"/>.
-		/// </summary>
-		/// <param name="layout">The layout to use with this appender.</param>
-		/// <param name="os">The <see cref="Stream"/> to output to.</param>
-		/// <remarks>
-		/// <para>
-		/// Obsolete constructor.
-		/// </para>
-		/// </remarks>
-		[Obsolete("Instead use the default constructor and set the Layout & Writer properties. Scheduled removal in v10.0.0.")]
-		public TextWriterAppender(ILayout layout, Stream os) : this(layout, new StreamWriter(os))
-		{
-		}
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="TextWriterAppender" /> class and sets
-		/// the output destination to the specified <see cref="StreamWriter" />.
-		/// </summary>
-		/// <param name="layout">The layout to use with this appender</param>
-		/// <param name="writer">The <see cref="TextWriter" /> to output to</param>
-		/// <remarks>
-		/// The <see cref="TextWriter" /> must have been previously opened.
-		/// </remarks>
-		/// <remarks>
-		/// <para>
-		/// Obsolete constructor.
-		/// </para>
-		/// </remarks>
-		[Obsolete("Instead use the default constructor and set the Layout & Writer properties. Scheduled removal in v10.0.0.")]
-		public TextWriterAppender(ILayout layout, TextWriter writer) 
-		{
-			Layout = layout;
-			Writer = writer;
-		}
 
 		#endregion
 

@@ -41,7 +41,6 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
     <LangVersion>7</LangVersion>
-    <DocumentationFile>bin\DotNetNuke.log4net.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -54,7 +53,6 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
     <LangVersion>7</LangVersion>
-    <DocumentationFile>bin\DotNetNuke.log4net.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -158,9 +156,6 @@
     <Compile Include="log4net\AssemblyVersionInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="log4net\Config\AliasDomainAttribute.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="log4net\Config\AliasRepositoryAttribute.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -168,15 +163,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="log4net\Config\ConfiguratorAttribute.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="log4net\Config\DomainAttribute.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="log4net\Config\DOMConfigurator.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="log4net\Config\DOMConfiguratorAttribute.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="log4net\Config\Log4NetConfigurationSectionHandler.cs">
@@ -313,12 +299,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="log4net\Filter\LoggerMatchFilter.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="log4net\Filter\MdcFilter.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="log4net\Filter\NdcFilter.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="log4net\Filter\PropertyFilter.cs">
@@ -459,12 +439,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="log4net\LogManager.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="log4net\MDC.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="log4net\NDC.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="log4net\ObjectRenderer\DefaultRenderer.cs">
@@ -728,14 +702,4 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <RootDirectory>$(MSBuildProjectDirectory)\..\..</RootDirectory>
-  </PropertyGroup>
-  <Import Project="..\..\DNN_Platform.build" />
-  <Target Name="AfterBuild" DependsOnTargets="CopyBin" />
-  <Target Name="CopyBin">
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\bin\$(AssemblyName).dll" DestinationFolder="$(WebsitePath)/bin" />
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\bin\$(AssemblyName).pdb" DestinationFolder="$(WebsitePath)/bin" />
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\bin\$(AssemblyName).xml" DestinationFolder="$(WebsitePath)/bin" />
-  </Target>
 </Project>

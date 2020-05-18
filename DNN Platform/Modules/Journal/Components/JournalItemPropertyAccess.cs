@@ -1,8 +1,4 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
-using DotNetNuke.Services.Journal;
+﻿using DotNetNuke.Services.Journal;
 
 namespace DotNetNuke.Modules.Journal.Components {
     public class JournalItemTokenReplace : Services.Tokens.BaseCustomTokenReplace {

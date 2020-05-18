@@ -1,14 +1,24 @@
+<<<<<<< HEAD:Dnn.AdminExperience/Dnn.PersonaBar.Extensions/Components/Extensions/Editors/AuthSystemPackageEditor.cs
 ﻿// 
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 // 
 using System;
+=======
+﻿using System;
+<<<<<<< HEAD:Dnn.AdminExperience/Dnn.PersonaBar.Extensions/Components/Extensions/Editors/AuthSystemPackageEditor.cs
+>>>>>>> Merges latest changes from 9.4.x into development (#3189):Dnn.AdminExperience/Extensions/Content/Dnn.PersonaBar.Extensions/Components/Extensions/Editors/AuthSystemPackageEditor.cs
 using Microsoft.Extensions.DependencyInjection;
+=======
+using System.Linq;
+using System.Web.UI.WebControls;
+>>>>>>> Revert "Merges latest changes from 9.4.x into development (#3189)":Dnn.AdminExperience/Extensions/Content/Dnn.PersonaBar.Extensions/Components/Extensions/Editors/AuthSystemPackageEditor.cs
 using Dnn.PersonaBar.Extensions.Components.Dto;
 using Dnn.PersonaBar.Extensions.Components.Dto.Editors;
 using DotNetNuke.Common;
-using DotNetNuke.Abstractions;
+using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Portals;
+using DotNetNuke.Entities.Tabs;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Instrumentation;
 using DotNetNuke.Services.Authentication;
@@ -20,7 +30,7 @@ namespace Dnn.PersonaBar.Extensions.Components.Editors
     public class AuthSystemPackageEditor : IPackageEditor
     {
         private static readonly ILog Logger = LoggerSource.Instance.GetLogger(typeof(AuthSystemPackageEditor));
-        private static readonly INavigationManager NavigationManager = Globals.DependencyProvider.GetRequiredService<INavigationManager>();
+
         #region IPackageEditor Implementation
 
         public PackageInfoDto GetPackageDetail(int portalId, PackageInfo package)
@@ -101,7 +111,7 @@ namespace Dnn.PersonaBar.Extensions.Components.Editors
 
         private static string GetSettingUrl(int portalId, int authSystemPackageId)
         {
-            return NavigationManager.NavigateURL(PortalSettings.Current.ActiveTab.TabID, PortalSettings.Current, "EditExtension",
+            return Globals.NavigateURL(PortalSettings.Current.ActiveTab.TabID, PortalSettings.Current, "EditExtension",
                 "packageid=" + authSystemPackageId,
                 "popUp=true",
                 "mode=settings");

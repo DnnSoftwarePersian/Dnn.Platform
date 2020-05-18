@@ -1,7 +1,6 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
+﻿// Copyright (c) DNN Software. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -108,6 +107,8 @@ namespace DotNetNuke.Tests.Core.Entities.Modules.Settings
                 TimeSpanProperty = timeSpanValue,
             };
 
+            MockModuleSettings(moduleInfo, new Hashtable());
+            MockTabModuleSettings(moduleInfo, new Hashtable());
             var expectedStringValue = stringValue ?? string.Empty;
             MockModuleController.Setup(pc => pc.UpdateModuleSetting(ModuleId, "StringProperty", expectedStringValue));
             var integerString = integerValue?.ToString() ?? string.Empty;
@@ -133,6 +134,8 @@ namespace DotNetNuke.Tests.Core.Entities.Modules.Settings
             var moduleInfo = GetModuleInfo;
             var settings = new MyNullableSettings();
 
+            MockModuleSettings(moduleInfo, new Hashtable());
+            MockTabModuleSettings(moduleInfo, new Hashtable());
             MockCache.Setup(c => c.Insert(CacheKey(moduleInfo), settings));
             var settingsRepository = new MyNullableSettingsRepository();
 

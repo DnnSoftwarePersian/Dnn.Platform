@@ -1,7 +1,3 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
@@ -158,7 +154,6 @@ namespace DotNetNuke.Services.Installer.Installers
                         ZipEntry entry = unzip.GetNextEntry();
                         while (entry != null)
                         {
-                            entry.CheckZipEntry();
                             if (!entry.IsDirectory)
                             {
                                 string fileName = Path.GetFileName(entry.Name);
@@ -257,7 +252,6 @@ namespace DotNetNuke.Services.Installer.Installers
                 ZipEntry entry = unzip.GetNextEntry();
                 while (entry != null)
                 {
-                    entry.CheckZipEntry();
                     if (!entry.IsDirectory)
                     {
                         //Check for Backups

@@ -1,7 +1,7 @@
-﻿// 
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the MIT License. See LICENSE file in the project root for full license information.
-// 
+﻿// DotNetNuke® - http://www.dnnsoftware.com
+// Copyright (c) 2002-2018, DNN Corp.
+// All Rights Reserved
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -20,11 +20,6 @@ namespace DNN.Integration.Test.Framework.Controllers
         private const string PermissionKeyMarker = @"$[permission_key]";
         private const string FriendlyNameMarker = @"$[friendly_name]";
 
-        [Obsolete("typo in name, use AddModulePermission instead. Scheduled removal in v10.0.0.")]
-        public static int AddModuleOPermission(int roleId, int moduleId, string permissionCode, string permissionKey, int portalId = 0)
-        {
-            return AddModulePermission(roleId, moduleId, permissionCode, permissionKey, portalId);
-        }
 
         public static int AddModulePermission(int roleId, int moduleId, string permissionCode, string permissionKey, int portalId = 0)
         {
