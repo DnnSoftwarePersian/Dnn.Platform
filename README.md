@@ -1,6 +1,6 @@
 <div dir="rtl" align="right">
     
-![DNN Platform At A Glance](dnnplatform.png)
+![DNN Platform At A Glance](https://dnnplus.ir/Portals/0/EasyDNNNews/41/750750p457EDNthumbimg-DNN9611.jpg)
 
 
 # دی ان ان فارسی (DNN)
