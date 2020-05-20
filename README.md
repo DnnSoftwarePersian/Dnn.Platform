@@ -39,8 +39,20 @@
 
 ## دانلود نسخه های پایدار بومی دی ان ان
 
-* [دانلود دی ان ان 9.4.1 دی ان ان فارسی](/941)
+* [دانلود نسخه نصبی دی ان ان فارسی 9.6.1](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.6.1_Install_FA.zip)
+
+* [دانلود نسخه ارتقا دی ان ان فارسی 9.6.1](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.6.1_Upgrade_FA.zip)
+----------------------------------------
+
+* [دانلود نسخه نصبی دی ان ان فارسی 9.4.1](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.4.1_Install_FA.zip)
+
+* [دانلود نسخه ارتقا دی ان ان فارسی 9.4.1](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.4.1_Upgrade_FA.zip)
+
+----------------------------------------
+
+* [دانلود نسخه نصبی دی ان ان فارسی 9.2.2](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.2.2.178_Install_FA.zip)
 
 
+* [دانلود نسخه ارتقا دی ان ان فارسی 9.2.2](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.2.2.178_Upgrade_FA.zip)
 
 </div>
