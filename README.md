@@ -1,6 +1,6 @@
 <div dir="rtl" align="right">
     
-![DNN Platform At A Glance](https://dnnplus.ir/Portals/0/EasyDNNNews/41/750750p457EDNthumbimg-DNN9611.jpg)
+![DNN Platform At A Glance](https://dnnplus.ir/Portals/0/EasyDNNNews/42/750750p457EDNthumbimg-DNN9901.jpg)
 
 
 # دی ان ان فارسی (DNN)
@@ -39,9 +39,9 @@
 
 ## دانلود نسخه های پایدار بومی دی ان ان
 
-* [دانلود نسخه نصبی دی ان ان فارسی 9.6.1](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.6.1_Install_FA.zip)
+* [دانلود نسخه نصبی دی ان ان فارسی 9.9.0](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.9.0_Install_FA.zip)
 
-* [دانلود نسخه ارتقا دی ان ان فارسی 9.6.1](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.6.1_Upgrade_FA.zip)
+* [دانلود نسخه ارتقا دی ان ان فارسی 9.9.0](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.9.0_Upgrade_FA.zip)
 ----------------------------------------
 
 * [دانلود نسخه نصبی دی ان ان فارسی 9.4.1](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.4.1_Install_FA.zip)
