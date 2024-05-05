@@ -1,59 +1,61 @@
-[![Build status](https://dotnet.visualstudio.com/DNN/_apis/build/status/dnnsoftware.Dnn.Platform?branchName=develop)](https://dotnet.visualstudio.com/DNN/_build/latest?definitionId=145&branchName=develop)
+![DNN Platform پلتفرم دی ان ان فارسی(https://dnnplus.ir/News/dnn9111)](https://dnnplus.ir/Portals/0/EasyDNNNews/44/750750p457EDNthumbimg-DNN9133.jpg)
 
-![DNN Platform At A Glance](dnnplatform.png)
 
-# Project Description
+# پلتفرم دی ان ان فارسی (DNN)
 
-DNN® ( formerly DotNetNuke® ) is the leading open-source web content management platform (CMS) in the Microsoft ecosystem. The product is used to build professional-looking and easy-to-use commercial websites, social intranets, community portals, or partner extranets. Containing dynamic content of all types, DNN sites are easy to deploy and update. The DNN Platform has been downloaded more than 8 million times and powers over 750,000 websites globally. A community of more than 1 million members forms a powerful support network. 
 
-Thousands of free and commercial extensions, apps, and skins are available at the [DNN Store](http://store.dnnsoftware.com/), which makes extending a DNN site fast and affordable.
+دی ان ان ® (دات نت نیوک ® سابق) پیشرو سیستم مدیریت محتوا (CMS) به صورت اوپن سورس در اکوسیستم مایکروسافت است. از این محصول برای ساخت وب سایت های سازمانی ، شرکتی و وب سایت های تجاری حرفه ای با کاربرد آسان ، شبکه اینترانت و پورتال سازی با قابلیت توسعه استفاده می شود. وب سایت های دی ان ان با داشتن محتوای پویا از همه نوع داده و چند رسانه‌ای به راحتی بروز رسانی می شوند. پلتفرم دی ان ان بیش از 8 میلیون بار دانلود شده است و بیش از 750،000 وب سایت در سطح جهان از این پلتفرم قدرت گرفته اند. جامعه ای با بیش از 1 میلیون عضو یک شبکه پشتیبانی قدرتمند را تشکیل می دهد.
 
-In addition to robust content management, the free, open source DNN Platform includes the following built-in features:
 
-* Single installation with multi-site capability
-* File and folder management
-* Static and dynamic Localization - 6 languages out-of-the-box (English, Dutch, French, German, Italian, and Spanish)
-* Customized web site templates and themes
-* Cloud-ready with MS Azure compatibility
-* 100's of REST API for site and content management
-* Modern client-side Web tools like CSS 3, HTML 5, JQuery, and React
-* UI with drag and drop capability, and rich-text editor for in-place UI editing
-* Extensible through custom modules and many third party modules available in the DNN store
-* Robust security
-* Administration features like: security roles, protected content, SEO, scheduler, SSL support, taxonomy, site log, and many more.
+## ویژگی های نسخه دی ان ان فارسی
 
-## Quick Links
+اولین  مخزن دی ان ان فارسی با بالاترین سطح کیفی بومی سازی استاندارد
 
-* [Contribute](CONTRIBUTING.md)
-* [Build](.github/BUILD.md)
-* [Pull Request Procedures](.github/PULL_REQUEST_PROCESS.md)
-* [Versioning Policy](.github/VERSIONING_POLICY.md)
-* [Release Schedule](.github/RELEASE_SCHEDULE.md)
-* [DNN Docs](https://dnndocs.com)
-* [Community Website](https://dnncommunity.org)
-* [Community Forums](https://dnncommunity.org/forums)
-* [Community Blogs](https://dnncommunity.org/blogs)
-* [Community Dashboard](https://dnncommunity.org/Community/Dashboard)
-* [DNN Leadership Team](https://dnncommunity.org/Community/Leadership-Team)
-* [DNN MVPs](https://dnncommunity.org/Community/MVPs/Current-MVPs)
-* [DNN Connect Group on Facebook](https://www.facebook.com/groups/dnnconnect/)
-* [@DNNAwareness on Twitter](https://www.Twitter.com/DNN)
-* [DNN Store](http://store.dnnsoftware.com/)
+با افتخار تنها مخزن بومی کننده محیط مدیریت دی ان ان
 
-## How to Contribute
 
-We encourage everyone to contribute.
-All the details on contributing with Git and on our working methods can be found on the [Contribute Page](CONTRIBUTING.md)
+* راستچین سازی استاندارد
+* ترجمه فارسی (شفاف و با بالاترین سطح کیفی)
+* شمسی سازی استاندارد (اولین و تنها مخزن دارای محیط مدیریت شمسی سازی شده)
+* فقط انتشار نسخه های پایدار دی ان ان
+* نسخه رایگان قابل استفاده تجاری و سازمانی
 
-In addition, since DNN is part of the .NET Foundation, we require our contributors to abide by their [Code of Conduct](https://www.dotnetfoundation.org/code-of-conduct) rules and requirements also.
 
-Pull requests are reviewed and accepted by the Approvers Group. Read more about the process and this group here: [Approvers](.github/APPROVERS.md)
+## اعضای اصلی بومی کننده
+* سهیل خیری ملتخواه
+* منصور نظیفی
 
-## .NET Foundation
 
-This project is supported by the [.NET Foundation](https://dotnetfoundation.org).
 
-## NDepend
+## لینک های مفید
 
-We monitor code quality of the DNN Platform using [NDepend](https://www.ndepend.com).
-![NDepend](.github/images/PoweredByNDepend.png)
+* [مستندات فارسی](https://www.dnndocs.ir)
+* [جامعه دی ان ان فارسی](https://dnncommunity.ir)
+* [دی ان ان پلاس](https://dnnplus.ir)
+
+
+
+
+## دانلود نسخه های پایدار بومی دی ان ان
+* [دانلود نسخه نصبی دی ان ان فارسی 9.13.3](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.13.3_Install_FA.zip)
+* [دانلود نسخه ارتقا دی ان ان فارسی 9.13.3](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.13.3_Upgrade_FA.zip)
+
+<hr />
+
+* [دانلود نسخه نصبی دی ان ان فارسی 9.11.1](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.11.1_Install_FA.zip)
+* [دانلود نسخه ارتقا دی ان ان فارسی 9.11.1](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.11.1_Upgrade_FA.zip)
+
+<hr />
+
+* [دانلود نسخه نصبی دی ان ان فارسی 9.9.0](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.9.0_Install_FA.zip)
+* [دانلود نسخه ارتقا دی ان ان فارسی 9.9.0](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.9.0_Upgrade_FA.zip)
+
+<hr />
+
+* [دانلود نسخه نصبی دی ان ان فارسی 9.4.1](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.4.1_Install_FA.zip)
+* [دانلود نسخه ارتقا دی ان ان فارسی 9.4.1](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.4.1_Upgrade_FA.zip)
+
+<hr />
+
+* [دانلود نسخه نصبی دی ان ان فارسی 9.2.2](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.2.2_Install_FA.zip)
+* [دانلود نسخه ارتقا دی ان ان فارسی 9.2.2](https://dnnplus.ir/Portals/0/Download/DNN/DNN_Platform_9.2.2_Upgrade_FA.zip)
